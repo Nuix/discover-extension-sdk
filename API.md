@@ -1,6 +1,10 @@
 # API
 The Ringtail UI Extension SDK relies on a JSON-based message protocol to communicate with Ringtail's UI through postMessage.
 
+**Table of Contents**
+- [Messages](#messages)
+  - [UserContext](#usercontext)
+
 ## Messages
 Messages sent to and from Ringtail's UI have this structure:
 ```js
