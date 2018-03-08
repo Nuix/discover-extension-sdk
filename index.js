@@ -16,45 +16,44 @@
         }
 
         initialized = true;
-
-        function handleWindowMessage(event) {
-            var message = event.data;
-
-            switch (message.name) {
-                case 'ActiveDocument':
-                    activeDoc = message.data;
-                    break;
-                case 'UserContext':
-                    RingtailSDK.UserContext = message.data;
-                    resolve();
-                    break;
-            }
-
-            if (message.requestId && pendingClientQueries.has(message.requestId)) {
-                var deferred = pendingClientQueries.get(message.requestId);
-                if (message.name === 'Error') {
-                    deferred.reject(new Error(message.data.message));
-                } else {
-                    deferred.resolve(message);
-                }
-                pendingClientQueries.delete(message.requestId);
-            } else {
-                var callbacks = listeners.get(message.name);
-                if (callbacks) {
-                    callbacks.forEach(function (cb) {
-                        try {
-                            cb(message);
-                        } catch (err) {
-                            console.error(err);
-                        }
-                    });
-                }
-            }
-        }
-
         window.addEventListener('message', handleWindowMessage, false);
 
         return clientQuery('ExtensionReady');
+    }
+
+    function handleWindowMessage(event) {
+        var message = event.data;
+
+        switch (message.name) {
+            case 'ActiveDocument':
+                activeDoc = message.data;
+                break;
+            case 'UserContext':
+                RingtailSDK.UserContext = message.data;
+                resolve();
+                break;
+        }
+
+        if (message.requestId && pendingClientQueries.has(message.requestId)) {
+            var deferred = pendingClientQueries.get(message.requestId);
+            if (message.name === 'Error') {
+                deferred.reject(new Error(message.data.message));
+            } else {
+                deferred.resolve(message);
+            }
+            pendingClientQueries.delete(message.requestId);
+        } else {
+            var callbacks = listeners.get(message.name);
+            if (callbacks) {
+                callbacks.forEach(function (cb) {
+                    try {
+                        cb(message);
+                    } catch (err) {
+                        console.error(err);
+                    }
+                });
+            }
+        }
     }
 
     function clientQuery(messageName, data) {
@@ -130,6 +129,21 @@
     }
 
 
+    function getDocumentSelection() {
+        return clientQuery('DocumentSelection_Get').then(function (message) {
+            return message.data;
+        });
+    }
+
+    function setDocumentSelection(mainIds) {
+        return clientQuery('DocumentSelection_Set', mainIds);
+    }
+
+    function selectDocuments() {
+        return clientQuery('DocumentSelection_Select');
+    }
+
+
     function getFacetSelection(fieldId) {
         return clientQuery('FacetSelection_Get', {
             fieldId: fieldId
@@ -162,20 +176,22 @@
 
         setLoading: setLoading,
         setTools: setTools,
-
-        getFields: getFields,
-        getFieldCountsForResultSet: getFieldCountsForResultSet,
-        downloadFieldCountsForResultSet: downloadFieldCountsForResultSet,
         
         ActiveDocument: {
             get: getActiveDocument,
             set: setActiveDocument,
         },
 
+        DocumentSelection: {
+            get: getDocumentSelection,
+            set: setDocumentSelection,
+            select: selectDocuments,
+        },
+
         FacetSelection: {
             get: getFacetSelection,
             set: setFacetSelection,
             select: selectFacet,
-        }
+        },
     };
 }());
