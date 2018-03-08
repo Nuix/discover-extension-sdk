@@ -5,8 +5,8 @@ The Ringtail UI Extension SDK is scoped under the `RingtailSDK` namespace.
 
 - [RingtailSDK](#RingtailSDK)
   - [.Context](#.Context)
-  - [.ActiveDocument](#.ActiveDocument)
-    - [.get()](#.ActiveDocument+.get)
+  - [.ActiveDocument](#.activedocument)
+    - [.get()](#.activeaocument+.get)
 - [Messages](#messages)
   - [ExtensionReady](#extensionready)
   - [UserContext](#usercontext)
@@ -16,7 +16,7 @@ This is a static copy of the <[UserContext](#UserContext)> message received upon
 
 ### .ActiveDocument
 
-#### .get() ⇒ <[ActiveDocument](#ActiveDocument)>
+#### .get() ⇒ <[ActiveDocument](#activedocument)>
 
 
 # Messages
