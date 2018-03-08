@@ -3,28 +3,29 @@ The Ringtail UI Extension SDK relies on a JSON-based message protocol to communi
 
 **Table of Contents**
 - [Messages](#messages)
+  - [ExtensionReady](#extensionready)
   - [UserContext](#usercontext)
 
 ## Messages
 Messages sent to and from Ringtail's UI have this structure:
 ```js
 {
-    "name": "UserContext",
+    "name": "MessageName",
     "data": {
-        "userName": "John Smith",
-        "portalUserId": 17,
-        "caseId": 42,
-        "caseName": "Matter 1743.2298"
-        "apiUrl": "http://example.ringtail.com/Ringtail-Svc-Portal/api/query"
-        "apiKey": "12345678-90ab-cdef-1234-567890abcdef",
-        "authToken": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...",
-        "hostLocation": "Workspace"
+        "name": "John Smith",
+        "age": 34
     },
     "requestId": 123456
 }
 ```
 
+#### ExtensionReady
+This message is sent to Ringtail by a UIX to indicate it is initialized and ready to communicate. Ringtail will not send any messages to a UIX before receiving this message.
+- `data` <[null]>
+- response: [UserContext](#usercontext)
+
 #### UserContext
+This message is sent from Ringtail to acknowledge [ExtensionReady](#extensionready).
  - `data` <[Object]>
    - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
    - `userName` <[String]> Current user's username.
@@ -42,6 +43,7 @@ Messages sent to and from Ringtail's UI have this structure:
 
 
 
+[null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type "Boolean"
 [function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function "Function"
