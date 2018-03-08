@@ -55,7 +55,7 @@ This message is sent from Ringtail to acknowledge [ExtensionReady](#extensionrea
 #### ActiveDocument
 This message is sent from Ringtail whenever the active document (the document displayed in the coding and view panes) changes. If there is no active document, these fields will be null.
 - mainId <[Number]> Internal ID of the active document.
-- documentId <[String]> Displayed ID of the document that is unique in the case.
+- documentId <[Document ID](Glossary.md#document-id)> Displayed ID of the document that is unique in the case.
 - documentTitle <[String]> Title of the document.
 - documentTypeName <[String]> Display name of the document's type.
 - resultSetId <[Number]> ID of the active result set.
