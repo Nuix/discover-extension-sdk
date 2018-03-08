@@ -16,7 +16,7 @@ This is a static copy of the <[UserContext](#UserContext)> message received upon
 
 ### .ActiveDocument
 
-#### .get() ⇒ <[ActiveDocument](#ActiveDocument)>
+#### .get() ⇒ <[ActiveDocument](#activedocument)>
 
 
 # Messages
