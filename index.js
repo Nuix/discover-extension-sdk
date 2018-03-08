@@ -29,8 +29,7 @@
                 activeDoc = message.data;
                 break;
             case 'UserContext':
-                RingtailSDK.UserContext = message.data;
-                resolve();
+                RingtailSDK.Context = message.data;
                 break;
         }
 
@@ -39,7 +38,7 @@
             if (message.name === 'Error') {
                 deferred.reject(new Error(message.data.message));
             } else {
-                deferred.resolve(message);
+                deferred.resolve(message.data);
             }
             pendingClientQueries.delete(message.requestId);
         } else {
@@ -71,12 +70,12 @@
     }
 
     function serverQuery(graphQlquery, variables) {
-        return fetch(RingtailSDK.UserContext.apiUrl, {
+        return fetch(RingtailSDK.Context.apiUrl, {
             method: 'POST',
             mode: 'cors',
             headers: {
-                'Authorization': UserContext.authToken,
-                'ApiKey': UserContext.apiKey,
+                'Authorization': RingtailSDK.Context.authToken,
+                'ApiKey': RingtailSDK.Context.apiKey,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -130,9 +129,7 @@
 
 
     function getDocumentSelection() {
-        return clientQuery('DocumentSelection_Get').then(function (message) {
-            return message.data;
-        });
+        return clientQuery('DocumentSelection_Get');
     }
 
     function setDocumentSelection(mainIds) {
@@ -147,8 +144,6 @@
     function getFacetSelection(fieldId) {
         return clientQuery('FacetSelection_Get', {
             fieldId: fieldId
-        }).then(function (message) {
-            return message.data;
         });
     }
 
@@ -168,7 +163,7 @@
     }
 
     window.RingtailSDK = {
-        UserContext: null,
+        Context: null,
 
         initialize: initialize,
         on: on,
