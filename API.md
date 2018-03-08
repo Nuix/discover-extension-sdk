@@ -54,8 +54,8 @@ This message is sent from Ringtail to acknowledge [ExtensionReady](#extensionrea
 
 #### ActiveDocument
 This message is sent from Ringtail whenever the active document (the document displayed in the coding and view panes) changes. If there is no active document, these fields will be null.
-- mainId <[Number]> Internal ID of the active document.
-- documentId <[Document ID](Glossary.md#document-id)> Displayed ID of the document that is unique in the case.
+- mainId <[Main ID]> Internal ID of the active document.
+- documentId <[Document ID]> Displayed ID of the document that is unique in the case.
 - documentTitle <[String]> Title of the document.
 - documentTypeName <[String]> Display name of the document's type.
 - resultSetId <[Number]> ID of the active result set.
@@ -74,3 +74,5 @@ This message is sent from Ringtail whenever the active document (the document di
 [Error]: https://nodejs.org/api/errors.html#errors_class_error "Error"
 [Map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map "Map"
 [Serializable]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description "Serializable"
+[Document ID]: Glossary.md#document-id "Document ID"
+[Main ID]: Glossary.md#main-id "Main ID"
