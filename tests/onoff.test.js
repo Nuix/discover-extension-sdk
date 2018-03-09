@@ -45,4 +45,28 @@ describe('on/off', async () => {
 
         RingtailSDK.off('Scrozzled', callback1);
     });
+
+    test('should call all callbacks even if one throws', () => {
+        const callback1 = jest.fn(() => { throw new Error("Uh oh, we're SCROZZLED!"); }).mockName('callback1');
+        const callback2 = jest.fn().mockName('callback2');
+        const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+        RingtailSDK.on('Scrozzled', callback1);
+        RingtailSDK.on('Scrozzled', callback2);
+
+        Test.sendMessage({ name: 'Scrozzled', requestId: 42 });
+
+        expect(callback1).toHaveBeenCalledTimes(1);
+        expect(callback2).toHaveBeenCalledTimes(1);
+        expect(consoleSpy).toHaveBeenCalledTimes(1);
+
+        RingtailSDK.off('Scrozzled', callback1);
+        RingtailSDK.off('Scrozzled', callback2);
+        consoleSpy.mockRestore();
+    });
+
+    test('should ignore un-watched messages and responses', () => {
+        Test.sendMessage({ name: 'DireBadger', requestId: 42 });
+        Test.sendMessage({ name: 'Bugbear' });
+    });
 });
