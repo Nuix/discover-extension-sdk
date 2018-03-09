@@ -69,6 +69,7 @@
             requestId: requestId
         }, '*');
     }
+    
 
     function clientQuery(messageName, data) {
         var requestId = performance.now();  // Unique ID for this call
@@ -84,19 +85,25 @@
     }
 
     function serverQuery(graphQlquery, variables) {
-        checkInitialized();
-        return fetch(RingtailSDK.Context.apiUrl, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Authorization': RingtailSDK.Context.authToken,
-                'ApiKey': RingtailSDK.Context.apiKey,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                variables: variables,
-                query: graphQlquery
-            })
+        return new Promise((resolve, reject) => {
+            try {
+                checkInitialized();
+                resolve(fetch(RingtailSDK.Context.apiUrl, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Authorization': RingtailSDK.Context.authToken,
+                        'ApiKey': RingtailSDK.Context.apiKey,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        variables: variables,
+                        query: graphQlquery
+                    })
+                }));
+            } catch (err) {
+                reject(err);
+            }
         }).then(function (response) {
             if (!response.ok) {
                 throw new Error('Request failed: ' + response.statusText);
@@ -123,7 +130,6 @@
 
 
     function setLoading(loading) {
-        checkInitialized();
         sendMessage(loading ? 'LoadingMask_Show' : 'LoadingMask_Hide');
     }
 
