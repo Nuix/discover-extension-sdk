@@ -39,14 +39,16 @@
                 break;
         }
 
-        if (message.requestId && pendingClientQueries.has(message.requestId)) {
+        if (message.requestId) {
             var deferred = pendingClientQueries.get(message.requestId);
-            if (message.name === 'Error') {
-                deferred.reject(new Error(message.data.message));
-            } else {
-                deferred.resolve(message.data);
+            if (deferred) {
+                if (message.name === 'Error') {
+                    deferred.reject(new Error(message.data.message));
+                } else {
+                    deferred.resolve(message.data);
+                }
+                pendingClientQueries.delete(message.requestId);
             }
-            pendingClientQueries.delete(message.requestId);
         } else {
             var callbacks = listeners.get(message.name);
             if (callbacks) {

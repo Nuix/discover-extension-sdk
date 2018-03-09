@@ -60,7 +60,7 @@ describe('on/off', async () => {
         RingtailSDK.on('Scrozzled', callback1);
         RingtailSDK.on('Scrozzled', callback2);
 
-        Test.sendMessage({ name: 'Scrozzled', requestId: 42 });
+        Test.sendMessage({ name: 'Scrozzled' });
 
         expect(callback1).toHaveBeenCalledTimes(1);
         expect(callback2).toHaveBeenCalledTimes(1);
@@ -72,7 +72,13 @@ describe('on/off', async () => {
     });
 
     test('should ignore un-watched messages and responses', () => {
-        Test.sendMessage({ name: 'DireBadger', requestId: 42 });
+        const callback1 = jest.fn().mockName('callback1');
+        RingtailSDK.on('Scrozzled', callback1);
+
+        Test.sendMessage({ name: 'DireBadger' });
         Test.sendMessage({ name: 'Bugbear' });
+        Test.sendMessage({ name: 'Scrozzled', requestId: 7 }); // Messages with requestIds are never broadcast
+
+        expect(callback1).toHaveBeenCalledTimes(0);
     });
 });
