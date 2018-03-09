@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fti-technology/ringtail-extension-sdk#readme",
   "devDependencies": {
+    "eslint": "^4.18.2",
     "jest": "^22.4.2"
   }
 }

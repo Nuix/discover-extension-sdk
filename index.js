@@ -185,6 +185,8 @@
 
         setLoading: setLoading,
         setTools: setTools,
+
+        query: serverQuery,
         
         ActiveDocument: {
             get: getActiveDocument,
