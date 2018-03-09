@@ -106,7 +106,7 @@
             }
         }).then(function (response) {
             if (!response.ok) {
-                throw new Error('Request failed: ' + response.statusText);
+                throw new Error('request failed: ' + response.statusText);
             }
             return response.json();
         });
@@ -114,18 +114,31 @@
 
 
     function on(eventName, callback) {
-        if (!listeners.has(eventName)) {
-            listeners.set(eventName, []);
+        if (typeof eventName !== 'string' || !eventName) {
+            throw new Error('eventName must be a string');
         }
-        listeners.get(eventName).push(callback);
+        if (typeof callback !== 'function') {
+            throw new Error('callback must be a function');
+        }
+        if (!listeners.has(eventName)) {
+            listeners.set(eventName, new Set());
+        }
+        listeners.get(eventName).add(callback);
     }
 
     function off(eventName, callback) {
-        var callbacks = listeners.get(eventName);
-        if (!callbacks || callbacks.indexOf(callback) < 0) {
-            throw new Error('Ringtail API event listener for "' + eventName + '" not found');
+        if (typeof eventName !== 'string' || !eventName) {
+            throw new Error('eventName must be a string');
         }
-        callbacks.splice(callbacks.indexOf(callback), 1);
+        if (typeof callback !== 'function') {
+            throw new Error('callback must be a function');
+        }
+
+        var callbacks = listeners.get(eventName);
+        if (!callbacks) {
+            throw new Error('event listener for "' + eventName + '" not found');
+        }
+        callbacks.delete(callback);
     }
 
 
@@ -183,8 +196,6 @@
     }
 
     window.RingtailSDK = {
-        Context: null,
-
         initialize: initialize,
         on: on,
         off: off,
@@ -193,7 +204,10 @@
         setTools: setTools,
 
         query: serverQuery,
-        
+
+
+        Context: null,
+
         ActiveDocument: {
             get: getActiveDocument,
             set: setActiveDocument,

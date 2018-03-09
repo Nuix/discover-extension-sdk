@@ -6,11 +6,23 @@ module.exports = {
 
     postMessageMock: window.parent.postMessage = jest.fn().mockName('postMessage'),
 
-    sendMessage: message => {
+    sendMessage(message) {
         window.dispatchEvent(new MessageEvent('message', {
             origin: 'http://ringtail.com/Ringtail/',
             data: message
         }));
         return message;
     },
+
+    sendUserContextMessage() {
+        return this.sendMessage({
+            name: 'UserContext',
+            data: {
+                apiUrl: this.apiUrl,
+                apiKey: this.apiKey,
+                authToken: this.authToken,
+            },
+            requestId: this.postMessageMock.mock.calls[0][0].requestId,
+        }).data;
+    }
 };

@@ -40,15 +40,7 @@ describe('initialize', () => {
             requestId: expect.any(Number),
         }, '*');
 
-        const ackData = Test.sendMessage({
-            name: 'UserContext',
-            data: {
-                apiUrl: Test.apiUrl,
-                apiKey: Test.apiKey,
-                authToken: Test.authToken,
-            },
-            requestId: Test.postMessageMock.mock.calls[0][0].requestId,
-        }).data;
+        const ackData = Test.sendUserContextMessage();
 
         expect(await initPromise).toEqual(ackData);
         expect(RingtailSDK.Context).toEqual(ackData);
