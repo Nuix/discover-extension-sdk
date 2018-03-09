@@ -1,12 +1,10 @@
 
 require('../index');
 
-const Test = {};
+const Test = require('./testLib');
 
 describe('initialize', () => {
-    const postMessageMock = window.parent.postMessage = jest.fn().mockName('postMessage');
-
-    test('all API calls should throw before initialize', async () => {
+    test('all API calls should throw before initialize', () => {
         const ignoreList = new Set(['on', 'off', 'initialize']);
         const nonPromiseList = new Set(['setLoading', 'getActiveDocument']);
 
@@ -35,8 +33,8 @@ describe('initialize', () => {
     test('should return a promise that resolves once acknowledged', async () => {
         const initPromise = RingtailSDK.initialize();
 
-        expect(postMessageMock).toHaveBeenCalledTimes(1);
-        expect(postMessageMock).toHaveBeenCalledWith({
+        expect(Test.postMessageMock).toHaveBeenCalledTimes(1);
+        expect(Test.postMessageMock).toHaveBeenCalledWith({
             name: 'ExtensionReady',
             data: undefined,
             requestId: expect.any(Number),
@@ -49,32 +47,19 @@ describe('initialize', () => {
                 apiKey: Test.apiKey,
                 authToken: Test.authToken,
             },
-            requestId: postMessageMock.mock.calls[0][0].requestId,
+            requestId: Test.postMessageMock.mock.calls[0][0].requestId,
         }).data;
 
         expect(await initPromise).toEqual(ackData);
         expect(RingtailSDK.Context).toEqual(ackData);
 
-        postMessageMock.mockClear();
+        Test.postMessageMock.mockClear();
     });
 
     test('should noop and resolve immediately if called again', async () => {
         const initPromise = RingtailSDK.initialize();
 
-        expect(postMessageMock).toHaveBeenCalledTimes(0);
+        expect(Test.postMessageMock).toHaveBeenCalledTimes(0);
         expect(await initPromise).toEqual(RingtailSDK.Context);
     });
 });
-
-
-Test.apiUrl = 'http://ringtail.com/Ringtail-Svc-Portal/api/query',
-Test.apiKey = '12345678-90ab-cdef-1234-567890abcdef',
-Test.authToken = 'Bearer hereIsAFakeAuthTokenString01',
-
-Test.sendMessage = message => {
-    window.dispatchEvent(new MessageEvent('message', {
-        origin: 'http://ringtail.com/Ringtail/',
-        data: message
-    }));
-    return message;
-};
