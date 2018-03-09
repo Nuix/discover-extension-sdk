@@ -3,13 +3,19 @@ require('../index');
 
 const Test = require('./testLib');
 
-test('setup', async () => {
-    const initPromise = RingtailSDK.initialize();
-    Test.sendUserContextMessage();
-    await initPromise;
-});
-
 describe('on/off', async () => {
+    test('should not be able to capture messages with requestIds', async () => {
+        const callback1 = jest.fn().mockName('callback1');
+
+        RingtailSDK.on('UserContext', callback1);
+
+        const initPromise = RingtailSDK.initialize();
+        Test.sendUserContextMessage();
+        await initPromise;
+
+        expect(callback1).toHaveBeenCalledTimes(0);
+    });
+
     test('should throw given invalid parameters', () => {
         expect(RingtailSDK.on).toThrow(/eventName/);
         expect(RingtailSDK.on.bind(null, false)).toThrow(/eventName/);
