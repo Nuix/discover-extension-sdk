@@ -1,7 +1,7 @@
 # Ringtail UI Extension SDK
 This SDK provides a nice API to communicate with Ringtail's UI, implemented around [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) for secure cross-origin communications. It manages serializing context and change events through JSON messages and coordinating message responses so that User Interface Extensions (UIX) don't have to worry about the details.
 
-## [API](API.md)
+## [API Documentation](API.md)
 
 ## Installation
 `npm install ringtail-extension-sdk`
@@ -11,6 +11,9 @@ If you want to run your extension in IE11, you'll also need polyfills for Promis
 `npm install promise-polyfill whatwg-fetch`
 
 > NOTE This library only works in web browsers!
+
+## Ringtail <-> App Communication
+![Ringtail App Communication](https://docs.google.com/drawings/d/e/2PACX-1vQaelod9Flf14CCSyP4MhR4Qznl6n_0EllVzdNiB5gnvsdsYqO5bcwMbTphlMZUbr7tgKqqniZ0HuOx/pub?w=541&h=275)
 
 ## Getting Started
 To communicate with Ringtail, initialize the SDK then hook up listeners for events you're interested in. Here's an example that listens for and displays active document changes:
