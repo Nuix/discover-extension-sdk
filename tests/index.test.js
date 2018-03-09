@@ -4,10 +4,36 @@ require('../index');
 const Test = {};
 
 describe('RingtailSDK', () => {
-    const postMessageMock = window.parent.postMessage = jest.fn();
+    const postMessageMock = window.parent.postMessage = jest.fn().mockName('postMessage');
 
     describe('initialize', () => {
-        it('should return a promise that resolves once acknowledged', async () => {
+        test('API calls should throw before this is called', async () => {
+            const ignoreList = new Set(['on', 'off', 'initialize']);
+            const nonPromiseList = new Set(['setLoading', 'getActiveDocument']);
+
+            function tryCalling(obj) {
+                Object.keys(obj || {}).forEach(key => {
+                    if (ignoreList.has(key)) {
+                        return;
+                    }
+                    if (typeof obj[key] === 'function') {
+                        if (nonPromiseList.has(obj[key].name)) {
+                            expect(obj[key]).toThrow(/initialize/);
+                        } else {
+                            expect(obj[key]()).rejects.toThrow(/initialize/);
+                        }
+                    } else {
+                        tryCalling(obj[key]);
+                    }
+                });
+            }
+
+            // Ensure EVERY function in the SDK (but those we've blacklisted above) throws
+            // if we haven't yet initialized it.
+            tryCalling(RingtailSDK);
+        });
+
+        test('should return a promise that resolves once acknowledged', async () => {
             const initPromise = RingtailSDK.initialize();
 
             expect(postMessageMock).toHaveBeenCalledTimes(1);
@@ -28,6 +54,16 @@ describe('RingtailSDK', () => {
             }).data;
 
             expect(await initPromise).toEqual(ackData);
+            expect(RingtailSDK.Context).toEqual(ackData);
+
+            postMessageMock.mockClear();
+        });
+
+        test('should noop and resolve immediately if called again', async () => {
+            const initPromise = RingtailSDK.initialize();
+
+            expect(postMessageMock).toHaveBeenCalledTimes(0);
+            expect(await initPromise).toEqual(RingtailSDK.Context);
         });
     });
 });

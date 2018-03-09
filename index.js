@@ -12,13 +12,19 @@
      */
     function initialize() {
         if (initialized) {
-            return Promise.resolve();
+            return Promise.resolve(RingtailSDK.Context);
         }
 
         initialized = true;
         window.addEventListener('message', handleWindowMessage, false);
 
         return clientQuery('ExtensionReady');
+    }
+
+    function checkInitialized() {
+        if (!initialized) {
+            throw new Error('RingtailSDK.initialize() has not been called!');
+        }
     }
 
     function handleWindowMessage(event) {
@@ -55,21 +61,30 @@
         }
     }
 
+    function sendMessage(name, data, requestId) {
+        checkInitialized();
+        window.parent.postMessage({
+            name: name,
+            data: data,
+            requestId: requestId
+        }, '*');
+    }
+
     function clientQuery(messageName, data) {
         var requestId = performance.now();  // Unique ID for this call
 
         return new Promise(function (resolve, reject) {
-            window.parent.postMessage({
-                name: messageName,
-                data: data,
-                requestId: requestId
-            }, '*');
-
-            pendingClientQueries.set(requestId, { resolve: resolve, reject: reject });
+            try {
+                sendMessage(messageName, data, requestId);
+                pendingClientQueries.set(requestId, { resolve: resolve, reject: reject });
+            } catch (err) {
+                reject(err);
+            }
         });
     }
 
     function serverQuery(graphQlquery, variables) {
+        checkInitialized();
         return fetch(RingtailSDK.Context.apiUrl, {
             method: 'POST',
             mode: 'cors',
@@ -108,18 +123,17 @@
 
 
     function setLoading(loading) {
-        window.parent.postMessage({ name: loading ? 'LoadingMask_Show' : 'LoadingMask_Hide' }, '*');
+        checkInitialized();
+        sendMessage(loading ? 'LoadingMask_Show' : 'LoadingMask_Hide');
     }
 
     function setTools(toolsConfig) {
-        window.parent.postMessage({
-            name: 'SetTools',
-            data: toolsConfig
-        }, '*');
+        return clientQuery('SetTools', toolsConfig);
     }
 
 
     function getActiveDocument() {
+        checkInitialized();
         return activeDoc;
     }
 
