@@ -6,7 +6,7 @@ const Test = require('./testLib');
 describe('initialize', () => {
     test('all API calls should throw before initialize', () => {
         const ignoreList = new Set(['on', 'off', 'initialize']);
-        const nonPromiseList = new Set(['setLoading', 'getActiveDocument']);
+        const nonPromiseList = new Set(['getActiveDocument']);
 
         function tryCalling(obj) {
             Object.keys(obj || {}).forEach(key => {

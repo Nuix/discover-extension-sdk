@@ -4,7 +4,7 @@
     var initialized = false,
         listeners = new Map(),
         pendingClientQueries = new Map(),
-        activeDoc = null;
+        activeDoc = {};
 
     /**
      * Returns a promise that resolves once the extension has been registered
@@ -145,11 +145,7 @@
 
 
     function setLoading(loading) {
-        sendMessage(loading ? 'LoadingMask_Show' : 'LoadingMask_Hide');
-    }
-
-    function setTools(toolsConfig) {
-        return clientQuery('SetTools', toolsConfig);
+        return clientQuery('LoadingMask', { show: !!loading });
     }
 
 
@@ -168,11 +164,11 @@
     }
 
     function setDocumentSelection(mainIds) {
-        return clientQuery('DocumentSelection_Set', mainIds);
+        return clientQuery('DocumentSelection_Set', { mainIds: mainIds });
     }
 
-    function selectDocuments() {
-        return clientQuery('DocumentSelection_Select');
+    function selectDocuments(mainIds, add) {
+        return clientQuery('DocumentSelection_Select', { mainIds: mainIds, add: !!add });
     }
 
 
@@ -195,6 +191,14 @@
             values: values,
             select: select,
         });
+    }
+
+    function setTools(toolsConfig) {
+        return clientQuery('Tools_Set', toolsConfig);
+    }
+
+    function getToolValues() {
+        return clientQuery('Tools_GetValues');
     }
 
     window.RingtailSDK = {
@@ -225,6 +229,11 @@
             get: getFacetSelection,
             set: setFacetSelection,
             select: selectFacet,
+        },
+
+        Tools: {
+            set: setTools,
+            getValues: getToolValues,
         },
     };
 }());
