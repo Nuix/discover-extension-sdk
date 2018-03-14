@@ -20,6 +20,7 @@ The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on t
   - [FacetSelection](#facetselection)
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
+  - [ToolAction](#toolaction)
 
 #### .initialize() ⇒ <[Promise]>
 - returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
@@ -80,7 +81,10 @@ Static object containing context information about the current Ringtail user. It
 ### DocumentSelection
 
 #### get() ⇒ <[Promise]>
-- returns: Information about the current active document
+- returns: A promise resolving to an object with these properties:
+  - `mainIds` <[Array]<[Main ID]>> Array of numerical main IDs.
+
+This request may take a long time to complete depending on the size of the active [result set] and the number of selected documents. It is advisable to request the full document selection only sparingly.
 
 #### set(mainId) ⇒ <[Promise]>
 - `mainId` <[Main ID]> Main ID of the document to activate.
@@ -103,17 +107,22 @@ Events sent from Ringtail's UI have this structure:
     }
 }
 ```
+Event properties are nested in a `data` object, so access them like so:
+
+```js
+var mainid = event.data.mainId;
+```
 
 #### ActiveDocument
-This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document, these fields will not be populated.
-- mainId <[Main ID]> Internal ID of the active document.
-- documentId <[Document ID]> Displayed ID of the document that is unique in the case.
-- documentTitle <[String]> Title of the document.
-- documentType <[Number]> ID of the document's type.
-- documentTypeName <[String]> Display name of the document's type.
-- resultSetId <[Number]> ID of the active result set.
-- entityTypeId <[Number]> ID of the active document's entity type.
+- `mainId` <[Main ID]> Internal ID of the active document.
+- `documentId` <[Document ID]> Displayed ID of the document that is unique in the case.
+- `documentTitle` <[String]> Title of the document.
+- `documentType` <[Number]> ID of the document's type.
+- `documentTypeName` <[String]> Display name of the document's type.
+- `resultSetId` <[Number]> ID of the active result set.
+- `entityTypeId` <[Number]> ID of the active document's entity type.
 
+This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document, these fields will not be populated.
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
@@ -129,3 +138,4 @@ This event is sent from Ringtail whenever the [active document](Glossary.md#acti
 
 [Document ID]: Glossary.md#document-id "Document ID"
 [Main ID]: Glossary.md#main-id "Main ID"
+[Result set]: Glossary.md#result-set "Result set"
