@@ -185,11 +185,11 @@
         });
     }
 
-    function selectFacet(fieldId, values, select) {
+    function selectFacet(fieldId, values, add) {
         return clientQuery('FacetSelection_Select', {
             fieldId: fieldId,
             values: values,
-            select: select,
+            add: add,
         });
     }
 
