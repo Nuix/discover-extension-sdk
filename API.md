@@ -4,42 +4,15 @@ The Ringtail UI Extension SDK is scoped under the `RingtailSDK` namespace.
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
 
 - [RingtailSDK](#RingtailSDK)
-  - [.Context](#.Context)
-  - [.ActiveDocument](#.activedocument)
-    - [.get()](#.activeaocument+.get)
-- [Messages](#messages)
+  - [Context](#Context)
+  - [ActiveDocument](#activedocument)
+    - [.get()](#activeaocument+get)
+- [Events](#events)
   - [ExtensionReady](#extensionready)
   - [UserContext](#usercontext)
 
-### .Context
-This is a static copy of the <[UserContext](#UserContext)> message received upon initialize of the SDK.
-
-### .ActiveDocument
-
-#### .get() ⇒ <[ActiveDocument](#activedocument)>
-
-
-# Messages
-The Ringtail UI Extension SDK relies on a JSON-based message protocol to communicate with Ringtail's UI through postMessage.
-
-Messages sent to and from Ringtail's UI have this structure:
-```json
-{
-    "name": "MessageName",
-    "data": {
-        "name": "John Smith",
-        "age": 34
-    },
-    "requestId": 123456
-}
-```
-
-#### ExtensionReady
-This message is sent to Ringtail by a UIX to indicate it is initialized and ready to communicate. Ringtail will not send any messages to a UIX before receiving this message.
-- response: [UserContext](#usercontext)
-
-#### UserContext
-This message is sent from Ringtail to acknowledge [ExtensionReady](#extensionready).
+### Context
+This user context is sent from Ringtail once the SDK is initialized.
 - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
 - `userName` <[String]> Current user's username.
 - `caseId` <[Number]> ID of the user's current case, or 0 if in the portal.
@@ -48,12 +21,29 @@ This message is sent from Ringtail to acknowledge [ExtensionReady](#extensionrea
 - `apiKey` <[String]> GUID identifying the current user to the API, such as `12345678-90ab-cdef-1234-567890abcdef`.
 - `authToken` <[String]> Authentication token to make API calls on behalf of the current user. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location this extension is running from. Will be one of:
-  - `Workspace` Workspace pane
-  - `Case` Case landing page
-  - `Portal` Portal landing page
+  - `Workspace` - Workspace pane
+  - `Case` - Case landing page
+  - `Portal` - Portal landing page
+
+### ActiveDocument
+
+#### get() ⇒ <[ActiveDocument](#activedocument)>
+
+
+# Events
+Events sent from Ringtail's UI have this structure:
+```json
+{
+    "name": "EventName",
+    "data": {
+        "name": "John Smith",
+        "age": 34
+    }
+}
+```
 
 #### ActiveDocument
-This message is sent from Ringtail whenever the active document (the document displayed in the coding and view panes) changes. If there is no active document, these fields will be null.
+This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document, these fields will not be populated.
 - mainId <[Main ID]> Internal ID of the active document.
 - documentId <[Document ID]> Displayed ID of the document that is unique in the case.
 - documentTitle <[String]> Title of the document.
