@@ -87,7 +87,7 @@
     }
 
     function serverQuery(graphQlquery, variables) {
-        return new Promise((resolve, reject) => {
+        return new Promise(function(resolve, reject) {
             try {
                 checkInitialized();
                 resolve(fetch(RingtailSDK.Context.apiUrl, {
