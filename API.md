@@ -1,20 +1,20 @@
-# RingtailSDK
+# RingtailSDK API
 The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
 
-- [RingtailSDK](#ringtailsdk)
+- [RingtailSDK](#ringtailsdk-api)
   - [.initialize()](#initialize--promise)
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
   - [.setLoading(loading)](#setloadingloading)
   - [.setTools(tools)](#settoolstools)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
-  - [Context](#context)
-  - [ActiveDocument](#activedocument)
+  - [.Context](#context)
+  - [.ActiveDocument](#activedocument)
     - [.get()](#get--activedocument)
     - [.set(mainId)](#setmainid--promise)
-  - [DocumentSelection](#documentselection)
+  - [.DocumentSelection](#documentselection)
     - [.get()](#get--promise)
     - [.set(mainIds)](#setmainids--promise)
     - [.select(add, mainIds)](#selectadd-mainids--promise)
@@ -22,7 +22,7 @@ The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on t
 - [Events](#events)
   - [ActiveDocument](#activedocument-1)
   - [DocumentSelection](#documentselection-1)
-  - [FacetSelection](#facetselection)
+  - [FacetSelection](#facetselection-1)
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
@@ -64,7 +64,7 @@ Allows a UIX to display buttons and other simple UI widgets in Ringtail's toolba
 Executes the given [GraphQL]((http://graphql.org/learn/)) query against Ringtail in the context of the current user. Use Ringtail's Connect API Explorer (available from the Portal) to build and test queries and review documentation.
 
 
-### Context
+### .Context
 Static object containing context information about the current Ringtail user. It is available once the SDK is initialized.
 - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
 - `userName` <[String]> Current user's username.
@@ -79,43 +79,57 @@ Static object containing context information about the current Ringtail user. It
   - `Portal` - Portal landing page
 
 
-### ActiveDocument
+### .ActiveDocument
 When a [result set] is loaded into a [workspace], the [active document] is the primary document displayed in the View and Conditional Coding panes. Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
 
-#### get() ⇒ <[ActiveDocument](#activedocument-1)>
+#### .get() ⇒ <[ActiveDocument](#activedocument-1)>
 - returns: Information about the current active document
 
-#### set(mainId) ⇒ <[Promise]>
+If there is no active document (due to no active [result set] for example) fields in the returned object will be `null`.
+
+#### .set(mainId) ⇒ <[Promise]>
 - `mainId` <[Main ID]> Main ID of the document to activate.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
 
-### DocumentSelection
+### .DocumentSelection
 Document selection in Ringtail is tied to a [result set]. This means that documents cannot be selected if there is no active [result set], and they cannot be selected UNLESS they are present in the active [result set]! Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
 
-#### get() ⇒ <[Promise]>
+#### .get() ⇒ <[Promise]>
 - returns: A promise resolving to an object with these properties:
   - `mainIds` <[Array]<[Main ID]>> Array of numerical main IDs.
 
 This request may take a long time to complete depending on the size of the active [result set] and the number of selected documents. It is advisable to request the full document selection only sparingly.
 
-#### set(mainIds) ⇒ <[Promise]>
+#### .set(mainIds) ⇒ <[Promise]>
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
 Clears any prior selection and selects the given documents. Pass an empty array to just clear the selection.
 
-#### select(add, mainIds) ⇒ <[Promise]>
+#### .select(add, mainIds) ⇒ <[Promise]>
 - `add` <[Boolean]> `true` to select the given documents, `false` to deselect.
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select or deselect.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
 Incrementally modifies the current document selection.
 
-#### selectAll() ⇒ <[Promise]>
+#### .selectAll() ⇒ <[Promise]>
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
 Selects all documents in the active [result set];
+
+
+### .FacetSelection
+[Facet] selection is the set of selected field values in the Browse pane. Facets are tied to Ringtail fields and are uniquely identified by field IDs.
+
+> NOTE: Only pick list fields are supported for facet selection.
+
+#### .get(fieldId) ⇒ <[Promise]>
+- `fieldId` <[String]> ID of the field for which to retrieve its selection.
+- returns: A promise that resolves to an object with these properties:
+  - `values` <[Array]<[Number]>> Array of the IDs of selected values.
+
 
 # Events
 Events sent from Ringtail's UI have this structure:
@@ -145,7 +159,18 @@ var mainid = event.data.mainId;
 - `resultSetId` <[Number]> ID of the active [result set].
 - `entityTypeId` <[Number]> ID of the active document's entity type.
 
-This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document, these fields will not be populated.
+This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [result set] for example) these fields will be `null`.
+
+#### DocumentSelection
+- `selectedCount` <[Number]> Total number of selected documents.
+
+This event is sent from Ringtail whenever the selected documents change.
+
+#### FacetSelection
+- `fieldId` <[String]> ID of the field who's facet selection has changed
+- `values` <[Array]<[Number]>> All values of the field that are currently selected.
+
+Ringtail sends this event when a [facet] selection changes.
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
@@ -161,6 +186,7 @@ This event is sent from Ringtail whenever the [active document](Glossary.md#acti
 
 [Active document]: Glossary.md#active-document "Active docum,ent"
 [Document ID]: Glossary.md#document-id "Document ID"
+[Facet]: Glossary.md#facet "Facet"
 [Main ID]: Glossary.md#main-id "Main ID"
 [Result set]: Glossary.md#result-set "Result set"
 [ToolConfig]: Tools.md "ToolConfig"
