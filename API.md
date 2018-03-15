@@ -8,12 +8,17 @@ The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on t
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
   - [.setLoading(loading)](#setloadingloading)
+  - [.setTools(tools)](#settoolstools)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
   - [Context](#context)
   - [ActiveDocument](#activedocument)
     - [.get()](#get--activedocument)
     - [.set(mainId)](#setmainid--promise)
   - [DocumentSelection](#documentselection)
+    - [.get()](#get--promise)
+    - [.set(mainIds)](#setmainids--promise)
+    - [.select(add, mainIds)](#selectadd-mainids--promise)
+    - [.selectAll()](#selectall--promise)
 - [Events](#events)
   - [ActiveDocument](#activedocument-1)
   - [DocumentSelection](#documentselection-1)
@@ -45,6 +50,12 @@ Removes the provided `callback` subscription to the given event.
 
 Displays or hides a loading mask over the UIX to block user interactions.
 
+#### .setTools(tools) ⇒ <[Promise]>
+- `tools` <[Array]<[ToolConfig]>> Array of tool configurations to display in Ringtail.
+- returns: A promise that resolves when the tools have successfully been constructed and populated in the Ringtail UI. Rejects with details if the tool config was malformed.
+
+Allows a UIX to display buttons and other simple UI widgets in Ringtail's toolbars, giving them a native look and feel. To be notified when users interact with these tools, subscribe to the [ToolAction](#toolaction) event.
+
 #### .query(graphQl[, variables]) ⇒ <[Promise]>
 - `graphQl` <[String]> [GraphQL]((http://graphql.org/learn/)) query for Ringtail's Connect API.
 - `variables` <[Object]> (Optional) Object providing values for variables in the query.
@@ -69,16 +80,18 @@ Static object containing context information about the current Ringtail user. It
 
 
 ### ActiveDocument
+When a [result set] is loaded into a [workspace], the [active document] is the primary document displayed in the View and Conditional Coding panes. Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
 
 #### get() ⇒ <[ActiveDocument](#activedocument-1)>
 - returns: Information about the current active document
 
 #### set(mainId) ⇒ <[Promise]>
 - `mainId` <[Main ID]> Main ID of the document to activate.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
 
 ### DocumentSelection
+Document selection in Ringtail is tied to a [result set]. This means that documents cannot be selected if there is no active [result set], and they cannot be selected UNLESS they are present in the active [result set]! Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
 
 #### get() ⇒ <[Promise]>
 - returns: A promise resolving to an object with these properties:
@@ -86,13 +99,23 @@ Static object containing context information about the current Ringtail user. It
 
 This request may take a long time to complete depending on the size of the active [result set] and the number of selected documents. It is advisable to request the full document selection only sparingly.
 
-#### set(mainId) ⇒ <[Promise]>
-- `mainId` <[Main ID]> Main ID of the document to activate.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request
+#### set(mainIds) ⇒ <[Promise]>
+- `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select.
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-#### select(mainId) ⇒ <[Promise]>
-- `mainId` <[Main ID]> Main ID of the document to activate.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request
+Clears any prior selection and selects the given documents. Pass an empty array to just clear the selection.
+
+#### select(add, mainIds) ⇒ <[Promise]>
+- `add` <[Boolean]> `true` to select the given documents, `false` to deselect.
+- `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select or deselect.
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+
+Incrementally modifies the current document selection.
+
+#### selectAll() ⇒ <[Promise]>
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+
+Selects all documents in the active [result set];
 
 # Events
 Events sent from Ringtail's UI have this structure:
@@ -119,7 +142,7 @@ var mainid = event.data.mainId;
 - `documentTitle` <[String]> Title of the document.
 - `documentType` <[Number]> ID of the document's type.
 - `documentTypeName` <[String]> Display name of the document's type.
-- `resultSetId` <[Number]> ID of the active result set.
+- `resultSetId` <[Number]> ID of the active [result set].
 - `entityTypeId` <[Number]> ID of the active document's entity type.
 
 This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document, these fields will not be populated.
@@ -136,6 +159,9 @@ This event is sent from Ringtail whenever the [active document](Glossary.md#acti
 [Error]: https://nodejs.org/api/errors.html#errors_class_error "Error"
 [Map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map "Map"
 
+[Active document]: Glossary.md#active-document "Active docum,ent"
 [Document ID]: Glossary.md#document-id "Document ID"
 [Main ID]: Glossary.md#main-id "Main ID"
 [Result set]: Glossary.md#result-set "Result set"
+[ToolConfig]: Tools.md "ToolConfig"
+[Workspace]: Glossary.md#workspace "Workspace"
