@@ -35,7 +35,7 @@ describe('ActiveDocument', () => {
         });
     });
 
-    describe('getValues', () => {
+    describe('get', () => {
         test('immediately return the cached active doc info', async () => {
             let activeDoc = RingtailSDK.ActiveDocument.get();
             expect(activeDoc).toEqual({});
@@ -43,7 +43,7 @@ describe('ActiveDocument', () => {
             Test.sendMessage({ name: 'ActiveDocument', data: { mainId: 42 }});
 
             activeDoc = RingtailSDK.ActiveDocument.get();
-            expect(activeDoc.mainId).toBe(42);
+            expect(activeDoc).toEqual({ mainId: 42 });
         });
     });
 });
@@ -70,6 +70,47 @@ describe('Tools', () => {
     });
 });
 
+describe('DocumentSelection', () => {
+    describe('get', () => {
+        test('should send the DocumentSelection_Get message', async () => {
+            let promise = RingtailSDK.DocumentSelection.get();
+        
+            verifyMessageSent('DocumentSelection_Get');
+
+            await promise;
+        });
+    });
+
+    describe('set', () => {
+        test('should send the DocumentSelection_Set message', async () => {
+            let promise = RingtailSDK.DocumentSelection.set([1, 2]);
+        
+            verifyMessageSent('DocumentSelection_Set', { mainIds: [1, 2] });
+
+            await promise;
+        });
+    });
+
+    describe('select', () => {
+        test('should send the DocumentSelection_Select message', async () => {
+            let promise = RingtailSDK.DocumentSelection.select(true, [1, 2]);
+        
+            verifyMessageSent('DocumentSelection_Select', { mainIds: [1, 2], add: true });
+
+            await promise;
+        });
+    });
+
+    describe('selectAll', () => {
+        test('should send the DocumentSelection_Set message', async () => {
+            let promise = RingtailSDK.DocumentSelection.selectAll();
+        
+            verifyMessageSent('DocumentSelection_Set', { selectAll: true });
+
+            await promise;
+        });
+    });
+});
 
 
 async function verifyMessageSent(name, sendData, receiveData) {

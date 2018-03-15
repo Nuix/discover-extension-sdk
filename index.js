@@ -167,8 +167,12 @@
         return clientQuery('DocumentSelection_Set', { mainIds: mainIds });
     }
 
-    function selectDocuments(mainIds, add) {
+    function selectDocuments(add, mainIds) {
         return clientQuery('DocumentSelection_Select', { mainIds: mainIds, add: !!add });
+    }
+
+    function selectAllDocuments() {
+        return clientQuery('DocumentSelection_Set', { selectAll: true });
     }
 
 
@@ -223,6 +227,7 @@
             get: getDocumentSelection,
             set: setDocumentSelection,
             select: selectDocuments,
+            selectAll: selectAllDocuments,
         },
 
         FacetSelection: {
