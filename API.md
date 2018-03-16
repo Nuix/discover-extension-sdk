@@ -197,6 +197,12 @@ This event is sent from Ringtail whenever the selected documents change.
 
 Ringtail sends this event when a [facet] selection changes.
 
+#### PaneHidden
+Sent when the UIX is hidden via changing the active workspace, pane collapse, navigating away, etc. No events will be sent to the UIX while it is hidden.
+
+#### PaneShown
+Sent when the UIX becomes visible via changing the active workspace, pane expand, first load, etc. No events will be sent to the UIX until it is shown and the SDK initialized.
+
 #### ToolAction
 - `id` <[String]> ID of the tool the user interacted with, provided by the UIX in [ToolConfig](#toolconfig)s.
 - `value` <[String]|[Number]> (Optional) New value of the tool for stateful tools.
