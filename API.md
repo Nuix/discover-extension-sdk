@@ -19,6 +19,10 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
     - [.set(mainIds)](#setmainids--promise)
     - [.select(add, mainIds)](#selectadd-mainids--promise)
     - [.selectAll()](#selectall--promise)
+  - [.FacetSelection](#facetselection)
+    - [.get(fieldId)](getfieldid--promise)
+    - [.set(fieldId, values)](setfieldid-values--promise)
+    - [.select(fieldId, add, values)](selectfieldid-add-values--promise)
 - [Events](#events)
   - [ActiveDocument](#activedocument-1)
   - [DocumentSelection](#documentselection-1)
@@ -130,6 +134,21 @@ Selects all documents in the active [result set];
 - `fieldId` <[String]> ID of the field for which to retrieve its selection.
 - returns: A promise that resolves to an object with these properties:
   - `values` <[Array]<[Number]>> Array of the IDs of selected values.
+
+#### .set(fieldId, values) ⇒ <[Promise]>
+- `fieldId` <[String]> ID of the field for which to replace the selection.
+- `values` <[Array]<[Number]>> Array of IDs of the values to select.
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+
+Clears any prior selection and selects values for the given facet. Pass an empty array to just clear the selection.
+
+#### .select(fieldId, add, values) ⇒ <[Promise]>
+- `fieldId` <[String]> ID of the field for which to alter the selection.
+- `add` <[Boolean]> `true` to select the given field values, `false` to deselect.
+- `values` <[Array]<[Number]>> Array of IDs of the values to select or deselect.
+- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+
+Incrementally modifies the current facet selection.
 
 
 # Events
