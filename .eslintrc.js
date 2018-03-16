@@ -13,7 +13,7 @@ module.exports = {
         'jest/globals': true,
     },
     globals: {
-        RingtailSDK: false,
+        Ringtail: false,
     },
     rules: {
         'no-console': 0,

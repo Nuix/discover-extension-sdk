@@ -1,5 +1,5 @@
 
-require('../index');
+require('../Ringtail');
 
 const Test = require('./testLib');
 
@@ -27,11 +27,11 @@ describe('initialize', () => {
 
         // Ensure EVERY function in the SDK (but those we've blacklisted above) throws
         // if we haven't yet initialized it.
-        tryCalling(RingtailSDK);
+        tryCalling(Ringtail);
     });
 
     test('should return a promise that resolves once acknowledged', async () => {
-        const initPromise = RingtailSDK.initialize();
+        const initPromise = Ringtail.initialize();
 
         expect(Test.postMessageMock).toHaveBeenCalledTimes(1);
         expect(Test.postMessageMock).toHaveBeenCalledWith({
@@ -43,15 +43,15 @@ describe('initialize', () => {
         const ackData = Test.sendUserContextMessage();
 
         expect(await initPromise).toEqual(ackData);
-        expect(RingtailSDK.Context).toEqual(ackData);
+        expect(Ringtail.Context).toEqual(ackData);
 
         Test.postMessageMock.mockClear();
     });
 
     test('should noop and resolve immediately if called again', async () => {
-        const initPromise = RingtailSDK.initialize();
+        const initPromise = Ringtail.initialize();
 
         expect(Test.postMessageMock).toHaveBeenCalledTimes(0);
-        expect(await initPromise).toEqual(RingtailSDK.Context);
+        expect(await initPromise).toEqual(Ringtail.Context);
     });
 });

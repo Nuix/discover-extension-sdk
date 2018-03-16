@@ -1,9 +1,9 @@
-# RingtailSDK API
-The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on the global `window` object.
+# Ringtail UIX API
+The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
 
-- [RingtailSDK](#ringtailsdk-api)
+- [Ringtail](#ringtail-uix-api)
   - [.initialize()](#initialize--promise)
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
@@ -26,6 +26,7 @@ The Ringtail UI Extension SDK is available from the `RingtailSDK` namespace on t
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
+- [ToolConfig](#toolconfig)
 
 #### .initialize() ⇒ <[Promise]>
 - returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
@@ -51,7 +52,7 @@ Removes the provided `callback` subscription to the given event.
 Displays or hides a loading mask over the UIX to block user interactions.
 
 #### .setTools(tools) ⇒ <[Promise]>
-- `tools` <[Array]<[ToolConfig]>> Array of tool configurations to display in Ringtail.
+- `tools` <[Array]<[ToolConfig](#toolconfig)>> Array of tool configurations to display in Ringtail.
 - returns: A promise that resolves when the tools have successfully been constructed and populated in the Ringtail UI. Rejects with details if the tool config was malformed.
 
 Allows a UIX to display buttons and other simple UI widgets in Ringtail's toolbars, giving them a native look and feel. To be notified when users interact with these tools, subscribe to the [ToolAction](#toolaction) event.
@@ -173,6 +174,11 @@ This event is sent from Ringtail whenever the selected documents change.
 Ringtail sends this event when a [facet] selection changes.
 
 
+# ToolConfig
+Ringtail provides the capability for UIXs to construct native UI widgets called `Tools` which built from plain JSON-object specifications called `ToolConfigs`.
+
+
+
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
 [boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type "Boolean"
@@ -189,5 +195,4 @@ Ringtail sends this event when a [facet] selection changes.
 [Facet]: Glossary.md#facet "Facet"
 [Main ID]: Glossary.md#main-id "Main ID"
 [Result set]: Glossary.md#result-set "Result set"
-[ToolConfig]: Tools.md "ToolConfig"
 [Workspace]: Glossary.md#workspace "Workspace"

@@ -1,12 +1,12 @@
 # Ringtail UI Extension SDK
-This SDK provides a nice API to communicate with Ringtail's UI, implemented around [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) for secure cross-origin communications. It manages serializing context and change events through JSON messages and coordinating message responses so that User Interface Extensions (UIX) don't have to worry about the details.
+This SDK provides an API to communicate with Ringtail's UI, implemented around [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) for secure cross-origin communications. It manages serializing context and change events through JSON messages and coordinating message responses so that User Interface Extensions (UIX) don't have to worry about the details.
 
 ## [API Documentation](API.md)
 
 ## Ringtail Apps
 User Interface Extensions (UIXs) are the user-visible faces of Ringtail apps. Ringtail loads up UIX web applications inline in its interface and provides them user and workspace context and Connect API access. Given that, simple, single-page web applications can comprise complete Ringtail apps.
 
-The below diagram shows a minimal UIX deployment (green). This SDK (in yellow below) registers UIXs with Ringtail and exposes access to the Ringtail client state and Connect API.
+The below diagram shows a minimal UIX deployment (green). This SDK (yellow) registers UIXs with Ringtail and exposes access to the Ringtail client state and Connect API.
 
 ![Ringtail App Communication](https://docs.google.com/drawings/d/e/2PACX-1vQaelod9Flf14CCSyP4MhR4Qznl6n_0EllVzdNiB5gnvsdsYqO5bcwMbTphlMZUbr7tgKqqniZ0HuOx/pub?w=572&h=272)
 
@@ -24,12 +24,12 @@ If you want to run your extension in IE11, you'll also need polyfills for Promis
 ## Getting Started
 To communicate with Ringtail, initialize the SDK then hook up listeners for events you're interested in. Here's an example that listens for and displays active document changes:
 
-#### index.html
 ```html
 <!DOCTYPE html>
 <html>
 <head>
     <title>Ringtail UI Extension Test App</title>
+    <script src="Ringtail.js" type="text/javascript"></script>
 </head>
 <body>
     <b>Active Document</b>
@@ -51,9 +51,9 @@ To communicate with Ringtail, initialize the SDK then hook up listeners for even
         }
 
         // Establish communication with Ringtail
-        RingtailSDK.initialize().then(function () {
+        Ringtail.initialize().then(function () {
             // Listen for ActiveDocument changes
-            RingtailSDK.on('ActiveDocument', handleActiveDocumentChanged);
+            Ringtail.on('ActiveDocument', handleActiveDocumentChanged);
         });
     </script>
 </body>

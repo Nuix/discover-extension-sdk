@@ -1,10 +1,10 @@
 
-require('../index');
+require('../Ringtail');
 
 const Test = require('./testLib');
 
 test('setup', async () => {
-    const initPromise = RingtailSDK.initialize();
+    const initPromise = Ringtail.initialize();
     Test.sendUserContextMessage();
     await initPromise;
     Test.postMessageMock.mockClear();
@@ -12,12 +12,12 @@ test('setup', async () => {
 
 describe('setLoading', async () => {
     test('should send the LoadingMask message', async () => {
-        let promise = RingtailSDK.setLoading(false);
+        let promise = Ringtail.setLoading(false);
 
         verifyMessageSent('LoadingMask', { show: false });
         await promise;
 
-        promise = RingtailSDK.setLoading('SCROZZLED?');
+        promise = Ringtail.setLoading('SCROZZLED?');
 
         verifyMessageSent('LoadingMask', { show: true });
         await promise;
@@ -27,7 +27,7 @@ describe('setLoading', async () => {
 describe('ActiveDocument', () => {
     describe('set', () => {
         test('should send the ActiveDocument_Set message', async () => {
-            let promise = RingtailSDK.ActiveDocument.set(1234);
+            let promise = Ringtail.ActiveDocument.set(1234);
         
             verifyMessageSent('ActiveDocument_Set', { mainId: 1234 });
 
@@ -37,12 +37,12 @@ describe('ActiveDocument', () => {
 
     describe('get', () => {
         test('immediately return the cached active doc info', async () => {
-            let activeDoc = RingtailSDK.ActiveDocument.get();
+            let activeDoc = Ringtail.ActiveDocument.get();
             expect(activeDoc).toEqual({});
 
             Test.sendMessage({ name: 'ActiveDocument', data: { mainId: 42 }});
 
-            activeDoc = RingtailSDK.ActiveDocument.get();
+            activeDoc = Ringtail.ActiveDocument.get();
             expect(activeDoc).toEqual({ mainId: 42 });
         });
     });
@@ -51,7 +51,7 @@ describe('ActiveDocument', () => {
 describe('Tools', () => {
     describe('set', () => {
         test('should send the Tools_Set message', async () => {
-            let promise = RingtailSDK.Tools.set([{ isScrozzled: true }]);
+            let promise = Ringtail.Tools.set([{ isScrozzled: true }]);
         
             verifyMessageSent('Tools_Set', [{ isScrozzled: true }]);
 
@@ -61,7 +61,7 @@ describe('Tools', () => {
 
     describe('getValues', () => {
         test('should send the Tools_GetValues message', async () => {
-            let promise = RingtailSDK.Tools.getValues();
+            let promise = Ringtail.Tools.getValues();
         
             verifyMessageSent('Tools_GetValues', undefined, { foo: 'bar' });
 
@@ -73,7 +73,7 @@ describe('Tools', () => {
 describe('DocumentSelection', () => {
     describe('get', () => {
         test('should send the DocumentSelection_Get message', async () => {
-            let promise = RingtailSDK.DocumentSelection.get();
+            let promise = Ringtail.DocumentSelection.get();
         
             verifyMessageSent('DocumentSelection_Get');
 
@@ -83,7 +83,7 @@ describe('DocumentSelection', () => {
 
     describe('set', () => {
         test('should send the DocumentSelection_Set message', async () => {
-            let promise = RingtailSDK.DocumentSelection.set([1, 2]);
+            let promise = Ringtail.DocumentSelection.set([1, 2]);
         
             verifyMessageSent('DocumentSelection_Set', { mainIds: [1, 2] });
 
@@ -93,7 +93,7 @@ describe('DocumentSelection', () => {
 
     describe('select', () => {
         test('should send the DocumentSelection_Select message', async () => {
-            let promise = RingtailSDK.DocumentSelection.select(true, [1, 2]);
+            let promise = Ringtail.DocumentSelection.select(true, [1, 2]);
         
             verifyMessageSent('DocumentSelection_Select', { mainIds: [1, 2], add: true });
 
@@ -103,7 +103,7 @@ describe('DocumentSelection', () => {
 
     describe('selectAll', () => {
         test('should send the DocumentSelection_Set message', async () => {
-            let promise = RingtailSDK.DocumentSelection.selectAll();
+            let promise = Ringtail.DocumentSelection.selectAll();
         
             verifyMessageSent('DocumentSelection_Set', { selectAll: true });
 

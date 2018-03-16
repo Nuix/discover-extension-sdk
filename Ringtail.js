@@ -12,7 +12,7 @@
      */
     function initialize() {
         if (initialized) {
-            return Promise.resolve(RingtailSDK.Context);
+            return Promise.resolve(Ringtail.Context);
         }
 
         initialized = true;
@@ -23,7 +23,7 @@
 
     function checkInitialized() {
         if (!initialized) {
-            throw new Error('RingtailSDK.initialize() has not been called!');
+            throw new Error('Ringtail.initialize() has not been called!');
         }
     }
 
@@ -35,7 +35,7 @@
                 activeDoc = message.data;
                 break;
             case 'UserContext':
-                RingtailSDK.Context = message.data;
+                Ringtail.Context = message.data;
                 break;
         }
 
@@ -90,12 +90,12 @@
         return new Promise(function(resolve, reject) {
             try {
                 checkInitialized();
-                resolve(fetch(RingtailSDK.Context.apiUrl, {
+                resolve(fetch(Ringtail.Context.apiUrl, {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
-                        'Authorization': RingtailSDK.Context.authToken,
-                        'ApiKey': RingtailSDK.Context.apiKey,
+                        'Authorization': Ringtail.Context.authToken,
+                        'ApiKey': Ringtail.Context.apiKey,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
@@ -205,7 +205,7 @@
         return clientQuery('Tools_GetValues');
     }
 
-    window.RingtailSDK = {
+    window.Ringtail = {
         initialize: initialize,
         on: on,
         off: off,
