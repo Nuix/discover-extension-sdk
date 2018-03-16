@@ -31,6 +31,10 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
 - [ToolConfig](#toolconfig)
+  - [Shared Properties](#shared-properties)
+  - [Types](#types)
+    - [button](#button)
+    - [combo](#combo)
 
 #### .initialize() ⇒ <[Promise]>
 - returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
@@ -192,9 +196,60 @@ This event is sent from Ringtail whenever the selected documents change.
 
 Ringtail sends this event when a [facet] selection changes.
 
+#### ToolAction
+- `id` <[String]> ID of the tool the user interacted with, provided by the UIX in [ToolConfig](#toolconfig)s.
+- `value` <[String]|[Number]> (Optional) New value of the tool for stateful tools.
+
+ToolAction events are fired when the user interacts with tools constructed by [setTools](#settoolstools-promise).
+
 
 # ToolConfig
 Ringtail provides the capability for UIXs to construct native UI widgets called `Tools` which built from plain JSON-object specifications called `ToolConfigs`.
+
+Here are some examples:
+```js
+{ // Button
+    type: 'button',
+    icon: 'icon-print',
+    id: 'printButton',
+    label: 'Print'
+}
+
+{ // Combo box
+    type: 'combo',
+    id: 'graphTypePicker',
+    width: 80,
+    value: 'bar',
+    choices: [
+        { id: 'bar', name: 'Bar' },
+        { id: 'line', name: 'Line' },
+        { id: 'pie', name: 'Pie' },
+    ]
+}
+```
+
+## Shared Properties
+All tools share these properties:
+- `type` <[String]> Type of tool to construct. See [Types](#types).
+- `id` <[String]> ID of this tool, used to identify it in [ToolAction](#toolaction) events when the user interacts with it.
+
+## Types
+
+#### button
+- `icon` <[String]> Name of the icon to display for this button. TODO - where to view the list of available icons??
+- `label` <[String]> Display name of this button, displayed in toolips and menus.
+
+Simple stateless, clickable button.
+
+#### combo
+- `value` <[String]|[Number]> (Optional) Currently-selected value. May be null for no starting value.
+- `placeholder` <[String]> (Optional) Placeholder text to display in the combo when there is no value selected.
+- `width` <[Number]> (Optional) Width in pixels of the combo box.
+- `choices` <[Array]<[Object]>> Choices to pick from in the combo's dropdown. Each choice has these properties:
+  - `id` <[String]|[Number]> ID of this choice, used as the value when selecting.
+  - `name` <[String]> Display value for this choice in the dropdown.
+
+Filterable combo box with preset choices.
 
 
 
