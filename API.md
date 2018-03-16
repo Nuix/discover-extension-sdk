@@ -200,7 +200,7 @@ Ringtail sends this event when a [facet] selection changes.
 #### PaneHidden
 Sent when the UIX is hidden via changing the active workspace, pane collapse, navigating away, etc. No events will be sent to the UIX while it is hidden.
 
-#### PaneShown
+#### PaneVisible
 Sent when the UIX becomes visible via changing the active workspace, pane expand, first load, etc. No events will be sent to the UIX until it is shown and the SDK initialized.
 
 #### ToolAction
