@@ -7,8 +7,8 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [.initialize()](#initialize--promise)
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
-  - [.setLoading(loading)](#setloadingloading)
-  - [.setTools(tools)](#settoolstools)
+  - [.setLoading(loading)](#setloadingloading--promise)
+  - [.setTools(tools)](#settoolstools--promise)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
   - [.Context](#context)
   - [.ActiveDocument](#activedocument)
@@ -54,8 +54,9 @@ Subscribes the provided `callback` to be called when the given event is received
 
 Removes the provided `callback` subscription to the given event.
 
-#### .setLoading(loading)
+#### .setLoading(loading) ⇒ <[Promise]>
 - `loading` <[Boolean]> `true` to display the loading mask, `false` to hide it.
+- returns: A promise that resolves once the loading mask has been shown or hidden.
 
 Displays or hides a loading mask over the UIX to block user interactions.
 
