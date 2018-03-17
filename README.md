@@ -1,12 +1,12 @@
-# Ringtail UI Extension SDK
-This SDK provides an API to communicate with Ringtail's UI, implemented around [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) for secure cross-origin communications. It manages serializing context and change events through JSON messages and coordinating message responses so that User Interface Extensions (UIX) don't have to worry about the details.
+# Ringtail User Interface Extension SDK
+This SDK provides an API to communicate with Ringtail's UI for use in UI Extensions, part of Ringtail's extensibility model.
 
 ## [API Documentation](API.md)
 
-## Ringtail Apps
-User Interface Extensions (UIXs) are the user-visible faces of Ringtail apps. Ringtail loads up UIX web applications inline in its interface and provides them user and workspace context and Connect API access. Given that, simple, single-page web applications can comprise complete Ringtail apps.
+## User Interface Extensions
+Ringtail can be extended by embedding 3rd party web applications directly into it's interface. Such external applications are called User Interface Extensions (UIX). Ringtail provides them user and workspace context and Connect API access so they can read and write data to Ringtail and respond to user actions in Ringtail's UI.
 
-The below diagram shows a minimal UIX deployment (green). This SDK (yellow) registers UIXs with Ringtail and exposes access to the Ringtail client state and Connect API.
+The below diagram shows how an external web application (green) can communicate with Ringtail (blue). This SDK (yellow) provides the glue for UIX clients to communicate directly with Ringtail.
 
 ![Ringtail App Communication](https://docs.google.com/drawings/d/e/2PACX-1vQaelod9Flf14CCSyP4MhR4Qznl6n_0EllVzdNiB5gnvsdsYqO5bcwMbTphlMZUbr7tgKqqniZ0HuOx/pub?w=572&h=272)
 
@@ -15,11 +15,11 @@ The below diagram shows a minimal UIX deployment (green). This SDK (yellow) regi
 ## Installation
 `npm install ringtail-extension-sdk`
 
-If you want to run your extension in IE11, you'll also need polyfills for Promise and fetch:
+To support IE11, you'll also need to provide Promise and fetch polyfills, such as:
 
 `npm install promise-polyfill whatwg-fetch`
 
-> NOTE: This library only works in web browsers!
+> NOTE: This library only works in web browsers! For compatibility, UIXs must support all browsers that Ringtail supports - as of 2018-03-16 this includes: IE11, Chrome, and Edge.
 
 ## Getting Started
 To communicate with Ringtail, initialize the SDK then hook up listeners for events you're interested in. Here's an example that listens for and displays active document changes:
