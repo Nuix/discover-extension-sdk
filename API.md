@@ -204,7 +204,7 @@ Sent when the UIX is hidden via changing the active workspace, pane collapse, na
 Sent when the UIX becomes visible via changing the active workspace, pane expand, first load, etc. No events will be sent to the UIX until it is shown and the SDK initialized.
 
 #### ToolAction
-- `id` <[String]> ID of the tool the user interacted with, provided by the UIX in [ToolConfig](#toolconfig)s.
+- `id` <[String]> ID of the tool the user interacted with, provided by the [ToolConfig](#toolconfig).
 - `value` <[String]|[Number]> (Optional) New value of the tool for stateful tools.
 
 ToolAction events are fired when the user interacts with tools constructed by [setTools](#settoolstools-promise).
