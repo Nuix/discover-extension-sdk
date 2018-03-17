@@ -1,21 +1,24 @@
 {
-  "name": "ringtail-extension-sdk",
-  "version": "1.0.0",
-  "description": "Provides a nice JavaScript API for UI Extensions to communicate with Ringtail over postMessage.",
-  "main": "index.js",
+  "name": "@ringtail-software/ringtail-extension-sdk",
+  "version": "0.9.0",
+  "description": "Provides APIs for UI Extensions to communicate with Ringtail",
+  "main": "Ringtail.js",
   "scripts": {
     "test": "jest"
   },
-  "repository": "git+https://github.com/fti-technology/ringtail-extension-sdk.git",
+  "files": [
+    "Ringtail.js"
+  ],
+  "repository": "git+https://github.com/ringtail-software/ringtail-extension-sdk.git",
   "keywords": [
     "ringtail"
   ],
   "author": "Collin Arnold <collin.arnold@fticonsulting.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fti-technology/ringtail-extension-sdk/issues"
+    "url": "https://github.com/ringtail-software/ringtail-extension-sdk/issues"
   },
-  "homepage": "https://github.com/fti-technology/ringtail-extension-sdk#readme",
+  "homepage": "https://github.com/ringtail-software/ringtail-extension-sdk#readme",
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-plugin-jest": "^21.13.0",
