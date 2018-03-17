@@ -75,7 +75,7 @@ Executes the given [GraphQL]((http://graphql.org/learn/)) query against Ringtail
 
 
 ### .Context
-Static object containing context information about the current Ringtail user. It is available once the SDK is initialized.
+Static object containing context information about the current Ringtail user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
 - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
 - `userName` <[String]> Current user's username.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
@@ -85,8 +85,8 @@ Static object containing context information about the current Ringtail user. It
 - `authToken` <[String]> Authentication token to make API calls on behalf of the current user. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Workspace pane
-  - `Case` - Case landing page
-  - `Portal` - Portal landing page
+  - `Case` - Case home page
+  - `Portal` - Portal home page
 
 
 ### .ActiveDocument
@@ -103,7 +103,7 @@ If there is no active document (due to no active [result set] for example) field
 
 
 ### .DocumentSelection
-Document selection in Ringtail is tied to a [result set]. This means that documents cannot be selected if there is no active [result set], and they cannot be selected UNLESS they are present in the active [result set]! Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
+Document selection in Ringtail is tied to a [result set]. This means that documents cannot be selected if there is no active [result set], and they cannot be selected UNLESS they are present in the active [result set]. Subscribe to the [DocumentSelection](#documentselection-1) event to be notified on change.
 
 #### .get() ⇒ <[Promise]>
 - returns: A promise resolving to an object with these properties:
@@ -115,7 +115,7 @@ This request may take a long time to complete depending on the size of the activ
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Clears any prior selection and selects the given documents. Pass an empty array to just clear the selection.
+Clears any prior selection and selects the given documents. Pass an empty array to clear the selection.
 
 #### .select(add, mainIds) ⇒ <[Promise]>
 - `add` <[Boolean]> `true` to select the given documents, `false` to deselect.
@@ -127,11 +127,11 @@ Incrementally modifies the current document selection.
 #### .selectAll() ⇒ <[Promise]>
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Selects all documents in the active [result set];
+Selects all documents in the active [result set].
 
 
 ### .FacetSelection
-[Facet] selection is the set of selected field values in the Browse pane. Facets are tied to Ringtail fields and are uniquely identified by field IDs.
+[Facet] selection is the set of selected field values in the Browse pane. Facets are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [FacetSelection](#facetselection-1) event to be notified on change. 
 
 > NOTE: Only pick list fields are supported for facet selection.
 
@@ -145,7 +145,7 @@ Selects all documents in the active [result set];
 - `values` <[Array]<[Number]>> Array of IDs of the values to select.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Clears any prior selection and selects values for the given facet. Pass an empty array to just clear the selection.
+Clears any prior selection and selects values for the given facet. Pass an empty array to clear the selection for a facet.
 
 #### .select(fieldId, add, values) ⇒ <[Promise]>
 - `fieldId` <[String]> ID of the field for which to alter the selection.
@@ -192,7 +192,7 @@ This event is sent from Ringtail whenever the [active document](Glossary.md#acti
 This event is sent from Ringtail whenever the selected documents change.
 
 #### FacetSelection
-- `fieldId` <[String]> ID of the field who's facet selection has changed
+- `fieldId` <[String]> ID of the field who's facet selection has changed.
 - `values` <[Array]<[Number]>> All values of the field that are currently selected.
 
 Ringtail sends this event when a [facet] selection changes.
@@ -211,7 +211,7 @@ ToolAction events are fired when the user interacts with tools constructed by [s
 
 
 # ToolConfig
-Ringtail provides the capability for UIXs to construct native UI widgets called `Tools` which built from plain JSON-object specifications called `ToolConfigs`.
+Ringtail provides the capability for UIXs to construct native UI widgets called `Tools` which are built from plain JSON-object specifications called `ToolConfigs`.
 
 Here are some examples:
 ```js
@@ -243,7 +243,7 @@ All tools share these properties:
 ## Types
 
 #### button
-- `icon` <[String]> Name of the icon to display for this button. TODO - where to view the list of available icons??
+- `icon` <[String]> Name of the icon to display for this button. **TODO: document the list of available icons.**
 - `label` <[String]> Display name of this button, displayed in toolips and menus.
 
 Simple stateless, clickable button.
