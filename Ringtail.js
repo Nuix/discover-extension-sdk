@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    var initialized = false,
+    var TEST_MODE = process && process.env && process.env.NODE_ENV === 'test',
+        initialized = false,
         listeners = new Map(),
         pendingClientQueries = new Map(),
         activeDoc = {};
@@ -65,6 +66,10 @@
 
     function sendMessage(name, data, requestId) {
         checkInitialized();
+        if (window.parent === window && !TEST_MODE) {
+            console.warn('Application is not running in an iframe, suppressing communication');
+            return;
+        }
         window.parent.postMessage({
             name: name,
             data: data,
