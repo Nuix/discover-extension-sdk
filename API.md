@@ -35,6 +35,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Types](#types)
     - [button](#button)
     - [combo](#combo)
+  - [Tool Icons](#tool-icons)
 
 #### .initialize() ⇒ <[Promise]>
 - returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
@@ -243,7 +244,7 @@ All tools share these properties:
 ## Types
 
 #### button
-- `icon` <[String]> Name of the icon to display for this button. **TODO: document the list of available icons.**
+- `icon` <[String]> Name of the icon to display for this button. See [Tool Icons](#tool-icons) for the set of supported icons.
 - `label` <[String]> Display name of this button, displayed in toolips and menus.
 
 Simple stateless, clickable button.
@@ -258,6 +259,8 @@ Simple stateless, clickable button.
 
 Filterable combo box with preset choices.
 
+## Tool Icons
+![Ringtail Tool Icons](RingtailToolIcons.png)
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
