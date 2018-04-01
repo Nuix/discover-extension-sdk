@@ -181,21 +181,21 @@
     }
 
 
-    function getFacetSelection(fieldId) {
-        return clientQuery('FacetSelection_Get', {
+    function getBrowseSelection(fieldId) {
+        return clientQuery('BrowseSelection_Get', {
             fieldId: fieldId
         });
     }
 
-    function setFacetSelection(fieldId, values) {
-        return clientQuery('FacetSelection_Set', {
+    function setBrowseSelection(fieldId, values) {
+        return clientQuery('BrowseSelection_Set', {
             fieldId: fieldId,
             values: values
         });
     }
 
-    function selectFacet(fieldId, add, values) {
-        return clientQuery('FacetSelection_Select', {
+    function selectBrowseItems(fieldId, add, values) {
+        return clientQuery('BrowseSelection_Select', {
             fieldId: fieldId,
             values: values,
             add: add,
@@ -235,10 +235,10 @@
             selectAll: selectAllDocuments,
         },
 
-        FacetSelection: {
-            get: getFacetSelection,
-            set: setFacetSelection,
-            select: selectFacet,
+        BrowseSelection: {
+            get: getBrowseSelection,
+            set: setBrowseSelection,
+            select: selectBrowseItems,
         },
 
         Tools: {

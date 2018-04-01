@@ -19,14 +19,14 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
     - [.set(mainIds)](#setmainids--promise)
     - [.select(add, mainIds)](#selectadd-mainids--promise)
     - [.selectAll()](#selectall--promise)
-  - [.FacetSelection](#facetselection)
+  - [.BrowseSelection](#browseselection)
     - [.get(fieldId)](#getfieldid--promise)
     - [.set(fieldId, values)](#setfieldid-values--promise)
     - [.select(fieldId, add, values)](#selectfieldid-add-values--promise)
 - [Events](#events)
   - [ActiveDocument](#activedocument-1)
   - [DocumentSelection](#documentselection-1)
-  - [FacetSelection](#facetselection-1)
+  - [BrowseSelection](#browseselection-1)
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
@@ -35,6 +35,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Types](#types)
     - [button](#button)
     - [combo](#combo)
+  - [Tool Icons](#tool-icons)
 
 #### .initialize() ⇒ <[Promise]>
 - returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
@@ -90,12 +91,12 @@ Static object containing context information about the current Ringtail user. It
 
 
 ### .ActiveDocument
-When a [result set] is loaded into a [workspace], the [active document] is the primary document displayed in the View and Conditional Coding panes. Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
+When a [search result] is loaded into a [workspace], the [active document] is the primary document displayed in the View and Conditional Coding panes. Subscribe to the [ActiveDocument](#activedocument-1) event to be notified on change.
 
 #### .get() ⇒ <[ActiveDocument](#activedocument-1)>
 - returns: Information about the current active document
 
-If there is no active document (due to no active [result set] for example) fields in the returned object will be `null`.
+If there is no active document (due to no active [search result] for example) fields in the returned object will be `null`.
 
 #### .set(mainId) ⇒ <[Promise]>
 - `mainId` <[Main ID]> Main ID of the document to activate.
@@ -103,13 +104,13 @@ If there is no active document (due to no active [result set] for example) field
 
 
 ### .DocumentSelection
-Document selection in Ringtail is tied to a [result set]. This means that documents cannot be selected if there is no active [result set], and they cannot be selected UNLESS they are present in the active [result set]. Subscribe to the [DocumentSelection](#documentselection-1) event to be notified on change.
+Document selection in Ringtail is tied to a [search result]. This means that documents cannot be selected if there is no active [search result], and they cannot be selected UNLESS they are present in the active [search result]. Subscribe to the [DocumentSelection](#documentselection-1) event to be notified on change.
 
 #### .get() ⇒ <[Promise]>
 - returns: A promise resolving to an object with these properties:
   - `mainIds` <[Array]<[Main ID]>> Array of numerical main IDs.
 
-This request may take a long time to complete depending on the size of the active [result set] and the number of selected documents. It is advisable to request the full document selection only sparingly.
+This request may take a long time to complete depending on the size of the active [search result] and the number of selected documents. It is advisable to request the full document selection only sparingly.
 
 #### .set(mainIds) ⇒ <[Promise]>
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select.
@@ -127,13 +128,13 @@ Incrementally modifies the current document selection.
 #### .selectAll() ⇒ <[Promise]>
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Selects all documents in the active [result set].
+Selects all documents in the active [search result].
 
 
-### .FacetSelection
-[Facet] selection is the set of selected field values in the Browse pane. Facets are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [FacetSelection](#facetselection-1) event to be notified on change. 
+### .BrowseSelection
+[Browse selection] is the set of selected field values in the Browse pane. Browse sections are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [BrowseSelection](#browseselection-1) event to be notified on change. 
 
-> NOTE: Only pick list fields are supported for facet selection.
+> NOTE: Only pick list fields are supported for Browse selection.
 
 #### .get(fieldId) ⇒ <[Promise]>
 - `fieldId` <[String]> ID of the field for which to retrieve its selection.
@@ -145,7 +146,7 @@ Selects all documents in the active [result set].
 - `values` <[Array]<[Number]>> Array of IDs of the values to select.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Clears any prior selection and selects values for the given facet. Pass an empty array to clear the selection for a facet.
+Clears any prior selection and selects the provided values for the given Browse section. Pass an empty array to clear the selection for a Browse section.
 
 #### .select(fieldId, add, values) ⇒ <[Promise]>
 - `fieldId` <[String]> ID of the field for which to alter the selection.
@@ -153,7 +154,7 @@ Clears any prior selection and selects values for the given facet. Pass an empty
 - `values` <[Array]<[Number]>> Array of IDs of the values to select or deselect.
 - returns: A promise that resolves upon Ringtail's acknowledgement of the request.
 
-Incrementally modifies the current facet selection.
+Incrementally modifies the current Browse selection.
 
 
 # Events
@@ -164,7 +165,7 @@ Events sent from Ringtail's UI have this structure:
     "data": {                 // Optional, null if unused
         "mainId": 289346,
         "documentId": "ENRON-0029918",
-        "resultSetId": 1903,
+        "searchResultId": 1903,
         ...
     }
 }
@@ -181,21 +182,21 @@ var mainid = event.data.mainId;
 - `documentTitle` <[String]> Title of the document.
 - `documentType` <[Number]> ID of the document's type.
 - `documentTypeName` <[String]> Display name of the document's type.
-- `resultSetId` <[Number]> ID of the active [result set].
-- `entityTypeId` <[Number]> ID of the active document's entity type.
+- `searchResultId` <[Number]> ID of the active [search result].
+- `entityId` <[Number]> ID of the active document's entity type.
 
-This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [result set] for example) these fields will be `null`.
+This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [searh result] for example) these fields will be `null`.
 
 #### DocumentSelection
 - `selectedCount` <[Number]> Total number of selected documents.
 
 This event is sent from Ringtail whenever the selected documents change.
 
-#### FacetSelection
-- `fieldId` <[String]> ID of the field who's facet selection has changed.
+#### BrowseSelection
+- `fieldId` <[String]> ID of the field who's Browse selection has changed.
 - `values` <[Array]<[Number]>> All values of the field that are currently selected.
 
-Ringtail sends this event when a [facet] selection changes.
+Ringtail sends this event when a [Browse selection] changes.
 
 #### PaneHidden
 Sent when the UIX is hidden via changing the active workspace, pane collapse, navigating away, etc. No events will be sent to the UIX while it is hidden.
@@ -243,7 +244,7 @@ All tools share these properties:
 ## Types
 
 #### button
-- `icon` <[String]> Name of the icon to display for this button. **TODO: document the list of available icons.**
+- `icon` <[String]> Name of the icon to display for this button. See [Tool Icons](#tool-icons) for the set of supported icons.
 - `label` <[String]> Display name of this button, displayed in toolips and menus.
 
 Simple stateless, clickable button.
@@ -258,6 +259,8 @@ Simple stateless, clickable button.
 
 Filterable combo box with preset choices.
 
+## Tool Icons
+![Ringtail Tool Icons](RingtailToolIcons.png)
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
@@ -273,7 +276,7 @@ Filterable combo box with preset choices.
 
 [Active document]: Glossary.md#active-document "Active docum,ent"
 [Document ID]: Glossary.md#document-id "Document ID"
-[Facet]: Glossary.md#facet "Facet"
+[Browse selection]: Glossary.md#browse-selection "Browse selection"
 [Main ID]: Glossary.md#main-id "Main ID"
-[Result set]: Glossary.md#result-set "Result set"
+[Search result]: Glossary.md#result-set "Search result"
 [Workspace]: Glossary.md#workspace "Workspace"
