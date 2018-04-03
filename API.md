@@ -87,6 +87,9 @@ Static object containing context information about the current Ringtail user. It
   - `Workspace` - Workspace pane
   - `Case` - Case home page
   - `Portal` - Portal home page
+- `configuration` <[Array]<[String]>> Array of zero or more configuration strings provided by the user when adding UIXs through the Ringtail UI. These configurations are optional and can contain anything the UIX needs.
+  - Configurations can be specified at the Case, Organization, and UIX levels and they appear in that order with any unset configs skipped.
+  - The array will be empty if no configs are provided.
 
 
 ### .ActiveDocument
