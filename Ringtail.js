@@ -219,6 +219,7 @@
         setTools: setTools,
 
         query: serverQuery,
+        clientQuery: clientQuery,
 
 
         Context: null,
