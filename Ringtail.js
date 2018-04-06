@@ -5,6 +5,7 @@
         initialized = false,
         listeners = new Map(),
         pendingClientQueries = new Map(),
+        lastRequestId = Date.now(),
         activeDoc = {};
 
     /**
@@ -79,7 +80,7 @@
     
 
     function clientQuery(messageName, data) {
-        var requestId = performance.now();  // Unique ID for this call
+        var requestId = ++lastRequestId;  // Unique ID for this call
 
         return new Promise(function (resolve, reject) {
             try {
