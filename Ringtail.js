@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    var TEST_MODE = process && process.env && process.env.NODE_ENV === 'test',
+    var COMPATIBLE_RINGTAIL_VERSION = '9.5.002',
+        TEST_MODE = window.process && window.process.env && window.process.env.NODE_ENV === 'test',
         initialized = false,
         listeners = new Map(),
         pendingClientQueries = new Map(),
@@ -38,6 +39,9 @@
                 break;
             case 'UserContext':
                 Ringtail.Context = message.data;
+                if (Ringtail.Context.ringtailVersion < COMPATIBLE_RINGTAIL_VERSION) {
+                    console.warn('WARNING: Ringtail "' + Ringtail.Context.ringtailVersion + '" is older than this SDK\'s compatible version: "' + COMPATIBLE_RINGTAIL_VERSION + '".');
+                }
                 break;
         }
 
@@ -68,7 +72,7 @@
     function sendMessage(name, data, requestId) {
         checkInitialized();
         if (window.parent === window && !TEST_MODE) {
-            console.warn('Application is not running in an iframe, suppressing communication');
+            console.warn('WARNING: Application is not running in an iframe, suppressing communications.');
             return;
         }
         window.parent.postMessage({
