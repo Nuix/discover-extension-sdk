@@ -11,6 +11,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [.setTools(tools)](#settoolstools--promise)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
   - [.Context](#context)
+    - [Configurations](#configurations)
   - [.ActiveDocument](#activedocument)
     - [.get()](#get--activedocument)
     - [.set(mainId)](#setmainid--promise)
@@ -88,9 +89,38 @@ Static object containing context information about the current Ringtail user. It
   - `Workspace` - Workspace pane
   - `Case` - Case home page
   - `Portal` - Portal home page
-- `configuration` <[Array]<[String]>> Array of zero or more configuration strings provided by the user when adding UIXs through the Ringtail UI. These configurations are optional and can contain anything the UIX needs.
-  - Configurations can be specified at the Case, Organization, and UIX levels and they appear in that order with any unset configs skipped.
-  - The array will be empty if no configs are provided.
+- `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
+- `configuration` <[Array]<[String]>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [configurations](#configurations) below for more information.
+
+#### Configurations
+UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
+
+Configurations can be specified at the UIX, Organization, and Case levels and they will appear in that order with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.
+
+For example, given these configurations as JSON strings:
+```js
+var configsFromRingtail = ['{"a":false}', '{"b":12}', '{"a":true}']; // Get this from Ringtail.Context.configuration
+// Configuration from:        ^ UIX ^      ^ Org ^      ^ Case ^
+```
+
+Merge them together to compose a final configuration state:
+```js
+// Compose the final result config object
+var result = {};
+configsFromRingtail.forEach(function (json) {
+    var config = JSON.parse(json);
+    Object.keys(config).forEach(function (key) {
+        result[key] = config[key];
+    });
+});
+
+// Equivalent to this, though it doesn't work in IE:
+result = Object.assign.apply(null, configsFromRingtail.map(JSON.parse));
+
+// Produces: { a: true, b: 12 }
+// Note that case-level config { a: true } overrides the UIX-level config of { a: false }
+```
+
 
 
 ### .ActiveDocument
