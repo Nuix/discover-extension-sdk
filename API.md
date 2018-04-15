@@ -11,7 +11,6 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [.setTools(tools)](#settoolstools--promise)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
   - [.Context](#context)
-    - [Configurations](#configurations)
   - [.ActiveDocument](#activedocument)
     - [.get()](#get--activedocument)
     - [.set(mainId)](#setmainid--promise)
@@ -31,6 +30,8 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
+- [Configuration](#configuration)
+  - [Recommended Use](#recommended-use)
 - [ToolConfig](#toolconfig)
   - [Shared Properties](#shared-properties)
   - [Types](#types)
@@ -90,36 +91,7 @@ Static object containing context information about the current Ringtail user. It
   - `Case` - Case home page
   - `Portal` - Portal home page
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
-- `configuration` <[Array]<[String]>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [configurations](#configurations) below for more information.
-
-#### Configurations
-UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
-
-Configurations can be specified at the UIX, Organization, and Case levels and they will appear in that order with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.
-
-For example, given these configurations as JSON strings:
-```js
-var configsFromRingtail = ['{"a":false}', '{"b":12}', '{"a":true}']; // Get this from Ringtail.Context.configuration
-// Configuration from:        ^ UIX ^      ^ Org ^      ^ Case ^
-```
-
-Merge them together to compose a final configuration state:
-```js
-// Compose the final result config object
-var result = {};
-configsFromRingtail.forEach(function (json) {
-    var config = JSON.parse(json);
-    Object.keys(config).forEach(function (key) {
-        result[key] = config[key];
-    });
-});
-
-// Equivalent to this, though it doesn't work in IE:
-result = Object.assign.apply(null, configsFromRingtail.map(JSON.parse));
-
-// Produces: { a: true, b: 12 }
-// Note that case-level config { a: true } overrides the UIX-level config of { a: false }
-```
+- `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
 
 
 
@@ -242,6 +214,37 @@ Sent when the UIX becomes visible via changing the active workspace, pane expand
 - `value` <[String]|[Number]> (Optional) New value of the tool for stateful tools.
 
 ToolAction events are fired when the user interacts with tools constructed by [setTools](#settoolstools-promise).
+
+
+# Configuration
+UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
+
+## Recommended Use
+Configurations can be specified at the UI extension, organization, and case levels separately and they are passed in an array, in that order, with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.
+
+For example, given these configurations as JSON strings:
+```js
+var configsFromRingtail = ['{"a":false}', '{"b":12}', '{"a":true}']; // From Ringtail.Context.configuration
+//                            ^ UIX ^      ^ Org ^      ^ Case ^
+```
+
+To compose a final configuration state for use, merge them together in order provided:
+```js
+var result = {};
+configsFromRingtail.forEach(function (json) {
+    var config = JSON.parse(json);
+    Object.keys(config).forEach(function (key) {
+        result[key] = config[key];
+    });
+});
+
+// Equivalent to this, though it doesn't work natively in IE:
+result = Object.assign.apply(null, configsFromRingtail.map(JSON.parse));
+
+// Produces: { a: true, b: 12 }
+// Note that case-level config { a: true } overrides the UIX-level config of { a: false }
+```
+This strategy facilitates flexible reuse and sharing of configuration across organizations and cases, allowing scenarios such as overriding a single setting for a specific case but inheriting the rest from the case's parent organization.
 
 
 # ToolConfig
