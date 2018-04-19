@@ -4,7 +4,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
 
 - [Ringtail](#ringtail-uix-api)
-  - [.initialize()](#initialize--promise)
+  - [.initialize(domainWhitelist)](#initializedomainwhitelist--promise)
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
   - [.setLoading(loading)](#setloadingloading--promise)
@@ -39,8 +39,9 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
     - [combo](#combo)
   - [Tool Icons](#tool-icons)
 
-#### .initialize() ⇒ <[Promise]>
-- returns: A promise that resolves once the <[Context](#context)> is available and the SDK is ready for use.
+#### .initialize(domainWhitelist) ⇒ <[Promise]<[String]>>
+- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. See [security considerations](README.md#security-considerations) for the intended use of this parameter.
+- returns: A promise that resolves to domain of the site hosting the UIX once the <[Context](#context)> is available and the SDK is ready for use.
 
 Initializes the SDK and registers the UIX with Ringtail.
 
@@ -218,6 +219,8 @@ ToolAction events are fired when the user interacts with tools constructed by [s
 
 # Configuration
 UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
+
+See [security considerations](README.md#security-considerations) for guidelines on using configurations to authenticate Ringtail.
 
 ## Recommended Use
 Configurations can be specified at the UI extension, organization, and case levels separately and they are passed in an array, in that order, with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.

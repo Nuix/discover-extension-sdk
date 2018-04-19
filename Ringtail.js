@@ -3,6 +3,8 @@
 
     var COMPATIBLE_RINGTAIL_VERSION = '9.5.003',
         TEST_MODE = window.process && window.process.env && window.process.env.NODE_ENV === 'test',
+        allowedDomains = null,
+        hostingDomain = null,
         initialized = false,
         listeners = new Map(),
         pendingClientQueries = new Map(),
@@ -13,15 +15,21 @@
      * Returns a promise that resolves once the extension has been registered
      * and is ready to communicate with Ringtail.
      */
-    function initialize() {
+    function initialize(domainWhitelist) {
         if (initialized) {
             return Promise.resolve(Ringtail.Context);
         }
+        if (domainWhitelist && (!Array.isArray(domainWhitelist) || domainWhitelist.some(function (domain) { return typeof domain !== 'string'; }))) {
+            return Promise.reject(new Error('domainWhitelist must be an array of strings'));
+        }
 
         initialized = true;
+        allowedDomains = domainWhitelist || [];
         window.addEventListener('message', handleWindowMessage, false);
 
-        return clientQuery('ExtensionReady');
+        return clientQuery('ExtensionReady').then(function () {
+            return hostingDomain;
+        });
     }
 
     function checkInitialized() {
@@ -33,12 +41,17 @@
     function handleWindowMessage(event) {
         var message = event.data;
 
+        if (allowedDomains.length > 0 && allowedDomains.indexOf(event.origin) < 0) {
+            return;
+        }
+
         switch (message.name) {
             case 'ActiveDocument':
                 activeDoc = message.data;
                 break;
             case 'UserContext':
                 Ringtail.Context = message.data;
+                hostingDomain = event.origin;
                 if (Ringtail.Context.ringtailVersion < COMPATIBLE_RINGTAIL_VERSION) {
                     console.warn('WARNING: Ringtail "' + Ringtail.Context.ringtailVersion + '" is older than this SDK\'s compatible version: "' + COMPATIBLE_RINGTAIL_VERSION + '".');
                 }

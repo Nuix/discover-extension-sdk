@@ -59,3 +59,43 @@ To communicate with Ringtail, initialize the SDK then hook up listeners for even
 </body>
 </html>
 ```
+
+## Security Considerations
+During initialization, Ringtail provides each UIX with authentication credentials allowing it to make Connect API calls on behalf of the current user. This provides secure access to Ringtail but proves legitimacy of neither the user nor the hosting Ringtail instance to the UIX. Therefore, further steps are required establish trust with the Ringtail instance hosting your UIX.
+
+### Security Guidelines
+
+1. __Restrict the domains allowed to host your UIX to those you expect.__ To whitelist allowed domains, pass them in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UIX and spoofing Ringtail.
+1. __Verify Ringtail authenticity via a provided secret.__ Provide a secret via configuration to Ringtail when your UIX is installed and verify it during initialization. This step prevents unknown actors from emulating an expected, whitelisted domain.
+
+#### Full Example
+Provide a secret configuration during UIX installation:
+```js
+// Set this in the "Configuration" field in Ringtail
+{ secret: '<some string to validate>' }
+```
+
+Provide the domain whitelist and validate the secret during UIX initialization:
+```js
+// Only allow communication with these domains:
+var domainWhitelist = ['https://ringtail.com', 'https://portal02.ringtail.com'];
+
+Ringtail.initialize(domainWhitelist).then(function (hostDomain) {
+    // Collect data needed to authenticate Ringtail with your external UIX server
+    var authData = {
+        // These two together uniquely identify a Ringtail case across portals
+        portal: hostDomain, // <-- Guaranteed to be one of the domains in domainWhitelist
+        caseId: Ringtail.Context.caseId,
+
+        // Info and creds to call the Ringtail Connect API
+        apiUrl: Ringtail.Context.apiUrl,
+        apiKey: Ringtail.Context.apiKey,
+        authToken: Ringtail.Context.authToken,
+
+        // Contains the secret provided during UIX installation above
+        configuration: Ringtail.Context.configuration
+    };
+    
+    // Now send this data to your webserver to authenticate Ringtail.
+    // If the secret doesn't match, bail out!
+});

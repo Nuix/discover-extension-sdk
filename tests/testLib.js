@@ -6,9 +6,9 @@ module.exports = {
 
     postMessageMock: window.parent.postMessage = jest.fn().mockName('postMessage'),
 
-    sendMessage(message) {
+    sendMessage(message, origin) {
         window.dispatchEvent(new MessageEvent('message', {
-            origin: 'http://ringtail.com/Ringtail/',
+            origin: origin || 'http://ringtail.com',
             data: message
         }));
         return message;

@@ -42,7 +42,7 @@ describe('initialize', () => {
 
         const ackData = Test.sendUserContextMessage();
 
-        expect(await initPromise).toEqual(ackData);
+        expect(await initPromise).toEqual('http://ringtail.com');
         expect(Ringtail.Context).toEqual(ackData);
 
         Test.postMessageMock.mockClear();
