@@ -39,9 +39,9 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
     - [combo](#combo)
   - [Tool Icons](#tool-icons)
 
-#### .initialize(domainWhitelist) ⇒ <[Promise]<[String]>>
+#### .initialize(domainWhitelist) ⇒ <[Promise]>
 - `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. See [security considerations](README.md#security-considerations) for the intended use of this parameter.
-- returns: A promise that resolves to domain of the site hosting the UIX once the <[Context](#context)> is available and the SDK is ready for use.
+- returns: A promise that resolves to the domain of the site hosting the UIX. After this, [Ringtail.Context](#context) is available and the SDK is ready for use.
 
 Initializes the SDK and registers the UIX with Ringtail.
 
