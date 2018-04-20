@@ -1,28 +1,31 @@
 # Ringtail User Interface Extension SDK
-This SDK provides an API to communicate with Ringtail's UI for use in UI Extensions, part of Ringtail's extensibility model.
+This SDK provides an API to communicate with the Ringtail UI for use in UI extensions, part of Ringtail's extensibility model.
 
-## [API Documentation](API.md)
+## API Documentation
+View the [API reference documentation](API.md).
 
-## User Interface Extensions
-Ringtail can be extended by embedding 3rd party web applications directly into it's interface. Such external applications are called User Interface Extensions (UIX). Ringtail provides them user and workspace context and Connect API access so they can read and write data to Ringtail and respond to user actions in Ringtail's UI.
+## About User Interface Extensions
+You can extend Ringtail by embedding third-party web applications directly into the Ringtail interface. Such external applications are called user interface extensions (UI extensions). Ringtail provides UI extensions with user and workspace context and access to the Ringtail Connect API. This allows UI extensions to read and write data to Ringtail and respond to user actions in the Ringtail UI.
 
-The below diagram shows how an external web application (green) can communicate with Ringtail (blue). This SDK (yellow) provides the glue for UIX clients to communicate directly with Ringtail.
+The following diagram shows how an external web application (green) can communicate with Ringtail (blue). The UI Extension SDK (yellow) provides the glue for UI extension clients to communicate directly with Ringtail.
 
 ![Ringtail App Communication](https://docs.google.com/drawings/d/e/2PACX-1vQaelod9Flf14CCSyP4MhR4Qznl6n_0EllVzdNiB5gnvsdsYqO5bcwMbTphlMZUbr7tgKqqniZ0HuOx/pub?w=572&h=272)
 
 [Edit the diagram](https://docs.google.com/drawings/d/19RsszUNRVVsDDBWSVHs8ffEncUDB66Hi78pgaAGGkhQ/edit?usp=sharing)
 
 ## Installation
+Install the SDK:
+
 `npm install ringtail-extension-sdk`
 
-To support IE11, you'll also need to provide Promise and fetch polyfills, such as:
+To support IE11, you also need to provide promise and fetch polyfills, such as:
 
 `npm install promise-polyfill whatwg-fetch`
 
-> NOTE: This library only works in web browsers! For compatibility, UIXs must support all browsers that Ringtail supports - as of 2018-03-16 this includes: IE11, Chrome, and Edge.
+> NOTE: This library only works in web browsers. For compatibility with the Ringtail application, UI extensions must support all browsers that Ringtail supports&mdash;as of March 2018, this includes Internet Explorer 11, Chrome, and Edge. For more information, see the client computer requirements in the Ringtail Help.
 
 ## Getting Started
-To communicate with Ringtail, initialize the SDK then hook up listeners for events you're interested in. Here's an example that listens for and displays active document changes:
+To communicate with Ringtail, initialize the SDK and then hook up listeners for the events that you are interested in. Here's an example that listens for and displays active document changes:
 
 ```html
 <!DOCTYPE html>
@@ -61,41 +64,41 @@ To communicate with Ringtail, initialize the SDK then hook up listeners for even
 ```
 
 ## Security Considerations
-During initialization, Ringtail provides each UIX with authentication credentials allowing it to make Connect API calls on behalf of the current user. This provides secure access to Ringtail but proves legitimacy of neither the user nor the hosting Ringtail instance to the UIX. Therefore, further steps are required establish trust with the Ringtail instance hosting your UIX.
+During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, you must take further steps to establish trust with the Ringtail instance that hosts your UI extension.
 
 ### Security Guidelines
 
-1. __Restrict the domains allowed to host your UIX to those you expect.__ To whitelist allowed domains, pass them in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UIX and spoofing Ringtail.
-1. __Verify Ringtail authenticity via a provided secret.__ Provide a secret via configuration to Ringtail when your UIX is installed and verify it during initialization. This step prevents unknown actors from emulating an expected, whitelisted domain.
+1. __Restrict the domains that are allowed to host your UI extension to only the domains that you expect.__ Pass the allowed domains in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UI extension and spoofing Ringtail.
+1. __Verify Ringtail authenticity by using a secret that you provide.__ When you install the UI extension in Ringtail, provide a secret to Ringtail using the Configuration field in the Ringtail UI. When you initialize the UI extension, verify the secret. These steps prevent unknown actors from emulating an expected, allowed domain.
 
 #### Full Example
-Provide a secret configuration during UIX installation:
+Provide a secret configuration during installation of the UI extension:
 ```js
-// Set this in the "Configuration" field in Ringtail
+// Set this in the UI extension's "Configuration" field in the Ringtail application
 { secret: '<some string to validate>' }
 ```
 
-Provide the domain whitelist and validate the secret during UIX initialization:
+Provide the allowed domain list and validate the secret during initialization of the UI extension:
 ```js
-// Only allow communication with these domains:
+// Allow communication only with these domains
 var domainWhitelist = ['https://ringtail.com', 'https://portal02.ringtail.com'];
 
 Ringtail.initialize(domainWhitelist).then(function (hostDomain) {
-    // Collect data needed to authenticate Ringtail with your external UIX server
+    // Collect data needed to authenticate Ringtail with your external UI extension server
     var authData = {
         // These two together uniquely identify a Ringtail case across portals
         portal: hostDomain, // <-- Guaranteed to be one of the domains in domainWhitelist
         caseId: Ringtail.Context.caseId,
 
-        // Info and creds to call the Ringtail Connect API
+        // Information and credentials to call the Ringtail Connect API
         apiUrl: Ringtail.Context.apiUrl,
         apiKey: Ringtail.Context.apiKey,
         authToken: Ringtail.Context.authToken,
 
-        // Contains the secret provided during UIX installation above
+        // Contains the secret provided during installation of the UI extension
         configuration: Ringtail.Context.configuration
     };
     
-    // Now send this data to your webserver to authenticate Ringtail.
-    // If the secret doesn't match, bail out!
+    // Now send this data to your web server to authenticate Ringtail.
+    // If the secret doesn't match, refuse the connection.
 });
