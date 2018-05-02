@@ -80,10 +80,13 @@ Executes the given [GraphQL]((http://graphql.org/learn/)) query against Ringtail
 
 ### .Context
 Static object containing context information about the current Ringtail user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
+- `uixId` <[Number]> ID of this UIX in Ringtail.
 - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
+- `portalUrl` <[String]> Public URL of this Ringtail instance.
 - `userName` <[String]> Current user's username.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
+- `caseUuid` <[String]> Globally unique identifier for this case, such as `http://ringtail.com/17` for case `17` on the `ringtail.com` portal.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
 - `apiKey` <[String]> GUID identifying the current user to the API, such as `12345678-90ab-cdef-1234-567890abcdef`.
 - `authToken` <[String]> Authentication token to make API calls on behalf of the current user. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
@@ -220,7 +223,7 @@ ToolAction events are fired when the user interacts with tools constructed by [s
 # Configuration
 UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
 
-See [security considerations](README.md#security-considerations) for guidelines on using configurations to authenticate Ringtail.
+__NOTE:__ If you store sensitive information in configurations, check out [security considerations](README.md#security-considerations) for a strategy to validate configuration authenticity.
 
 ## Recommended Use
 Configurations can be specified at the UI extension, organization, and case levels separately and they are passed in an array, in that order, with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.

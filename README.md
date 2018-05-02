@@ -64,41 +64,20 @@ To communicate with Ringtail, initialize the SDK and then hook up listeners for 
 ```
 
 ## Security Considerations
-During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, you must take further steps to establish trust with the Ringtail instance that hosts your UI extension.
+During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data, you must take further steps to establish trust with Ringtail.
 
 ### Security Guidelines
 
-1. __Restrict the domains that are allowed to host your UI extension to only the domains that you expect.__ Pass the allowed domains in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UI extension and spoofing Ringtail.
-1. __Verify Ringtail authenticity by using a secret that you provide.__ When you install the UI extension in Ringtail, provide a secret to Ringtail using the Configuration field in the Ringtail UI. When you initialize the UI extension, verify the secret. These steps prevent unknown actors from emulating an expected, allowed domain.
+1. __Restrict the domains that are allowed to host your UI extension to only those you expect.__ Pass the allowed domains in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UI extension and spoofing Ringtail.
+1. __Verify Ringtail authenticity by using an authentication secret.__ When you install the UI extension in Ringtail, provide an authentication secret in the Ringtail UI. This enables Ringtail to construct and sign a [JSON Web Token (JWT)](https://jwt.io/) containing context and configuration data.
 
 #### Full Example
-Provide a secret configuration during installation of the UI extension:
-```js
-// Set this in the UI extension's "Configuration" field in the Ringtail application
-{ secret: '<some string to validate>' }
-```
-
-Provide the allowed domain list and validate the secret during initialization of the UI extension:
+Provide the allowed domain list and validate the provided JWT during initialization of the UI extension:
 ```js
 // Allow communication only with these domains
 var domainWhitelist = ['https://ringtail.com', 'https://portal02.ringtail.com'];
 
-Ringtail.initialize(domainWhitelist).then(function (hostDomain) {
-    // Collect data needed to authenticate Ringtail with your external UI extension server
-    var authData = {
-        // These two together uniquely identify a Ringtail case across portals
-        portal: hostDomain, // <-- Guaranteed to be one of the domains in domainWhitelist
-        caseId: Ringtail.Context.caseId,
-
-        // Information and credentials to call the Ringtail Connect API
-        apiUrl: Ringtail.Context.apiUrl,
-        apiKey: Ringtail.Context.apiKey,
-        authToken: Ringtail.Context.authToken,
-
-        // Contains the secret provided during installation of the UI extension
-        configuration: Ringtail.Context.configuration
-    };
-    
-    // Now send this data to your web server to authenticate Ringtail.
-    // If the secret doesn't match, refuse the connection.
+Ringtail.initialize(domainWhitelist).then(function () {
+    Ringtail.Context.jwt // <-- Send to your server for validation/login
+    // NOTE: This JWT contains everything in Ringtail.Context as additional claims
 });
