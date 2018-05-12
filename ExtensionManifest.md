@@ -1,34 +1,92 @@
 # Extension Manifests
-Extension manifests are JSON files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Ringtail with each new UI extension release.
+Extension manifests are files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Ringtail with each new UI extension release.
 
 ## Structure
-Extension manifests have this general structure:
-```js
+Extension manifests are authored in JSON format. Here's an example:
+```json
 {
-    "name": <UIX name>,
-    "description": <UIX description>,
-    "configuration": <UIX global configuration>,
-    "location": <Workspace|Case>,
-    "url": <UIX public URL>,
-    "authSecret": <secret key used to sign JWTs to authenticate Ringtail>,
-    "namePrefix": <string to prefix field names with to prevent name collisions>,
+    "name": "Calculator",
+    "description": "A nifty 4-function calculator widget",
+    "type": "Workspace",
+    "url": "https://calculator.example.com",
+    "namePrefix": "CALC",
     "fields": [{
-        "id": <Number unique>,
-        "name": <String - field name>,
-        "type": <String enum - YesNo|Date|Text|Memo|PickList|Number>,
-        "items": [{ id: <Number>, name: <String> }, ...],
-        "isOneToOne": <true|false>,
-        "isSearchable": <true|false>,
-        "codingSettings": <String enum - Hidden|Read|Write|MassCode>,
-        "excludeFromSecurity": <true|false>,
-        "excludeFromListColumns": <true|false>,
-        "excludeFromImport": <true|false>,
+        "id": 1,
+        "name": "Sum",
+        "type": "Number",
+        "isOneToOne": true,
+        "codingSettings": "Write",
+        "excludeFromImport": true,
     }],
-    "stats": [{
-        "id": <Number>,
-        "name": <String - stat name>,
-        "description": <String>,
+    "statistics": [{
+        "id": 1,
+        "name": "calculations performed"
     }]
 }
 ```
-## Settings
+
+## Top-Level Settings
+These settings define basic features required for every UIX.
+
+- `name` <[String]> Name of the UIX displayed in the case home tab list or documents workspace.
+- `type` <[String]> Location where the UIX will appear in Ringtail. Possible values are:
+  - `Workspace` - Documents area workspace pane
+  - `Case` - Case home page
+  - `Portal` - Portal home page
+- `url` <[String]> URL of the web app to load.
+- `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to UIX upon initialization.
+- `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
+- `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [security considerations](README.md#security-considerations) for more information.
+- `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from others in Ringtail. This value is required only if fields or statistics are specified. **NOTE: This value cannot be changed after installation.**
+
+## Fields
+Providing field settings in an extension manifest allows Ringtail to automatically create fields in cases where it is installed. This is a great way to expose UIX status to Ringtail, allowing users to search, list, and view these fields.
+
+- `id` <[Number]> Permanent UIX identifier for this field. Use this to lookup the field's concrete identifier in each case during initialization.
+- `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
+- `type` <[String]> Type of data the field will store. Must be one of:
+  - `YesNo` - Simple boolean value
+  - `Number` - Numeric value in the range [-99999999999.9999, 99999999999.9999] with at most four decimal digits
+  - `Date` - Date value in ISO 8601 UTC format
+  - `Text` - Simple string values with at most 255 characters
+  - `Memo` - Larger string values supporting simple HTML markup with at most 4095 characters
+  - `PickList` - Value picked from a provided list of choices
+- `isOneToOne` <[Boolean]> (Default `true`) True to only allow a single value per document, otherwise multiple, unique values may be coded to the field.
+
+
+
+
+```json
+{
+    "name": "Calculator",
+    "description": "A nifty 4-function calculator widget",
+    "configuration": "<licenseKey>1234567890</licenseKey>",
+    "location": "Workspace",
+    "url": "https://calculator.example.com",
+    "authSecret": "1234567890abcdef",
+    "namePrefix": "CALC",
+    "fields": [{
+        "id": 1,
+        "name": "Sum",
+        "type": "Number",
+        "isOneToOne": true,
+        "codingSettings": "Write",
+        "excludeFromSearch": false,
+        "excludeFromSecurity": false,
+        "excludeFromListColumns": false,
+        "excludeFromImport": true,
+    }],
+    "statistics": [{
+        "id": 1,
+        "name": "calculations done"
+    }]
+}
+```
+
+
+[null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
+[Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
+[boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type "Boolean"
+[number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type "Number"
+[Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object "Object"
+[string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type "String"
