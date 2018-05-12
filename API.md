@@ -1,4 +1,4 @@
-# Ringtail UIX API
+# Ringtail UIX API - Ringtail 9.5.006
 The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
@@ -88,14 +88,14 @@ Static object containing context information about the current Ringtail user. It
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
 - `caseUuid` <[String]> Globally unique identifier for this case, such as `http://ringtail.com/17` for case `17` on the `ringtail.com` portal.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
-- `apiKey` <[String]> GUID identifying the current user to the API, such as `12345678-90ab-cdef-1234-567890abcdef`.
-- `authToken` <[String]> Authentication token to make API calls on behalf of the current user. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
+- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Workspace pane
   - `Case` - Case home page
   - `Portal` - Portal home page
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
+- `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [security considerations](README.md#security-considerations) for more information.
 
 
 
