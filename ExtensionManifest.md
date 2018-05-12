@@ -38,11 +38,13 @@ These settings define basic features required for every UIX.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
 - `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [security considerations](README.md#security-considerations) for more information.
 - `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from others in Ringtail. This value is required only if fields or statistics are specified. **NOTE: This value cannot be changed after installation.**
+- `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create for the UIX.
+- `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics to create for this UIX.
 
 ## Fields
-Providing field settings in an extension manifest allows Ringtail to automatically create fields in cases where it is installed. This is a great way to expose UIX status to Ringtail, allowing users to search, list, and view these fields.
+Providing field settings in an extension manifest allows Ringtail to automatically create fields in cases where it is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
 
-- `id` <[Number]> Permanent UIX identifier for this field. Use this to lookup the field's concrete identifier in each case during initialization.
+- `id` <[Number]> Simple identifier for this field, used this to lookup its concrete identifier in each case.
 - `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
 - `type` <[String]> Type of data the field will store. Must be one of:
   - `YesNo` - Simple boolean value
@@ -51,10 +53,25 @@ Providing field settings in an extension manifest allows Ringtail to automatical
   - `Text` - Simple string values with at most 255 characters
   - `Memo` - Larger string values supporting simple HTML markup with at most 4095 characters
   - `PickList` - Value picked from a provided list of choices
-- `isOneToOne` <[Boolean]> (Default `true`) True to only allow a single value per document, otherwise multiple, unique values may be coded to the field.
+- `isOneToOne` <[Boolean]> (Default `true`) True to only allow a single value per document, otherwise multiple, unique values may be coded.
+- `excludeFromSearch` <[Boolean]> (Default `false`) True to suppress this field from Ringtail's advanced search builder.
+- `excludeFromListColumns` <[Boolean]> (Default `false`) True to suppress this field from documents list columns.
+- `excludeFromImport` <[Boolean]> (Default `false`) True to prevent this field from receiving imported data.
+- `excludeFromSecurity` <[Boolean]> (Default `false`) True to suppress this field from the field security UI.
+- `codingSettings` <[String]> (Default `MassCode`) Maximum-allowed functionality the field may be granted for the coding UI. Must be one of:
+  - `Hidden` - Does not appear
+  - `Read` - Appears but is read-only
+  - `Write` - Available for single coding
+  - `MassCode` - Available for bulk coding
+- `items` <[Array]<[FieldItem](#field-items)>> Choices avaiable for `PickList` fields.
 
+## Field Items
+Field items are pre-defined choices for `PickList` fields.
+- `id`
 
+## Statistics
 
+- `id`
 
 ```json
 {
