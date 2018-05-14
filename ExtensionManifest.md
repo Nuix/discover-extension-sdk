@@ -44,7 +44,7 @@ These settings define basic features required for every UIX.
 ## Fields
 Providing field settings in an extension manifest allows Ringtail to automatically create fields in cases where it is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
 
-- `id` <[Number]> Simple identifier for this field, used this to lookup its concrete identifier for each case.
+- `id` <[Number]> Identifier for this field in the manifest, used to lookup its concrete identifier for coding.
 - `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
 - `type` <[String]> Type of data the field will store. Must be one of:
   - `YesNo` - Simple boolean value
@@ -68,13 +68,13 @@ Providing field settings in an extension manifest allows Ringtail to automatical
 ## Field Items
 Field items are pre-defined choices for `PickList` fields.
 
-- `id` <[Number]> Simple identifier for this item, used this to lookup its concrete identifier for each case.
+- `id` <[Number]> Identifier for this item in the manifest, used to lookup its concrete identifier for coding.
 - `name` <[String]> Name of the pick list choice.
 
 ## Statistics
 Statistics are counters that Ringtail will automatically aggregate across cases and roll up into queryable summaries at the portal. These are great for tracking things like feature usage and billing metrics, such as "count of docs processed" and "characters translated".
 
-- `id` <[Number]> Simple identifier for this field, used this to lookup its concrete identifier for each case.
+- `id` <[Number]> Identifier for this statistic in the manifest, used to lookup its concrete identifier for coding.
 - `name` <[String]> Name of the statistic.
 
 
