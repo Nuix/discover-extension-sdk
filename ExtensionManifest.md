@@ -1,4 +1,4 @@
-# Extension Manifests
+# Extension Manifests - Ringtail 9.5.008
 Extension manifests are files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Ringtail with each new UI extension release.
 
 ## Structure
