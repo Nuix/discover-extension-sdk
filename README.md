@@ -95,6 +95,6 @@ Provide the allowed domain list and validate the provided JWT during initializat
 var domainWhitelist = ['https://ringtail.com', 'https://portal02.ringtail.com'];
 
 Ringtail.initialize(domainWhitelist).then(function () {
-    Ringtail.Context.jwt // <-- Send to your server for validation/login
+    Ringtail.Context.externalAuthToken // <-- Send to your server for validation/login
     // NOTE: This JWT contains everything in Ringtail.Context as additional claims
 });
