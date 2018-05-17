@@ -28,36 +28,36 @@ Extension manifests are authored in JSON format. Here's an example:
 ## Top-Level Settings
 These settings define basic features required for every UIX.
 
-- `name` <[String]> Name of the UIX displayed in the case home tab list or documents workspace.
+- `name` <[String]> Name of the UIX displayed on the Case Home page or as a workspace pane on the Documents page.
 - `type` <[String]> Location where the UIX will appear in Ringtail. Must be one of:
-  - `Workspace` - Documents area workspace pane
-  - `Case` - Case home page
+  - `Workspace` - Workspace pane on the Documents page
+  - `Case` - Case Home page
 - `url` <[String]> URL of the web app to load.
 - `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to UIX upon initialization.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
 - `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [security considerations](README.md#security-considerations) for more information.
-- `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from others in Ringtail. This value is required if fields or statistics are specified. **NOTE: This value cannot be changed once set.**
-- `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case the UIX is assigned to.
-- `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case the UIX is assigned to.
+- `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Ringtail. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
+- `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case that the UIX is assigned to.
+- `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case that the UIX is assigned to.
 
 ## Fields
-Providing field settings in an extension manifest allows Ringtail to automatically create fields in cases where it is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
+When you provide field settings in an extension manifest, Ringtail is able to automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
 
-- `id` <[Number]> Identifier for this field in the manifest, used to lookup its concrete identifier for coding.
+- `id` <[Number]> Identifier for this field in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
 - `type` <[String]> Type of data the field will store. Must be one of:
-  - `YesNo` - Simple boolean value
+  - `YesNo` - Simple Boolean value
   - `Number` - Numeric value in the range [-99999999999.9999, 99999999999.9999] with at most four decimal digits
   - `Date` - Date value in ISO 8601 UTC format
   - `Text` - Simple string values with at most 255 characters
   - `Memo` - Larger string values supporting simple HTML markup with at most 4095 characters
   - `PickList` - Value picked from a provided list of choices
-- `isOneToOne` <[Boolean]> (Default `true`) True to only allow a single value per document, otherwise multiple, unique values may be coded. `YesNo` fields require `isOneToOne=true`.
-- `excludeFromSearch` <[Boolean]> (Default `false`) True to suppress this field from Ringtail's advanced search builder.
-- `excludeFromListColumns` <[Boolean]> (Default `false`) True to suppress this field from documents list columns.
-- `excludeFromImport` <[Boolean]> (Default `false`) True to prevent this field from receiving imported data.
-- `excludeFromSecurity` <[Boolean]> (Default `false`) True to suppress this field from the field security UI.
-- `codingSettings` <[String]> (Default `MassCode`) Maximum-allowed functionality the field may be granted for the coding UI. Must be one of:
+- `isOneToOne` <[Boolean]> (Default `true`) If `true`, allows only a single value to be coded per document. If `false`, multiple unique values may be coded. `YesNo` fields require `isOneToOne=true`.
+- `excludeFromSearch` <[Boolean]> (Default `false`) If `true`, suppresses this field from Ringtail's advanced search builder.
+- `excludeFromListColumns` <[Boolean]> (Default `false`) If `true`, suppresses this field from appearing as a column in the List pane.
+- `excludeFromImport` <[Boolean]> (Default `false`) If `true`, prevents this field from appearing on the field mapping page in the Imports feature. This prevents users from importing data into the field from a load file.
+- `excludeFromSecurity` <[Boolean]> (Default `false`) If `true`, suppresses this field from the fields security UI on the Security &gt; Objects &gt; Fields page.
+- `codingSettings` <[String]> (Default `MassCode`) Maximum-allowed functionality that the field may be granted for the coding UI. Must be one of:
   - `Hidden` - Does not appear
   - `Read` - Appears but is read-only
   - `Write` - Available for single coding
@@ -67,13 +67,13 @@ Providing field settings in an extension manifest allows Ringtail to automatical
 ## Field Items
 Field items are pre-defined choices for `PickList` fields.
 
-- `id` <[Number]> Identifier for this item in the manifest, used to lookup its concrete identifier for coding.
+- `id` <[Number]> Identifier for this item in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the pick list choice.
 
 ## Statistics
-Statistics are counters that Ringtail will automatically aggregate across cases and roll up into queryable summaries at the portal. These are great for tracking things like feature usage and billing metrics, such as "count of docs processed" or "characters translated".
+Statistics are counters that Ringtail will automatically aggregate across cases and roll up into queryable summaries at the portal. These are great for tracking things like feature usage and billing metrics, such as "count of docs processed" or "number of words translated."
 
-- `id` <[Number]> Identifier for this statistic in the manifest, used to lookup its concrete identifier for coding.
+- `id` <[Number]> Identifier for this statistic in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the statistic.
 
 
