@@ -90,9 +90,8 @@ Static object containing context information about the current Ringtail user. It
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
 - `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
-  - `Workspace` - Workspace pane
+  - `Workspace` - Documents area workspace pane
   - `Case` - Case home page
-  - `Portal` - Portal home page
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
 - `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [security considerations](README.md#security-considerations) for more information.
