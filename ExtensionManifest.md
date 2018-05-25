@@ -16,7 +16,7 @@ Extension manifests are authored in JSON format. Here's an example:
         "type": "Number",
         "isOneToOne": true,
         "codingSettings": "Write",
-        "excludeFromImport": true,
+        "excludeFromImport": true
     }],
     "statistics": [{
         "id": 1,
