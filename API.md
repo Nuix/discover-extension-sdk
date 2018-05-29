@@ -1,4 +1,4 @@
-# Ringtail UIX API - Ringtail 9.5.006
+# Ringtail UIX API - Ringtail 9.5.008
 The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
@@ -95,6 +95,19 @@ Static object containing context information about the current Ringtail user. It
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
 - `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [security considerations](README.md#security-considerations) for more information.
+- `namePrefix` <[String]> (Optional) Statistic and field name prefix configured for this UIX during installation.
+- `fields` <[Array]<[Object]>> (Optional) Array of field ID mappings for the active case.
+  - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `name` <[String]> Name provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `fieldId` <[String]> ID for this field in the active case. Use this identifier when coding this field.
+  - `items` <[Array]<[Object]>> Array of field value mappings for `PickList` fields or `null` for other field types.
+    - `id` <[Number]> ID provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
+    - `name` <[String]> Name provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
+    - `codingValue` <[Number]> Coding value for this item. Use this value when coding this field.
+- `statistics` <[Array]<[Object]>> (Optional) Array of statistic ID mappings for the active case.
+  - `id` <[Number]> ID provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `name` <[String]> Name provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `statisticId` <[Number]> ID for this statistic in the active case. Use this identifier to write this statistic.
 
 
 

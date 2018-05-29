@@ -1,6 +1,6 @@
 {
   "name": "ringtail-extension-sdk",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Provides APIs for UI Extensions to communicate with Ringtail",
   "main": "Ringtail.js",
   "scripts": {
