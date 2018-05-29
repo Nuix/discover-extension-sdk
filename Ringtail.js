@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var COMPATIBLE_RINGTAIL_VERSION = '9.5.005',
+    var COMPATIBLE_RINGTAIL_VERSION = '9.5.008',
         TEST_MODE = window.process && window.process.env && window.process.env.NODE_ENV === 'test',
         allowedDomains = null,
         hostingDomain = null,
