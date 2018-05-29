@@ -117,8 +117,7 @@
                     method: 'POST',
                     mode: 'cors',
                     headers: {
-                        'Authorization': Ringtail.Context.authToken,
-                        'ApiKey': Ringtail.Context.apiKey,
+                        'Authorization': Ringtail.Context.apiAuthToken,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
