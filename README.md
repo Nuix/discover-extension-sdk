@@ -64,21 +64,21 @@ To communicate with Ringtail, initialize the SDK and then hook up listeners for 
 ```
 
 ## Add Your Extension to Ringtail
-Once you are ready to test and deploy your extension, you need to add it to a Ringtail environment. Portal and System Administrators have access to the UI Extensions area of the Ringtail portal and can install and configure extensions.
+Once you are ready to test and deploy your extension, you need to add it to a Ringtail environment. Portal and system administrators have access to the UI Extensions area of the Ringtail portal and can install and configure extensions.
 
 There are three steps to getting a UI extension to show up in Ringtail.
 
 ### 1. Add the UI extension in the portal
 In the UI Extensions area of the Ringtail portal you have several options for adding an extension.
 
-  1. For simple UI extensions like the one above, you can specify required settings in the Basic section of the Add dialog.
-  1. For more complex UI extensions using custom fields and statistics counters, you need to specify settings via an [extension manifest](ExtensionManifest.md). Once ready, you can import the manifest into the Advanced section of the Add dialog.
+  1. For simple UI extensions like the one above, you can specify required settings in the Basic section of the Add UI extension dialog box.
+  1. For more complex UI extensions using custom fields and statistics counters, you need to specify settings via an [extension manifest](ExtensionManifest.md). Once ready, you can import the manifest into the Advanced section of the Add UI extension dialog box.
 
 ### 2. Assign the UI Extension to Organizations and Cases
-Once the extension is added, click on it in the UI extension list to assign it to one or more Organizations and Cases. This step grants access to the extension for users in the allowed cases and causes Ringtail to automatically create any fields and statistics counters specified in the extension manifest.
+Once the extension is added, click on it in the UI extension list to assign it to one or more Organizations and Cases. This step grants access to the extension for users in the allowed cases and causes Ringtail to automatically create any fields and statistics counters that are specified in the extension manifest.
 
 ### 3. In each Ringtail case, grant access to the extension for one or more user groups
-UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group and refresh to see it show up in Ringtail!
+UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group, and refresh your browser to see it in Ringtail.
 
 ## Security Considerations
 During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data, you must take further steps to establish trust with Ringtail.
