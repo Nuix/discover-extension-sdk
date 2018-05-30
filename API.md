@@ -40,7 +40,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Tool Icons](#tool-icons)
 
 #### .initialize(domainWhitelist) ⇒ <[Promise]>
-- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. See [security considerations](README.md#security-considerations) for the intended use of this parameter.
+- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. This can be used to restrict the domains that are allowed to host your UI extension, making it harder for unknown sites to spoof Ringtail.
 - returns: A promise that resolves to the domain of the site hosting the UIX. After this, [Ringtail.Context](#context) is available and the SDK is ready for use.
 
 Initializes the SDK and registers the UIX with Ringtail.
@@ -94,7 +94,7 @@ Static object containing context information about the current Ringtail user. It
   - `Case` - Case home page
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
-- `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [security considerations](README.md#security-considerations) for more information.
+- `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
 - `namePrefix` <[String]> (Optional) Statistic and field name prefix configured for this UIX during installation.
 - `fields` <[Array]<[Object]>> (Optional) Array of field ID mappings for the active case.
   - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
@@ -235,7 +235,7 @@ ToolAction events are fired when the user interacts with tools constructed by [s
 # Configuration
 UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
 
-__NOTE:__ If you store sensitive information in configurations, check out [security considerations](README.md#security-considerations) for a strategy to validate configuration authenticity.
+__NOTE:__ If you store sensitive information in configurations, [Authentication with JWTs](AuthWithJWTs.md) is recommended to transmit them securely and trust their authenticity.
 
 ## Recommended Use
 Configurations can be specified at the UI extension, organization, and case levels separately and they are passed in an array, in that order, with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.

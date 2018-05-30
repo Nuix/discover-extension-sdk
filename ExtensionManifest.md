@@ -35,7 +35,7 @@ These settings define basic features required for every UIX.
 - `url` <[String]> URL of the web app to load.
 - `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to UIX upon initialization.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
-- `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [security considerations](README.md#security-considerations) for more information.
+- `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
 - `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Ringtail. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
 - `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case that the UIX is assigned to.
 - `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case that the UIX is assigned to.
@@ -56,7 +56,7 @@ When you provide field settings in an extension manifest, Ringtail is able to au
 - `excludeFromSearch` <[Boolean]> (Default `false`) If `true`, suppresses this field from Ringtail's advanced search builder.
 - `excludeFromListColumns` <[Boolean]> (Default `false`) If `true`, suppresses this field from appearing as a column in the List pane.
 - `excludeFromImport` <[Boolean]> (Default `false`) If `true`, prevents this field from appearing on the field mapping page in the Imports feature. This prevents users from importing data into the field from a load file.
-- `excludeFromSecurity` <[Boolean]> (Default `false`) If `true`, suppresses this field from the fields security UI on the Security &gt; Objects &gt; Fields page.
+- `excludeFromSecurity` <[Boolean]> (Default `false`) If `true`, suppresses this field from the fields security UI on the Security > Objects > Fields page.
 - `codingSettings` <[String]> (Default `MassCode`) Maximum-allowed functionality that the field may be granted for the coding UI. Must be one of:
   - `Hidden` - Does not appear
   - `Read` - Appears but is read-only

@@ -1,8 +1,10 @@
 # Ringtail User Interface Extension SDK
 This SDK provides an API to communicate with the Ringtail UI for use in UI extensions, part of Ringtail's extensibility model.
 
-## API Documentation
-View the [API reference documentation](API.md).
+## Documentation
+- [API Reference](API.md) - JavaScript client SDK documentation
+- [Extension Manifest Format](ExtensionManifest.md) - Format to specify UI extension settings for easy installation
+- [Authentication with JWTs](Authentication.md) - Details how to authenticate Ringtail user sessions with external system
 
 ## About User Interface Extensions
 You can extend Ringtail by embedding third-party web applications directly into the Ringtail interface. Such external applications are called user interface extensions (UI extensions). Ringtail provides UI extensions with user and workspace context and access to the Ringtail Connect API. This allows UI extensions to read and write data to Ringtail and respond to user actions in the Ringtail UI.
@@ -79,22 +81,3 @@ Once the extension is added, click on it in the UI extension list to assign it t
 
 ### 3. In each Ringtail case, grant access to the extension for one or more user groups
 UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group and refresh to see it show up in Ringtail!
-
-## Security Considerations
-During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data, you must take further steps to establish trust with Ringtail.
-
-### Security Guidelines
-
-1. __Restrict the domains that are allowed to host your UI extension to only those you expect.__ Pass the allowed domains in an array to `Ringtail.initialize([domain1, domain2, ...])`. This step prevents unknown sites from hosting your UI extension and spoofing Ringtail.
-1. __Verify Ringtail authenticity by using an authentication secret.__ When you install the UI extension in Ringtail, provide an authentication secret in the Ringtail UI. This enables Ringtail to construct and sign a [JSON Web Token (JWT)](https://jwt.io/) containing context and configuration data.
-
-#### Full Example
-Provide the allowed domain list and validate the provided JWT during initialization of the UI extension:
-```js
-// Allow communication only with these domains
-var domainWhitelist = ['https://ringtail.com', 'https://portal02.ringtail.com'];
-
-Ringtail.initialize(domainWhitelist).then(function () {
-    Ringtail.Context.externalAuthToken // <-- Send to your server for validation/login
-    // NOTE: This JWT contains everything in Ringtail.Context as additional claims
-});
