@@ -9,7 +9,7 @@ Follow these steps to securely autenticate Ringtail and create user sessions in 
 
 1. __Send `Ringtail.Context.externalAuthToken` to your web server during initialization.__ Once initialized, the UI extension SDK provides the signed JWT to your UI extension through its global context. Send it to your web server to validate the JWT signature against the `privateKey` provided in step 1.
 
-1. __Create a user session from claims in the JWT.__ The JWT provided by Ringtail includes the below claims and should be sufficient to construct a user session in the UI extension system.
+1. __Create a user session from claims in the JWT.__ The JWT provided by Ringtail includes the below claims. Use them to construct a user session in your external system.
 
 ## JWT Claims
 These are the same values available in the client SDK via  `Ringtail.Context`, though they are structured slighly differently. All claims in the provided JWT will present as strings for compatibility with .NET [ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity(v=vs.110).aspx), but their source types are documented below for reference.
@@ -31,17 +31,17 @@ These are the same values available in the client SDK via  `Ringtail.Context`, t
     - `configuration` <[Array]<[Configuration](API.md#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](API.md#configuration) for more information.
     - `namePrefix` <[String]> (Optional) Statistic and field name prefix configured for this UIX during installation.
     - `fields` <[Array]<[Object]>> (Optional) Array of field ID mappings for the active case.
-    - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
-    - `name` <[String]> Name provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
-    - `fieldId` <[String]> ID for this field in the active case. Use this identifier when coding this field.
-    - `items` <[Array]<[Object]>> Array of field value mappings for `PickList` fields or `null` for other field types.
-        - `id` <[Number]> ID provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
-        - `name` <[String]> Name provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
-        - `codingValue` <[Number]> Coding value for this item. Use this value when coding this field.
+        - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
+        - `name` <[String]> Name provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
+        - `fieldId` <[String]> ID for this field in the active case. Use this identifier when coding this field.
+        - `items` <[Array]<[Object]>> Array of field value mappings for `PickList` fields or `null` for other field types.
+            - `id` <[Number]> ID provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
+            - `name` <[String]> Name provided for this value by the [UIX manifest](ExtensionManifest.md) during installation.
+            - `codingValue` <[Number]> Coding value for this item. Use this value when coding this field.
     - `statistics` <[Array]<[Object]>> (Optional) Array of statistic ID mappings for the active case.
-    - `id` <[Number]> ID provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
-    - `name` <[String]> Name provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
-    - `statisticId` <[Number]> ID for this statistic in the active case. Use this identifier to write this statistic.
+        - `id` <[Number]> ID provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
+        - `name` <[String]> Name provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
+        - `statisticId` <[Number]> ID for this statistic in the active case. Use this identifier to write this statistic.
 
 
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
