@@ -40,7 +40,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Tool Icons](#tool-icons)
 
 #### .initialize(domainWhitelist) ⇒ <[Promise]>
-- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. This can be used to restrict the domains that are allowed to host your UI extension, making it harder for unknown sites to spoof Ringtail.
+- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. You can use this to restrict the domains that are allowed to host your UI extension, making it harder for unknown sites to spoof Ringtail.
 - returns: A promise that resolves to the domain of the site hosting the UIX. After this, [Ringtail.Context](#context) is available and the SDK is ready for use.
 
 Initializes the SDK and registers the UIX with Ringtail.
@@ -235,7 +235,7 @@ ToolAction events are fired when the user interacts with tools constructed by [s
 # Configuration
 UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
 
-__NOTE:__ If you store sensitive information in configurations, [Authentication with JWTs](AuthWithJWTs.md) is recommended to transmit them securely and trust their authenticity.
+__NOTE:__ If you store sensitive information in configurations, [Authentication with JWTs](AuthWithJWTs.md) is recommended to transmit the configurations securely and trust their authenticity.
 
 ## Recommended Use
 Configurations can be specified at the UI extension, organization, and case levels separately and they are passed in an array, in that order, with any unset configs skipped. This structure is intended to facilitate increasingly-specific settings overriding broader settings.
