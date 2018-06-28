@@ -206,7 +206,7 @@ var mainid = event.data.mainId;
 - `searchResultId` <[Number]> ID of the active [search result].
 - `entityId` <[Number]> ID of the active document's entity type.
 
-This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [searh result] for example) these fields will be `null`.
+This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [search result] for example) these fields will be `null`.
 
 #### DocumentSelection
 - `selectedCount` <[Number]> Total number of selected documents.
