@@ -29,8 +29,9 @@ describe('initialize', () => {
         Test.postMessageMock.mockClear();
     });
 
-    test('should silently reject messages from non-whitelisted domains', async () => {
+    test('should reject messages from non-whitelisted domains', async () => {
         const activeDocHandler = jest.fn().mockName('handleActiveDoc');
+        console.warn = jest.fn().mockName('console.warn');
         Ringtail.on('ActiveDocument', activeDocHandler);
 
         Test.sendMessage({
@@ -39,5 +40,6 @@ describe('initialize', () => {
         }, 'http://we-be-pirates.com');
 
         expect(activeDocHandler).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(1);
     });
 });
