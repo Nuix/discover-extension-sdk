@@ -29,6 +29,7 @@ These are the same values available in the client SDK via  `Ringtail.Context`, t
 - `ringtailVersion` <[String]> Version of Ringtail that the UIX is running in, such as `9.5.000.fe6290c`.
 - `context` <[String]> Additional structured data as a JSON-encoded string. Parse this with a JSON decoder to extract these properties.
     - `configuration` <[Array]<[Configuration](API.md#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array is empty if no configs are provided. See [Configuration](API.md#configuration) for more information.
+    - `annotationSource` <[Number]> ID to use when annotating documents to indicate they should be printed by the extension for production. See [External File Printing](ExternalFilePrinting.md) for more information.
     - `namePrefix` <[String]> (Optional) Statistic and field name prefix configured for this UIX during installation.
     - `fields` <[Array]<[Object]>> (Optional) Array of field ID mappings for the active case.
         - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.

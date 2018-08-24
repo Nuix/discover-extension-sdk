@@ -5,6 +5,7 @@ This SDK provides an API to communicate with the Ringtail UI for use in UI exten
 - [API Reference](API.md) - JavaScript client SDK documentation
 - [Extension Manifest Format](ExtensionManifest.md) - Format to specify UI extension settings for easy installation
 - [Authentication with JWTs](AuthWithJWTs.md) - Details how to authenticate Ringtail user sessions with external system
+- [External File Printing](ExternalFilePrinting.md) - Details how to extend Ringtail productions with custom file printing
 
 ## About User Interface Extensions
 You can extend Ringtail by embedding third-party web applications directly into the Ringtail interface. Such external applications are called user interface extensions (UIX). Ringtail provides UIXs with user and workspace context and access to the Ringtail Connect API. This allows UIXs to read and write data to Ringtail and respond to user actions in the Ringtail UI.
