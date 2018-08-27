@@ -1,4 +1,4 @@
-# External File Printing - Ringtail 9.6.008
+# External File Printing - Ringtail 9.6.009
 Extensions can customize the output of production print jobs by providing a URL for Ringtail to use to retrieve files for production renditions instead of using the files on the Ringtail file system for the corresponding base documents. This is useful for extensions that provide file annotation services and store the annotated or modified files remotely, to allow the remotely stored version of the file to be the one used in production.
 
 ## Prerequisites
