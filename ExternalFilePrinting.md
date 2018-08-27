@@ -1,9 +1,9 @@
 # External File Printing - Ringtail 9.6.008
-Extensions can customize the output of production print jobs by providing a URL for Ringtail to retrieve files. This is useful for extensions providing file annotation services that need to perform custom file transformation during print.
+Extensions can customize the output of production print jobs by providing a URL for Ringtail to use to retrieve files for production renditions instead of using the files on the Ringtail file system for the corresponding base documents. This is useful for extensions that provide file annotation services and store the annotated or modified files remotely, to allow the remotely stored version of the file to be the one used in production.
 
 ## Prerequisites
 1. Add a `retrieveProductionFileUrl` parameter with a valid HTTP/S URL to the [extension's manifest](ExtensionManifest.md) during installation. This URL must be accessible by the Ringtail Processing Framework.
-1. Use the `annotationSource` value provided by the [extension context](API.md#context) or the [external auth token](AuthWithJWTs.md) to flag documents for external printing. This instructs Ringtail to request files via the configured `retrieveProductionFileUrl` during production printing.
+1. Use the `annotationSource` value provided by the [extension context](API.md#context) or the [external auth token](AuthWithJWTs.md) when adding an annotation to flag that the annotation requires external printing when the document is produced. This instructs Ringtail to request files via the configured `retrieveProductionFileUrl` during production printing.
 
 ## File Request Communication
 Here's the flow for extending Ringtail's production printing process:
