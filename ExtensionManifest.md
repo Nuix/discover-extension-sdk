@@ -37,6 +37,7 @@ These settings define basic features required for every UIX.
 - `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to UIX upon initialization.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
 - `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
+- `retrieveProductionFileUrl` <[String]> (Optional) URL to retrieve extension-authored files during production print. See [External File Printing](ExternalFilePrinting.md) for more information.
 - `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Ringtail. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
 - `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case that the UIX is assigned to.
 - `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case that the UIX is assigned to.

@@ -95,6 +95,7 @@ Static object containing context information about the current Ringtail user. It
 - `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
 - `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
+- `annotationSource` <[Number]> ID to use when annotating documents to indicate they should be printed by the extension for production. See [External File Printing](ExternalFilePrinting.md) for more information.
 - `namePrefix` <[String]> (Optional) Statistic and field name prefix configured for this UIX during installation.
 - `fields` <[Array]<[Object]>> (Optional) Array of field ID mappings for the active case.
   - `id` <[Number]> ID provided for this field by the [UIX manifest](ExtensionManifest.md) during installation.
