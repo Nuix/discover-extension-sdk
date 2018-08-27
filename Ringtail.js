@@ -38,10 +38,24 @@
         }
     }
 
+    function getDeffered(requestId) {
+        var deferred = pendingClientQueries.get(requestId);
+        if (deferred) {
+            pendingClientQueries.delete(requestId);
+        } else {
+            deferred = { resolve: function() {}, reject: function() {} };
+        }
+        return deferred;
+    }
+
     function handleWindowMessage(event) {
         var message = event.data;
+        var deferred = getDeffered(message.requestId);
 
         if (allowedDomains.length > 0 && allowedDomains.indexOf(event.origin) < 0) {
+            var msg = 'Rejected message from non-whitelisted domain: ' + event.origin;
+            console.warn('WARNING:', msg);
+            deferred.reject(new Error(msg));
             return;
         }
 
@@ -59,14 +73,10 @@
         }
 
         if (message.requestId) {
-            var deferred = pendingClientQueries.get(message.requestId);
-            if (deferred) {
-                if (message.name === 'Error') {
-                    deferred.reject(new Error(message.data.message));
-                } else {
-                    deferred.resolve(message.data);
-                }
-                pendingClientQueries.delete(message.requestId);
+            if (message.name === 'Error') {
+                deferred.reject(new Error(message.data.message));
+            } else {
+                deferred.resolve(message.data);
             }
         } else {
             var callbacks = listeners.get(message.name);
