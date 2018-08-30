@@ -1,4 +1,4 @@
-# Ringtail UIX API - Ringtail 9.5.008
+# Ringtail UIX API - Ringtail 9.6.009
 The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
