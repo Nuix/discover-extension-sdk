@@ -1,4 +1,4 @@
-# Extension Manifests - Ringtail 9.5.008
+# Extension Manifests - Ringtail 9.6.009
 Extension manifests are files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Ringtail with each new UI extension release.
 
 ## Structure
@@ -41,6 +41,7 @@ These settings define basic features required for every UIX.
 - `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Ringtail. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
 - `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case that the UIX is assigned to.
 - `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case that the UIX is assigned to.
+- `annotations` <[Array]<[Annotation](#annotations)>> (Optional) Annotation types to create in each case that the UIX is assigned to.
 
 ## Fields
 When you provide field settings in an extension manifest, Ringtail is able to automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
@@ -78,6 +79,46 @@ Statistics are counters that Ringtail will automatically aggregate across cases 
 - `id` <[Number]> Identifier for this statistic in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the statistic.
 
+## Annotations
+Annotations allow defining new highlight and redaction types for use in annotating documents.
+
+- `id` <[Number]> Identifier for this annotation in the manifest, used to look up its concrete identifier for coding.
+- `name` <[String]> Name of the annotation.
+- `redactionLabel` <[String]> (Optional) Label to attach to redactions.
+- `type` <[String]> Type of annotation to create. Must be one of:
+  - `Highlight` - Annotation of a specific color allowing see-through in the View pane
+  - `Redaction` - Opaque annotation that can be drawn black or white in the View pane
+- `color` <[String]> Color of the annotation if of `type`=`Higlight`. Must be one of:
+  - `Beige`
+  - `Blue`
+  - `Brown`
+  - `Cyan`
+  - `Green`
+  - `Grey`
+  - `Orange`
+  - `Pink`
+  - `Purple`
+  - `Red`
+  - `Silver`
+  - `Yellow`
+  - `LightPink`
+  - `MediumOrange`
+  - `MediumYellow`
+  - `LightYellow`
+  - `AppleGreen`
+  - `MediumAppleGreen`
+  - `LightAppleGreen`
+  - `MediumGreen`
+  - `LightGreen`
+  - `LightBlue`
+  - `Azure`
+  - `MediumAzure`
+  - `LightAzure`
+  - `MediumPurple`
+  - `LightPurple`
+  - `MediumBrown`
+  - `LightBrown`
+  - `LightGrey`
 
 
 
