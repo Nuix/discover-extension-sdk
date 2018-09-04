@@ -1,4 +1,4 @@
-# Ringtail UIX API - Ringtail 9.5.008
+# Ringtail UIX API - Ringtail 9.6.009
 The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
@@ -109,6 +109,10 @@ Static object containing context information about the current Ringtail user. It
   - `id` <[Number]> ID provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
   - `name` <[String]> Name provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
   - `statisticId` <[Number]> ID for this statistic in the active case. Use this identifier to write this statistic.
+- `annotations` <[Array]<[Object]>> (Optional) Array of annotation ID mappings for the active case.
+  - `id` <[Number]> ID provided for this annotation by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `name` <[String]> Name provided for this annotation by the [UIX manifest](ExtensionManifest.md) during installation.
+  - `annotationTypeId` <[String]> ID for this annotation in the active case. Use this identifier to add annotations of this type to documents via the Connect API.
 
 
 

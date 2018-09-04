@@ -1,4 +1,4 @@
-# Authentication with JWTs
+# Authentication with JWTs - Ringtail 9.6.009
 
 During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data outside Ringtail, you must take further steps to establish trust with Ringtail.
 
@@ -43,6 +43,10 @@ These are the same values available in the client SDK via  `Ringtail.Context`, t
         - `id` <[Number]> ID provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
         - `name` <[String]> Name provided for this statistic by the [UIX manifest](ExtensionManifest.md) during installation.
         - `statisticId` <[Number]> ID for this statistic in the active case. Use this identifier to write this statistic.
+    - `annotations` <[Array]<[Object]>> (Optional) Array of annotation ID mappings for the active case.
+      - `id` <[Number]> ID provided for this annotation by the [UIX manifest](ExtensionManifest.md) during installation.
+      - `name` <[String]> Name provided for this annotation by the [UIX manifest](ExtensionManifest.md) during installation.
+      - `annotationTypeId` <[String]> ID for this annotation in the active case. Use this identifier to add annotations of this type to documents via the Connect API.
 
 
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array "Array"
