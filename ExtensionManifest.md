@@ -34,7 +34,7 @@ These settings define basic features required for every UIX.
   - `Workspace` - Workspace pane on the Documents page
   - `Case` - Case Home page
 - `url` <[String]> URL of the web app to load.
-- `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to UIX upon initialization.
+- `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to the UIX upon initialization.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
 - `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
 - `retrieveProductionFileUrl` <[String]> (Optional) URL to retrieve extension-authored files during production print. See [External File Printing](ExternalFilePrinting.md) for more information.
@@ -80,15 +80,15 @@ Statistics are counters that Ringtail will automatically aggregate across cases 
 - `name` <[String]> Name of the statistic.
 
 ## Annotations
-Annotations allow defining new highlight and redaction types for use in annotating documents.
+Annotations allow you to define new highlight and redaction types for use in annotating documents.
 
 - `id` <[Number]> Identifier for this annotation in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the annotation.
 - `redactionLabel` <[String]> (Optional) Label to attach to redactions.
 - `type` <[String]> Type of annotation to create. Must be one of:
-  - `Highlight` - Annotation of a specific color allowing see-through in the View pane
+  - `Highlight` - Annotation of a specific color. In the View pane, users can see through highlight annotations to the document image underneath the highlight
   - `Redaction` - Opaque annotation that can be drawn black or white in the View pane
-- `color` <[String]> Color of the annotation if of `type`=`Higlight`. Must be one of:
+- `color` <[String]> Color of the annotation, if the annotation is of `type`=`Highlight`. Must be one of:
   - `Beige`
   - `Blue`
   - `Brown`
