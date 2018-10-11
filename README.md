@@ -35,25 +35,25 @@ To communicate with Ringtail, initialize the SDK and then hook up listeners for 
 <html>
 <head>
     <title>Ringtail UI Extension Test App</title>
-    <script src="Ringtail.js" type="text/javascript"></script>
+    <script src="node_modules/ringtail-extension-sdk/Ringtail.js" type="text/javascript"></script>
 </head>
 <body>
-    <b>Active Document</b>
+    <h2>Active Document</h2>
     <p>
         <table>
             <tr><td>Document ID</td><td class="active-doc-id"></td></tr>
             <tr><td>Main ID</td><td class="active-main-id"></td></tr>
-            <tr><td>Entity Type ID</td><td class="active-entity-type-id"></td></tr>
-            <tr><td>Result Set ID</td><td class="active-result-set-id"></td></tr>
+            <tr><td>Entity ID</td><td class="active-entity-type-id"></td></tr>
+            <tr><td>Search Result ID</td><td class="active-result-set-id"></td></tr>
         </table>
     </p>
 
     <script>
         function handleActiveDocumentChanged(message) {
-            document.querySelector('.active-doc-id').innerHTML = message.data.documentId;
-            document.querySelector('.active-main-id').innerHTML = message.data.mainId;
-            document.querySelector('.active-entity-type-id').innerHTML = message.data.entityTypeId;
-            document.querySelector('.active-result-set-id').innerHTML = message.data.resultSetId;
+            document.querySelector('.active-doc-id').innerHTML = message.data.documentId || '';
+            document.querySelector('.active-main-id').innerHTML = message.data.mainId || '';
+            document.querySelector('.active-entity-type-id').innerHTML = message.data.entityId || '';
+            document.querySelector('.active-result-set-id').innerHTML = message.data.searchResultId || '';
         }
 
         // Establish communication with Ringtail
