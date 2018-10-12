@@ -88,6 +88,7 @@ Static object containing context information about the current Ringtail user. It
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
 - `caseUuid` <[String]> Globally unique identifier for this case, such as `http://ringtail.com/17` for case `17` on the `ringtail.com` portal.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
+- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
 - `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Documents area workspace pane
@@ -158,7 +159,7 @@ Selects all documents in the active [search result].
 
 
 ### .BrowseSelection
-[Browse selection] is the set of selected field values in the Browse pane. Browse sections are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [BrowseSelection](#browseselection-1) event to be notified on change. 
+[Browse selection] is the set of selected field values in the Browse pane. Browse sections are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [BrowseSelection](#browseselection-1) event to be notified on change.
 
 > NOTE: Only pick list fields are supported for Browse selection.
 
