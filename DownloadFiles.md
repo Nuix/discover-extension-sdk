@@ -28,6 +28,7 @@ where `{APIToken}` is the user's UIX session token. For more information, see `a
 Depending on how the UIX identifies the file to download, the required parameters vary.
 
 **To download a file based on the file ID:**
+
 | Parameter | Description | Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
 | caseId | Case ID. Identifies the case in the portal. | int | Required |  |
@@ -36,6 +37,7 @@ Depending on how the UIX identifies the file to download, the required parameter
 For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=6078&fileId=29384
 
 **To download a content file based on the content file type ranking:**
+
 | Parameter | Description | Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
 | caseId | Case ID. Identifies the case in the portal. | int | Required |  |
@@ -45,6 +47,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=3024&mainId=39456&contentFileRank=1
 
 **To download a page file based on the page file number:**
+
 | Parameter | Description | Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
 | caseId | Case ID. Identifies the case in the portal. | int | Required |  |
@@ -54,6 +57,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=99810&pageFileNumber=2
 
 **To download a page file as a .jpg or .png image:**
+
 | Parameter | Description | Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
 | caseId | Case ID. Identifies the case in the portal. | int | Required |  |
