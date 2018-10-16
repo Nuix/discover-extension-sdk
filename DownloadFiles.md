@@ -70,7 +70,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 | pageNum | The number of the page that you want to return, for a page file that has multiple pages. | int | Required |  |
 | imageFormat | The file type that you want to return the image as. Specify one of `jpg` or `png`. | string | Optional | Default is jpg. |
 
-For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=29384&pageId=1&pageNum=4&pageId=23901&imageFormat=png
+For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=29384&pageId=23901&pageNum=4&imageFormat=png
 
 ## Errors
 403:
