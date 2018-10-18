@@ -3,7 +3,7 @@
 During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data outside Ringtail, you must take further steps to establish trust with Ringtail.
 
 ## Establishing Trust with Ringtail
-Follow these steps to securely autenticate Ringtail and create user sessions in an external system.
+Follow these steps to securely authenticate Ringtail and create user sessions in an external system.
 
 1. __Provide a `privateKey` value when installing your UI extension.__ This provides Ringtail with a secret known only to your UI extension and Ringtail. Ringtail will then use this to sign a [JSON Web Token (JWT)](https://jwt.io/) provided to your UI extension during initialization. See the [extension manifest documentation](ExtensionManifest.md#top-level-settings) for details on this setting.
 
