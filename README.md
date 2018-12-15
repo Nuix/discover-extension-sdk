@@ -11,7 +11,7 @@ This SDK provides an API to communicate with the Ringtail UI for use in UI exten
 ## About User Interface Extensions
 You can extend Ringtail by embedding third-party web applications directly into the Ringtail interface. Such external applications are called user interface extensions (UIX). Ringtail provides UIXs with user and workspace context and access to the Ringtail Connect API. This allows UIXs to read and write data to Ringtail and respond to user actions in the Ringtail UI.
 
-The following diagram shows how an external web application (orange) can communicate with Ringtail (blue). The UI Extension SDK (green) provides the glue for UIX clients to communicate directly with Ringtail.
+The following diagram shows how an external web application (orange) can communicate with the Ringtail UI (gray) via the UI Extension SDK (green). In addition, the UI Extension SDK provides an API to facilitate directly calling the Ringtail Connect API (blue).
 
 ![Ringtail UI Extenstion Architecture](assets/UIExtensionArchitecture.png)
 

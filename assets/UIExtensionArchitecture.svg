@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="UI Extension Architecture.svg"
-   inkscape:export-filename="C:\Users\carnold\Documents\Diagrams\UI Extension Architecture.png"
+   sodipodi:docname="UIExtensionArchitecture.svg"
+   inkscape:export-filename="D:\TFS_Data\Ringtail\ringtail-extension-sdk\assets\UIExtensionArchitecture.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -113,13 +113,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="251.54022"
-     inkscape:cy="267.50579"
+     inkscape:cx="339.32296"
+     inkscape:cy="211.02704"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="2204"
-     inkscape:window-height="1278"
+     inkscape:window-width="1603"
+     inkscape:window-height="1180"
      inkscape:window-x="259"
      inkscape:window-y="258"
      inkscape:window-maximized="0"
@@ -142,7 +142,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
