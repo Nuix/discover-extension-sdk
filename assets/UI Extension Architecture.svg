@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="990"
+   height="765"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="UI Extension Architecture.svg"
+   inkscape:export-filename="C:\Users\carnold\Documents\Diagrams\UI Extension Architecture.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lstart"
+       style="overflow:visible">
+      <path
+         id="path3804"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
+         transform="scale(0.8) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3807"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend-1"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3807-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4262"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4264"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4266"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4268"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4270"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path4272"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="473.89765"
+     inkscape:cy="632.42228"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="2204"
+     inkscape:window-height="1278"
+     inkscape:window-x="259"
+     inkscape:window-y="258"
+     inkscape:window-maximized="0"
+     inkscape:snap-nodes="true"
+     inkscape:snap-global="true"
+     inkscape:snap-text-baseline="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-287.36218)">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00392157"
+       id="rect1238"
+       width="700"
+       height="395"
+       x="40"
+       y="307.36218"
+       ry="0" />
+    <rect
+       style="opacity:0.95999995;fill:none;stroke:#000000;stroke-opacity:1"
+       id="rect311"
+       width="200"
+       height="140"
+       x="390"
+       y="352.36218"
+       ry="10"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       ry="10"
+       y="392.36218"
+       x="70"
+       height="170"
+       width="260"
+       id="rect4355"
+       style="opacity:0.95999995;fill:#d2dadf;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       id="g251"
+       transform="translate(110,59.999972)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         ry="10.000004"
+         y="372.36221"
+         x="80"
+         height="109.99999"
+         width="120"
+         id="rect3759"
+         style="opacity:0.95999995;fill:#f3b374;fill-opacity:0.96078431;stroke:#000000;stroke-opacity:1" />
+      <text
+         id="text3755"
+         y="452.36218"
+         x="140"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="452.36218"
+           x="140"
+           id="tspan3757"
+           sodipodi:role="line">UI Extension</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="469.86218"
+           x="140"
+           sodipodi:role="line"
+           id="tspan942">iframe</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="m 330,407.36218 h 80"
+       id="path3798"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       sodipodi:nodetypes="cc"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 300,457.36218 H 410"
+       id="path4246"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       transform="translate(-290,39.999997)"
+       id="g4325" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="200"
+       y="417.36218"
+       id="text4357"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan4359"
+         x="200"
+         y="417.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail Client Application</tspan></text>
+    <g
+       transform="translate(320,20)"
+       id="g293"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         ry="10"
+         transform="translate(0,287.36218)"
+         y="85"
+         x="90"
+         height="30"
+         width="160"
+         id="rect287"
+         style="opacity:0.95999995;fill:#97e7ff;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <text
+         id="text291"
+         y="392.36218"
+         x="170"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="392.36218"
+           x="170"
+           id="tspan289"
+           sodipodi:role="line">Ringtail Server App</tspan></text>
+    </g>
+    <g
+       id="g301"
+       transform="translate(320,70)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="opacity:0.95999995;fill:#97e7ff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+         id="rect295"
+         width="160"
+         height="30"
+         x="90"
+         y="85"
+         transform="translate(0,287.36218)"
+         ry="10" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="170"
+         y="392.36218"
+         id="text299"><tspan
+           sodipodi:role="line"
+           id="tspan297"
+           x="170"
+           y="392.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Connect API</tspan></text>
+    </g>
+    <text
+       id="text309"
+       y="377.36218"
+       x="490"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+         y="377.36218"
+         x="490"
+         id="tspan307"
+         sodipodi:role="line">Ringtail Webserver</tspan></text>
+    <g
+       id="g4871"
+       transform="translate(520,140)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         x="105"
+         y="377.36218"
+         id="text4869"><tspan
+           sodipodi:role="line"
+           id="tspan4867"
+           x="105"
+           y="377.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start">3rd Party Apps</tspan></text>
+      <rect
+         style="opacity:0.95999995;fill:#f2b67c;fill-opacity:0.99607843;stroke:#000000;stroke-opacity:1"
+         id="rect4865"
+         width="20"
+         height="20"
+         x="80"
+         y="362.36218"
+         ry="5" />
+    </g>
+    <g
+       transform="translate(510,70)"
+       id="g4881"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         ry="5"
+         transform="translate(0,287.36218)"
+         y="85"
+         x="90"
+         height="20"
+         width="20"
+         id="rect4875"
+         style="opacity:0.95999995;fill:#d2dadf;fill-opacity:0.96078431;stroke:#000000;stroke-opacity:1" />
+      <text
+         id="text4879"
+         y="387.36218"
+         x="115"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+           y="387.36218"
+           x="115"
+           sodipodi:role="line"
+           id="tspan1104">JavaScript App</tspan></text>
+    </g>
+    <g
+       id="g4967"
+       transform="translate(510,10)"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         style="opacity:0.95999995;fill:none;fill-opacity:0.96078431;stroke:#000000;stroke-opacity:1"
+         id="rect4961"
+         width="20"
+         height="20"
+         x="90"
+         y="85"
+         transform="translate(0,287.36218)"
+         ry="5" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         x="115"
+         y="387.36218"
+         id="text4965"><tspan
+           sodipodi:role="line"
+           id="tspan4963"
+           x="115"
+           y="387.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start">Server</tspan></text>
+    </g>
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="380"
+       y="332.36218"
+       id="text4971"><tspan
+         sodipodi:role="line"
+         id="tspan4969"
+         x="380"
+         y="332.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail UI Extension Framework Architecture</tspan></text>
+    <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       ry="10"
+       y="352.36218"
+       x="50"
+       height="230"
+       width="300"
+       id="rect934"
+       style="opacity:0.95999995;fill:none;stroke:#000000;stroke-opacity:1" />
+    <text
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="200"
+       y="377.36218"
+       id="text938"><tspan
+         sodipodi:role="line"
+         id="tspan936"
+         x="200"
+         y="377.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Client Browser</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       x="180"
+       y="487.36218"
+       id="text4965-4"><tspan
+         sodipodi:role="line"
+         id="tspan4963-7"
+         x="180"
+         y="487.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end">postMessage</tspan><tspan
+         sodipodi:role="line"
+         x="180"
+         y="504.86218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end"
+         id="tspan999">communication</tspan><tspan
+         sodipodi:role="line"
+         x="180"
+         y="522.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end"
+         id="tspan1072">protocol</tspan></text>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       id="g1007"
+       transform="translate(510,49.999997)">
+      <rect
+         style="opacity:0.95999995;fill:#97e7ff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+         id="rect1001"
+         width="20"
+         height="19.999998"
+         x="90"
+         y="362.36218"
+         ry="4.9999976" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         x="115"
+         y="377.36218"
+         id="text1005"><tspan
+           sodipodi:role="line"
+           id="tspan1003"
+           x="115"
+           y="377.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start">IIS Application</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       x="370"
+       y="402.36218"
+       id="text4965-4-8"><tspan
+         sodipodi:role="line"
+         x="370"
+         y="402.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+         id="tspan999-0">XHR</tspan></text>
+    <g
+       id="g1079"
+       transform="translate(0,-2.6171874e-6)">
+      <rect
+         style="opacity:0.95999995;fill:#f2b67b;stroke:#000000;stroke-opacity:1;fill-opacity:0.95686275"
+         id="rect1036"
+         width="200"
+         height="39.999996"
+         x="390"
+         y="522.36218"
+         ry="10"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <text
+         id="text1040"
+         y="547.36218"
+         x="490"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="547.36218"
+           x="490"
+           id="tspan1038"
+           sodipodi:role="line">Extension Webserver</tspan></text>
+    </g>
+    <g
+       id="g1070"
+       transform="translate(130,-240)">
+      <rect
+         ry="10"
+         y="682.36218"
+         x="70"
+         height="49.999992"
+         width="100"
+         id="rect940"
+         style="opacity:0.95999995;fill:#9ae59d;fill-opacity:0.96078432;stroke:#000000;stroke-opacity:1" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         x="120"
+         y="702.36218"
+         id="text3755-6"><tspan
+           id="tspan942-2"
+           sodipodi:role="line"
+           x="120"
+           y="702.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">UI Extension</tspan><tspan
+           id="tspan967"
+           sodipodi:role="line"
+           x="120"
+           y="719.86218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">SDK</tspan></text>
+    </g>
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path979"
+       d="m 210,467.36218 -90,10e-6"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)" />
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:connector-curvature="0"
+       id="path1074"
+       d="m 310,532.36218 80,0"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       sodipodi:nodetypes="cc" />
+    <text
+       id="text1083"
+       y="452.36218"
+       x="370"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         id="tspan1081"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+         y="452.36218"
+         x="370"
+         sodipodi:role="line">XHR</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       x="370"
+       y="527.36218"
+       id="text1087"><tspan
+         sodipodi:role="line"
+         x="370"
+         y="527.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+         id="tspan1085">XHR</tspan></text>
+    <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       inkscape:connector-curvature="0"
+       id="path1089"
+       d="m 430,522.36218 v -50"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       sodipodi:nodetypes="cc" />
+    <text
+       id="text1097"
+       y="512.36218"
+       x="435"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         id="tspan1095"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="512.36218"
+         x="435"
+         sodipodi:role="line">HTTP Request</tspan></text>
+    <g
+       transform="translate(510,110)"
+       id="g4863"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <rect
+         ry="4.9999976"
+         y="362.36218"
+         x="90"
+         height="19.999998"
+         width="20"
+         id="rect4857"
+         style="opacity:0.95999995;fill:#9ae59d;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+      <text
+         id="text4861"
+         y="377.36218"
+         x="115"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+           y="377.36218"
+           x="115"
+           sodipodi:role="line"
+           id="tspan1132">JavaScript Library</tspan></text>
+    </g>
+    <g
+       id="g1159"
+       transform="translate(280,110)">
+      <text
+         id="text4965-4-8-5"
+         y="312.36218"
+         x="90"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           id="tspan999-0-9"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="312.36218"
+           x="90"
+           sodipodi:role="line">1</tspan></text>
+      <circle
+         id="path1154"
+         style="fill:none;fill-opacity:0.95686275;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         cy="307.36218"
+         cx="90"
+         r="7" />
+    </g>
+    <g
+       transform="translate(75,150)"
+       id="g1167">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+         x="90"
+         y="312.36218"
+         id="text1163"><tspan
+           sodipodi:role="line"
+           x="90"
+           y="312.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           id="tspan1161">2</tspan></text>
+      <circle
+         r="7"
+         cx="90"
+         cy="307.36218"
+         style="fill:none;fill-opacity:0.95686275;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle1165" />
+    </g>
+    <g
+       id="g1175"
+       transform="translate(280,160)">
+      <text
+         id="text1171"
+         y="312.36218"
+         x="90"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           id="tspan1169"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="312.36218"
+           x="90"
+           sodipodi:role="line">3</tspan></text>
+      <circle
+         id="circle1173"
+         style="fill:none;fill-opacity:0.95686275;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         cy="307.36218"
+         cx="90"
+         r="7" />
+    </g>
+    <g
+       transform="translate(280,235)"
+       id="g1183">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+         x="90"
+         y="312.36218"
+         id="text1179"><tspan
+           sodipodi:role="line"
+           x="90"
+           y="312.36218"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           id="tspan1177">4</tspan></text>
+      <circle
+         r="7"
+         cx="90"
+         cy="307.36218"
+         style="fill:none;fill-opacity:0.95686275;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="circle1181" />
+    </g>
+    <g
+       id="g1191"
+       transform="translate(330,200)">
+      <text
+         id="text1187"
+         y="312.36218"
+         x="90"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           id="tspan1185"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
+           y="312.36218"
+           x="90"
+           sodipodi:role="line">5</tspan></text>
+      <circle
+         id="circle1189"
+         style="fill:none;fill-opacity:0.95686275;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         cy="307.36218"
+         cx="90"
+         r="7" />
+    </g>
+    <text
+       id="text3755-1"
+       y="612.36218"
+       x="70"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="612.36218"
+         x="70"
+         sodipodi:role="line"
+         id="tspan942-8">1. Browser loads the Ringtail client app and API auth tokens (JWTs)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="629.02887"
+         x="70"
+         sodipodi:role="line"
+         id="tspan1232">2. Extension client app uses the SDK to signal Ringtail and retrieve its API auth token</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="645.6955"
+         x="70"
+         sodipodi:role="line"
+         id="tspan1236">    - If the extension provided a private key, Ringtail wraps the API auth token in a signed JWT</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="662.36218"
+         x="70"
+         sodipodi:role="line"
+         id="tspan1226">3. Extension client app uses the SDK to make API calls from the browser (SDK handles auth)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="679.02887"
+         x="70"
+         sodipodi:role="line"
+         id="tspan1228">4. Extension client app passes the API auth token to its webserver</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
+         y="695.6955"
+         x="70"
+         sodipodi:role="line"
+         id="tspan1230">5. Extension webserver makes server-to-server API calls</tspan></text>
+  </g>
+</svg>
