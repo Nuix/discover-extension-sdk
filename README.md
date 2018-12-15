@@ -24,7 +24,7 @@ To support IE11, you also need to provide promise and fetch polyfills, such as:
 
 `npm install promise-polyfill whatwg-fetch`
 
-> NOTE: This library only works in web browsers. For compatibility with the Ringtail application, UI extensions must support all browsers that Ringtail supports&mdash;as of March 2018, this includes Internet Explorer 11, Chrome, and Edge. For more information, see the client computer requirements in the *Ringtail Help*.
+> NOTE: This library only works in web browsers. For compatibility with the Ringtail application, UI extensions must support all browsers that Ringtail supports&mdash;as of December 2018, this includes Internet Explorer 11, Chrome, and Edge. For more information, see the client computer requirements in the *Ringtail Help*.
 
 ## Build Your Extension
 To communicate with Ringtail, initialize the SDK and then hook up listeners for the events that you are interested in. Here's an example that listens for and displays active document changes:
