@@ -13,7 +13,7 @@ You can extend Ringtail by embedding third-party web applications directly into 
 
 The following diagram shows how an external web application (orange) can communicate with Ringtail (blue). The UI Extension SDK (green) provides the glue for UIX clients to communicate directly with Ringtail.
 
-![Ringtail UI Extenstion Architecture](./assets/UI Extension Architecture.png)
+![Ringtail UI Extenstion Architecture](assets/UIExtensionArchitecture.png)
 
 ## Install the SDK
 The SDK is available as a package on NPM:

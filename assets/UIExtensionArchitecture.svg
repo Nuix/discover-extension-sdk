@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="990"
-   height="765"
+   width="701"
+   height="396"
    id="svg2"
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
@@ -23,28 +23,30 @@
     <marker
        inkscape:stockid="Arrow1Lstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lstart"
        style="overflow:visible">
       <path
          id="path3804"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
-         transform="scale(0.8) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lend"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       style="overflow:visible;">
+       style="overflow:visible">
       <path
          id="path3807"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
        inkscape:stockid="Arrow1Lend"
@@ -56,8 +58,8 @@
       <path
          inkscape:connector-curvature="0"
          id="path3807-7"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
     <marker
@@ -70,8 +72,8 @@
       <path
          inkscape:connector-curvature="0"
          id="path4264"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
     <marker
@@ -84,8 +86,8 @@
       <path
          inkscape:connector-curvature="0"
          id="path4268"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
     <marker
@@ -98,8 +100,8 @@
       <path
          inkscape:connector-curvature="0"
          id="path4272"
-         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)" />
     </marker>
   </defs>
@@ -111,8 +113,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="473.89765"
-     inkscape:cy="632.42228"
+     inkscape:cx="251.54022"
+     inkscape:cy="267.50579"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -148,29 +150,29 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-287.36218)">
+     transform="translate(0,-656.36218)">
     <rect
        style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.00392157"
        id="rect1238"
        width="700"
        height="395"
-       x="40"
-       y="307.36218"
+       x="0"
+       y="657.36218"
        ry="0" />
     <rect
        style="opacity:0.95999995;fill:none;stroke:#000000;stroke-opacity:1"
        id="rect311"
        width="200"
        height="140"
-       x="390"
-       y="352.36218"
+       x="350"
+       y="702.36218"
        ry="10"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <rect
        ry="10"
-       y="392.36218"
-       x="70"
+       y="742.36218"
+       x="30"
        height="170"
        width="260"
        id="rect4355"
@@ -179,7 +181,7 @@
        inkscape:export-ydpi="96" />
     <g
        id="g251"
-       transform="translate(110,59.999972)"
+       transform="translate(70,409.99997)"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
@@ -209,7 +211,7 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 330,407.36218 h 80"
+       d="m 290,757.36218 h 80"
        id="path3798"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc"
@@ -218,7 +220,7 @@
     <path
        sodipodi:nodetypes="cc"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="M 300,457.36218 H 410"
+       d="M 260,807.36218 H 370"
        id="path4246"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="96"
@@ -229,18 +231,18 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="200"
-       y="417.36218"
+       x="160"
+       y="767.36218"
        id="text4357"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan4359"
-         x="200"
-         y="417.36218"
+         x="160"
+         y="767.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail Client Application</tspan></text>
     <g
-       transform="translate(320,20)"
+       transform="translate(280,370)"
        id="g293"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -267,7 +269,7 @@
     </g>
     <g
        id="g301"
-       transform="translate(320,70)"
+       transform="translate(280,420)"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
@@ -293,20 +295,20 @@
     </g>
     <text
        id="text309"
-       y="377.36218"
-       x="490"
+       y="727.36218"
+       x="450"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
-         y="377.36218"
-         x="490"
+         y="727.36218"
+         x="450"
          id="tspan307"
          sodipodi:role="line">Ringtail Webserver</tspan></text>
     <g
        id="g4871"
-       transform="translate(520,140)"
+       transform="translate(480,490)"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <text
@@ -330,7 +332,7 @@
          ry="5" />
     </g>
     <g
-       transform="translate(510,70)"
+       transform="translate(470,420)"
        id="g4881"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -357,7 +359,7 @@
     </g>
     <g
        id="g4967"
-       transform="translate(510,10)"
+       transform="translate(470,360)"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
@@ -386,20 +388,20 @@
        inkscape:export-xdpi="96"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="380"
-       y="332.36218"
+       x="340"
+       y="682.36218"
        id="text4971"><tspan
          sodipodi:role="line"
          id="tspan4969"
-         x="380"
-         y="332.36218"
+         x="340"
+         y="682.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail UI Extension Framework Architecture</tspan></text>
     <rect
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        ry="10"
-       y="352.36218"
-       x="50"
+       y="702.36218"
+       x="10"
        height="230"
        width="300"
        id="rect934"
@@ -409,40 +411,40 @@
        inkscape:export-xdpi="96"
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       x="200"
-       y="377.36218"
+       x="160"
+       y="727.36218"
        id="text938"><tspan
          sodipodi:role="line"
          id="tspan936"
-         x="200"
-         y="377.36218"
+         x="160"
+         y="727.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Client Browser</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
-       x="180"
-       y="487.36218"
+       x="140"
+       y="837.36218"
        id="text4965-4"><tspan
          sodipodi:role="line"
          id="tspan4963-7"
-         x="180"
-         y="487.36218"
+         x="140"
+         y="837.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end">postMessage</tspan><tspan
          sodipodi:role="line"
-         x="180"
-         y="504.86218"
+         x="140"
+         y="854.86218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end"
          id="tspan999">communication</tspan><tspan
          sodipodi:role="line"
-         x="180"
-         y="522.36218"
+         x="140"
+         y="872.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:end;text-anchor:end"
          id="tspan1072">protocol</tspan></text>
     <g
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        id="g1007"
-       transform="translate(510,49.999997)">
+       transform="translate(470,399.99999)">
       <rect
          style="opacity:0.95999995;fill:#97e7ff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
          id="rect1001"
@@ -466,19 +468,19 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
-       x="370"
-       y="402.36218"
+       x="330"
+       y="752.36218"
        id="text4965-4-8"><tspan
          sodipodi:role="line"
-         x="370"
-         y="402.36218"
+         x="330"
+         y="752.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
          id="tspan999-0">XHR</tspan></text>
     <g
        id="g1079"
-       transform="translate(0,-2.6171874e-6)">
+       transform="translate(-40,349.99999)">
       <rect
-         style="opacity:0.95999995;fill:#f2b67b;stroke:#000000;stroke-opacity:1;fill-opacity:0.95686275"
+         style="opacity:0.95999995;fill:#f2b67b;fill-opacity:0.95686275;stroke:#000000;stroke-opacity:1"
          id="rect1036"
          width="200"
          height="39.999996"
@@ -503,7 +505,7 @@
     </g>
     <g
        id="g1070"
-       transform="translate(130,-240)">
+       transform="translate(90,110)">
       <rect
          ry="10"
          y="682.36218"
@@ -511,7 +513,7 @@
          height="49.999992"
          width="100"
          id="rect940"
-         style="opacity:0.95999995;fill:#9ae59d;fill-opacity:0.96078432;stroke:#000000;stroke-opacity:1" />
+         style="opacity:0.95999995;fill:#9ae59d;fill-opacity:0.96078431;stroke:#000000;stroke-opacity:1" />
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
@@ -535,36 +537,36 @@
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path979"
-       d="m 210,467.36218 -90,10e-6"
+       d="m 170,817.36218 -90,1e-5"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)" />
     <path
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
        inkscape:connector-curvature="0"
        id="path1074"
-       d="m 310,532.36218 80,0"
+       d="m 270,882.36218 h 80"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        sodipodi:nodetypes="cc" />
     <text
        id="text1083"
-       y="452.36218"
-       x="370"
+       y="802.36218"
+       x="330"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
          id="tspan1081"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
-         y="452.36218"
-         x="370"
+         y="802.36218"
+         x="330"
          sodipodi:role="line">XHR</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
-       x="370"
-       y="527.36218"
+       x="330"
+       y="877.36218"
        id="text1087"><tspan
          sodipodi:role="line"
-         x="370"
-         y="527.36218"
+         x="330"
+         y="877.36218"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle"
          id="tspan1085">XHR</tspan></text>
     <path
@@ -572,22 +574,22 @@
        inkscape:export-xdpi="96"
        inkscape:connector-curvature="0"
        id="path1089"
-       d="m 430,522.36218 v -50"
+       d="m 390,872.36218 v -50"
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        sodipodi:nodetypes="cc" />
     <text
        id="text1097"
-       y="512.36218"
-       x="435"
+       y="862.36218"
+       x="395"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
          id="tspan1095"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="512.36218"
-         x="435"
+         y="862.36218"
+         x="395"
          sodipodi:role="line">HTTP Request</tspan></text>
     <g
-       transform="translate(510,110)"
+       transform="translate(470,460)"
        id="g4863"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -613,7 +615,7 @@
     </g>
     <g
        id="g1159"
-       transform="translate(280,110)">
+       transform="translate(240,460)">
       <text
          id="text4965-4-8-5"
          y="312.36218"
@@ -633,7 +635,7 @@
          r="7" />
     </g>
     <g
-       transform="translate(75,150)"
+       transform="translate(35,500)"
        id="g1167">
       <text
          xml:space="preserve"
@@ -655,7 +657,7 @@
     </g>
     <g
        id="g1175"
-       transform="translate(280,160)">
+       transform="translate(240,510)">
       <text
          id="text1171"
          y="312.36218"
@@ -675,7 +677,7 @@
          r="7" />
     </g>
     <g
-       transform="translate(280,235)"
+       transform="translate(240,585)"
        id="g1183">
       <text
          xml:space="preserve"
@@ -697,7 +699,7 @@
     </g>
     <g
        id="g1191"
-       transform="translate(330,200)">
+       transform="translate(290,550)">
       <text
          id="text1187"
          y="312.36218"
@@ -718,38 +720,38 @@
     </g>
     <text
        id="text3755-1"
-       y="612.36218"
-       x="70"
+       y="962.36218"
+       x="30"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="612.36218"
-         x="70"
+         y="962.36218"
+         x="30"
          sodipodi:role="line"
          id="tspan942-8">1. Browser loads the Ringtail client app and API auth tokens (JWTs)</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="629.02887"
-         x="70"
+         y="979.02887"
+         x="30"
          sodipodi:role="line"
          id="tspan1232">2. Extension client app uses the SDK to signal Ringtail and retrieve its API auth token</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="645.6955"
-         x="70"
+         y="995.6955"
+         x="30"
          sodipodi:role="line"
          id="tspan1236">    - If the extension provided a private key, Ringtail wraps the API auth token in a signed JWT</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="662.36218"
-         x="70"
+         y="1012.3622"
+         x="30"
          sodipodi:role="line"
          id="tspan1226">3. Extension client app uses the SDK to make API calls from the browser (SDK handles auth)</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="679.02887"
-         x="70"
+         y="1029.0288"
+         x="30"
          sodipodi:role="line"
          id="tspan1228">4. Extension client app passes the API auth token to its webserver</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
-         y="695.6955"
-         x="70"
+         y="1045.6956"
+         x="30"
          sodipodi:role="line"
          id="tspan1230">5. Extension webserver makes server-to-server API calls</tspan></text>
   </g>

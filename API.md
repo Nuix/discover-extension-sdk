@@ -320,7 +320,7 @@ Simple stateless, clickable button.
 Filterable combo box with preset choices.
 
 ## Tool Icons
-![Ringtail Tool Icons](RingtailToolIcons.png)
+![Ringtail Tool Icons](assets/RingtailToolIcons.png)
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
