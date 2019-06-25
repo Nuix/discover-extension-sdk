@@ -38,7 +38,7 @@
         }
     }
 
-    function getDeffered(requestId) {
+    function getDeferred(requestId) {
         var deferred = pendingClientQueries.get(requestId);
         if (deferred) {
             pendingClientQueries.delete(requestId);
@@ -50,7 +50,7 @@
 
     function handleWindowMessage(event) {
         var message = event.data;
-        var deferred = getDeffered(message.requestId);
+        var deferred = getDeferred(message.requestId);
 
         if (allowedDomains.length > 0 && allowedDomains.indexOf(event.origin) < 0) {
             var msg = 'Rejected message from non-whitelisted domain: ' + event.origin;
