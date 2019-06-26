@@ -11,11 +11,9 @@ This SDK provides an API to communicate with the Ringtail UI for use in UI exten
 ## About User Interface Extensions
 You can extend Ringtail by embedding third-party web applications directly into the Ringtail interface. Such external applications are called user interface extensions (UIX). Ringtail provides UIXs with user and workspace context and access to the Ringtail Connect API. This allows UIXs to read and write data to Ringtail and respond to user actions in the Ringtail UI.
 
-The following diagram shows how an external web application (green) can communicate with Ringtail (blue). The UI Extension SDK (yellow) provides the glue for UIX clients to communicate directly with Ringtail.
+The following diagram shows how an external web application (orange) can communicate with the Ringtail UI (gray) via the UI Extension SDK (green). In addition, the UI Extension SDK provides an API to facilitate directly calling the Ringtail Connect API (blue).
 
-![Ringtail App Communication](https://docs.google.com/drawings/d/e/2PACX-1vQaelod9Flf14CCSyP4MhR4Qznl6n_0EllVzdNiB5gnvsdsYqO5bcwMbTphlMZUbr7tgKqqniZ0HuOx/pub?w=572&h=272)
-
-[Edit the diagram](https://docs.google.com/drawings/d/19RsszUNRVVsDDBWSVHs8ffEncUDB66Hi78pgaAGGkhQ/edit?usp=sharing)
+![Ringtail UI Extenstion Architecture](assets/UIExtensionArchitecture.png)
 
 ## Install the SDK
 The SDK is available as a package on NPM:
@@ -26,7 +24,7 @@ To support IE11, you also need to provide promise and fetch polyfills, such as:
 
 `npm install promise-polyfill whatwg-fetch`
 
-> NOTE: This library only works in web browsers. For compatibility with the Ringtail application, UI extensions must support all browsers that Ringtail supports&mdash;as of March 2018, this includes Internet Explorer 11, Chrome, and Edge. For more information, see the client computer requirements in the *Ringtail Help*.
+> NOTE: This library only works in web browsers. For compatibility with the Ringtail application, UI extensions must support all browsers that Ringtail supports&mdash;as of December 2018, this includes Internet Explorer 11, Chrome, and Edge. For more information, see the client computer requirements in the *Ringtail Help*.
 
 ## Build Your Extension
 To communicate with Ringtail, initialize the SDK and then hook up listeners for the events that you are interested in. Here's an example that listens for and displays active document changes:
