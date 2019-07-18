@@ -1,6 +1,6 @@
 {
   "name": "ringtail-extension-sdk",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Provides APIs for UI Extensions to communicate with Ringtail",
   "main": "Ringtail.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "keywords": [
     "ringtail"
   ],
-  "author": "Collin Arnold <collin.arnold@fticonsulting.com>",
+  "author": "Collin Arnold <collin.arnold@nuix.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ringtail-software/ringtail-extension-sdk/issues"
