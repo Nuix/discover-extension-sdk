@@ -13,14 +13,20 @@ describe('initialize', () => {
                 if (ignoreList.has(key)) {
                     return;
                 }
-                if (typeof obj[key] === 'function') {
-                    if (nonPromiseList.has(obj[key].name)) {
-                        expect(obj[key]).toThrow(/initialize/);
-                    } else {
-                        expect(obj[key]()).rejects.toThrow(/initialize/);
-                    }
-                } else {
-                    tryCalling(obj[key]);
+                switch (typeof obj[key]) {
+                    case 'function':
+                        if (nonPromiseList.has(obj[key].name)) {
+                            expect(obj[key]).toThrow(/initialize/);
+                        } else {
+                            expect(obj[key]()).rejects.toThrow(/initialize/);
+                        }
+                        break;
+                    case 'object':
+                        tryCalling(obj[key]);
+                        break;
+                    default:
+                        // Skip static properties
+                        break;
                 }
             });
         }

@@ -38,7 +38,7 @@
         }
     }
 
-    function getDeffered(requestId) {
+    function getDeferred(requestId) {
         var deferred = pendingClientQueries.get(requestId);
         if (deferred) {
             pendingClientQueries.delete(requestId);
@@ -48,9 +48,21 @@
         return deferred;
     }
 
+    function compareVersions(version1, version2) {
+        const ver1 = version1.split('.');
+        const ver2 = version2.split('.');
+
+        for (let i = 0; i < ver1.length; ++i) {
+            // ~~ converts undefined and NaN to 0 which is QUITE convenient here
+            const diff = ~~ver2[i] - ~~ver1[i];
+            if (diff !== 0) return diff;
+        }
+        return 0;
+    }
+
     function handleWindowMessage(event) {
         var message = event.data;
-        var deferred = getDeffered(message.requestId);
+        var deferred = getDeferred(message.requestId);
 
         if (allowedDomains.length > 0 && allowedDomains.indexOf(event.origin) < 0) {
             var msg = 'Rejected message from non-whitelisted domain: ' + event.origin;
@@ -66,7 +78,8 @@
             case 'UserContext':
                 Ringtail.Context = message.data;
                 hostingDomain = event.origin;
-                if (Ringtail.Context.ringtailVersion < COMPATIBLE_RINGTAIL_VERSION) {
+
+                if (Ringtail.Context.ringtailVersion && compareVersions(Ringtail.SdkCompatibleWithVersion, Ringtail.Context.ringtailVersion) < 0) {
                     console.warn('WARNING: Ringtail "' + Ringtail.Context.ringtailVersion + '" is older than this SDK\'s compatible version: "' + COMPATIBLE_RINGTAIL_VERSION + '".');
                 }
                 break;
@@ -238,6 +251,8 @@
     }
 
     window.Ringtail = {
+        SdkCompatibleWithVersion: COMPATIBLE_RINGTAIL_VERSION,
+
         initialize: initialize,
         on: on,
         off: off,

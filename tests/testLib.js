@@ -14,14 +14,14 @@ module.exports = {
         return message;
     },
 
-    sendUserContextMessage() {
+    sendUserContextMessage(context) {
         return this.sendMessage({
             name: 'UserContext',
-            data: {
+            data: Object.assign({
                 apiUrl: this.apiUrl,
                 apiKey: this.apiKey,
                 authToken: this.authToken,
-            },
+            }, context),
             requestId: this.postMessageMock.mock.calls[0][0].requestId,
         }).data;
     }
