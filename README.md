@@ -80,4 +80,4 @@ In the UI Extensions area of the Ringtail portal you have several options for ad
 After the extension is added, click on it in the UI extension list to assign it to one or more Organizations and Cases. This step grants access to the extension for users in the allowed cases and causes Ringtail to automatically create any fields and statistics counters that are specified in the extension manifest.
 
 ### 3. In each Ringtail case, grant access to the extension for one or more user groups
-UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group, and refresh your browser to see the UIX in Ringtail.
+UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group and refresh your browser to see the UIX in Ringtail.
