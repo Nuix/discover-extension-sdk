@@ -44,7 +44,7 @@ These settings define basic features required for every UIX.
 - `annotations` <[Array]<[Annotation](#annotations)>> (Optional) Annotation types to create in each case that the UIX is assigned to.
 
 ## Fields
-When you provide field settings in an extension manifest, Ringtail is able to automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
+When you provide field settings in an extension manifest, Ringtail can automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
 
 - `id` <[Number]> Identifier for this field in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
@@ -65,7 +65,7 @@ When you provide field settings in an extension manifest, Ringtail is able to au
   - `Read` - Appears but is read-only
   - `Write` - Available for single coding
   - `MassCode` - Available for bulk coding
-- `items` <[Array]<[FieldItem](#field-items)>> Choices avaiable for `PickList` fields.
+- `items` <[Array]<[FieldItem](#field-items)>> Choices available for `PickList` fields.
 
 ## Field Items
 Field items are pre-defined choices for `PickList` fields.
