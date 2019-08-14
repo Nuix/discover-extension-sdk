@@ -2,7 +2,7 @@
 The document currently in view in the Conditional Coding and View panes in a [workspace](#workspace) and linked windows.
 
 ### Document ID
-User-visible string uniquely identifing documents in a Ringtail case. Not to be confused with [Main IDs](#main-id).
+User-visible string uniquely identifying documents in a Ringtail case. Not to be confused with [Main IDs](#main-id).
 
 ### Main ID
 Internal numerical ID of a document or Entity item in a Ringtail case. These are the primary means of referencing documents. Not to be confused with [Document ID](#document-id).
