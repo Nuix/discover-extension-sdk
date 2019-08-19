@@ -12,7 +12,7 @@ Follow these steps to securely authenticate Ringtail and create user sessions in
 1. __Create a user session from claims in the JWT.__ The JWT provided by Ringtail includes the following claims. Use them to construct a user session in your external system.
 
 ## JWT Claims
-These are the same values available in the client SDK via  `Ringtail.Context`, though they are structured slighly differently. All claims in the provided JWT will present as strings for compatibility with .NET [ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity(v=vs.110).aspx), but their source types are documented below for reference.
+These are the same values available in the client SDK via  `Ringtail.Context`, though they are structured slightly differently. All claims in the provided JWT will present as strings for compatibility with .NET [ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity(v=vs.110).aspx), but their source types are documented below for reference.
 
 - `uixId` <[Number]> ID of this UIX in Ringtail.
 - `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
