@@ -40,7 +40,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Tool Icons](#tool-icons)
 
 #### .initialize(domainWhitelist) ⇒ <[Promise]>
-- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. You can use this to restrict the domains that are allowed to host your UI extension, making it harder for unknown sites to spoof Ringtail.
+- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. You can use this to restrict the domains that can host your UI extension, making it harder for unknown sites to spoof Ringtail.
 - returns: A promise that resolves to the domain of the site hosting the UIX. After this, [Ringtail.Context](#context) is available and the SDK is ready for use.
 
 Initializes the SDK and registers the UIX with Ringtail.
@@ -229,7 +229,7 @@ Ringtail sends this event when a [Browse selection] changes.
 Sent when the UIX is hidden via changing the active workspace, pane collapse, navigating away, etc. No events will be sent to the UIX while it is hidden.
 
 #### PaneVisible
-Sent when the UIX becomes visible via changing the active workspace, pane expand, first load, etc. No events will be sent to the UIX until it is shown and the SDK initialized.
+Sent when the UIX becomes visible via changing the active workspace, pane expand, first load, etc. No events will be sent to the UIX until it is shown, and the SDK initialized.
 
 #### ToolAction
 - `id` <[String]> ID of the tool the user interacted with, provided by the [ToolConfig](#toolconfig).
@@ -305,7 +305,7 @@ All tools share these properties:
 
 #### button
 - `icon` <[String]> Name of the icon to display for this button. See [Tool Icons](#tool-icons) for the set of supported icons.
-- `label` <[String]> Display name of this button, displayed in toolips and menus.
+- `label` <[String]> Display name of this button, displayed in tooltips and menus.
 
 Simple stateless, clickable button.
 
