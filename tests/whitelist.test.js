@@ -42,4 +42,18 @@ describe('initialize', () => {
         expect(activeDocHandler).toHaveBeenCalledTimes(0);
         expect(console.warn).toHaveBeenCalledTimes(1);
     });
+
+    test('should ignore internal messages from its own domain', async () => {
+        const activeDocHandler = jest.fn().mockName('handleActiveDoc');
+        console.warn = jest.fn().mockName('console.warn');
+        Ringtail.on('ActiveDocument', activeDocHandler);
+
+        Test.sendMessage({
+            name: 'InteralMessageName',
+            data: {}
+        }, 'http://fake.domain'); // From package.json
+
+        expect(activeDocHandler).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(0);
+    });
 });

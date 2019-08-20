@@ -64,6 +64,10 @@
         var message = event.data;
         var deferred = getDeferred(message.requestId);
 
+        if (window.location.origin === event.origin) {
+            // Ignore messages sent internally - they should NOT cause warnings
+            return;
+        }
         if (allowedDomains.length > 0 && allowedDomains.indexOf(event.origin) < 0) {
             var msg = 'Rejected message from non-whitelisted domain: ' + event.origin;
             console.warn('WARNING:', msg);
