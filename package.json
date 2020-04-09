@@ -22,7 +22,7 @@
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-plugin-jest": "^21.13.0",
-    "jest": "^22.4.2"
+    "jest": "^22.4.4"
   },
   "jest": {
     "verbose": true,

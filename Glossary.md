@@ -16,7 +16,7 @@ The set of documents returned from a search and displayed in the List pane in a 
 ### Selected documents
 Documents checked in the List pane and displayed in the Working List that will be affected by bulk actions such as mass coding and export.
 
-### Browse selection
+### BrowseSelection
 Items selected in Browse sections and the Map concept wheel.
 
 ### Workspace

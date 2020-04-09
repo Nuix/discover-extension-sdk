@@ -197,6 +197,9 @@
         return clientQuery('LoadingMask', { show: !!loading });
     }
 
+    function showNotification(status, message){
+        return clientQuery('ShowNotification', {status, message});
+    }
 
     function getActiveDocument() {
         checkInitialized();
@@ -254,6 +257,18 @@
         return clientQuery('Tools_GetValues');
     }
 
+    function setToolWindowOkButtonEnabled(enabled){
+        return clientQuery('ToolWindow_SetOkButtonEnabled', {enabled});
+    }
+
+    function closeToolWindow(){
+        return clientQuery('ToolWindow_Close');
+    }
+
+    function loadDocumentSearchResult(searchResultId){
+        return clientQuery('ResultSet_Set', {searchResultId});
+    }
+
     window.Ringtail = {
         SdkCompatibleWithVersion: COMPATIBLE_RINGTAIL_VERSION,
 
@@ -263,6 +278,8 @@
 
         setLoading: setLoading,
         setTools: setTools,
+
+        showNotification: showNotification,
 
         query: serverQuery,
         clientQuery: clientQuery,
@@ -292,5 +309,11 @@
             set: setTools,
             getValues: getToolValues,
         },
+
+        ToolWindow: {
+            setOkButtonEnabled: setToolWindowOkButtonEnabled,
+            close: closeToolWindow,
+            loadSearchResult: loadDocumentSearchResult,
+        }
     };
 }());
