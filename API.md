@@ -8,6 +8,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
   - [.setLoading(loading)](#setloadingloading--promise)
+  - [.showNotification(status, message)](#shownotificationstatus-message--promise)
   - [.setTools(tools)](#settoolstools--promise)
   - [.query(graphQl[, variables])](#querygraphql-variables--promise)
   - [.Context](#context)
@@ -23,6 +24,11 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
     - [.get(fieldId)](#getfieldid--promise)
     - [.set(fieldId, values)](#setfieldid-values--promise)
     - [.select(fieldId, add, values)](#selectfieldid-add-values--promise)
+  - [.ToolWindow](#toolwindow)
+    - [.setOkButtonEnabled(enabled)](#setokbuttonenabledenabled--promise)
+    - [.close()](#close--promise)
+    - [.loadSearchResult(searchResultId)](#loadsearchresultsearchresultid--promise)
+
 - [Events](#events)
   - [ActiveDocument](#activedocument-1)
   - [DocumentSelection](#documentselection-1)
@@ -40,17 +46,17 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [Tool Icons](#tool-icons)
 
 #### .initialize(domainWhitelist) ⇒ <[Promise]>
-- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. You can use this to restrict the domains that can host your UI extension, making it harder for unknown sites to spoof Ringtail.
+- `domainWhitelist` <[Array]<[String]>> Optional array of whitelisted domains the UIX will accept messages from. If not provided, messages from any domain will be accepted. You can use this to restrict the domains that can host your UI extension, making it harder for unknown sites to spoof the application.
 - returns: A promise that resolves to the domain of the site hosting the UIX. After this, [Ringtail.Context](#context) is available and the SDK is ready for use.
 
-Initializes the SDK and registers the UIX with Ringtail.
+Initializes the SDK and registers the UIX with the application.
 
 #### .on(eventName, callback)
 - `eventName` <[String]> Name of the [event](#events) to listen for.
 - `callback` <[Function]> Callback function to be called with these parameters:
-  - `event` <[Event](#events)> Event object received from Ringtail.
+  - `event` <[Event](#events)> Event object received from the application.
 
-Subscribes the provided `callback` to be called when the given event is received from Ringtail.
+Subscribes the provided `callback` to be called when the given event is received from the application.
 
 #### .off(eventName, callback)
 - `eventName` <[String]> Name of the [event](#events) originally subscribed to.
@@ -64,36 +70,43 @@ Removes the provided `callback` subscription to the given event.
 
 Displays or hides a loading mask over the UIX to block user interactions.
 
-#### .setTools(tools) ⇒ <[Promise]>
-- `tools` <[Array]<[ToolConfig](#toolconfig)>> Array of tool configurations to display in Ringtail.
-- returns: A promise that resolves when the tools have successfully been constructed and populated in the Ringtail UI. Rejects with details if the tool config was malformed.
+#### .showNotification(status, message) ⇒ <[Promise]>
+- `status` <[String]> `success` to display the success icon, `warning` to display the warning icon, `error` to display the error icon.
+- `message` <[String]> The message to display in the notification toast.
+- returns: A promise that resolves once the notification has been shown.
 
-Allows a UIX to display buttons and other simple UI widgets in Ringtail's toolbars, giving them a native look and feel. To be notified when users interact with these tools, subscribe to the [ToolAction](#toolaction) event.
+Displays a notification toast to the user with the given status icon and the given message.
+
+#### .setTools(tools) ⇒ <[Promise]>
+- `tools` <[Array]<[ToolConfig](#toolconfig)>> Array of tool configurations to display in the application.
+- returns: A promise that resolves when the tools have successfully been constructed and populated in the application's UI. Rejects with details if the tool config was malformed.
+
+Allows a UIX to display buttons and other simple UI widgets in the application's toolbars, giving them a native look and feel. To be notified when users interact with these tools, subscribe to the [ToolAction](#toolaction) event.
 
 #### .query(graphQl[, variables]) ⇒ <[Promise]>
-- `graphQl` <[String]> [GraphQL]((http://graphql.org/learn/)) query for Ringtail's Connect API.
+- `graphQl` <[String]> [GraphQL]((http://graphql.org/learn/)) query for the application's Connect API.
 - `variables` <[Object]> (Optional) Object providing values for variables in the query.
 - returns: A promise that resolves to the results of the query.
 
-Executes the given [GraphQL]((http://graphql.org/learn/)) query against Ringtail in the context of the current user. Use Ringtail's Connect API Explorer (available from the Portal) to build and test queries and review documentation.
+Executes the given [GraphQL]((http://graphql.org/learn/)) query against the application in the context of the current user. Use the application's Connect API Explorer (available from the Portal) to build and test queries and review documentation.
 
 
-### .Context
-Static object containing context information about the current Ringtail user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
-- `uixId` <[Number]> ID of this UIX in Ringtail.
-- `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
-- `portalUrl` <[String]> Public URL of this Ringtail instance.
+### .ContextF
+Static object containing context information about the current application user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
+- `uixId` <[Number]> ID of this UIX in the application.
+- `portalUserId` <[Number]> ID of the current user in this application portal.
+- `portalUrl` <[String]> Public URL of this application's instance.
 - `userName` <[String]> Current user's username.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
-- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with a Ringtail case.
+- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with an application case.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
 - `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
-- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
-- `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
+- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the application's Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
+- `hostLocation` <[String]> Name of the location in the application where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Documents area workspace pane
   - `Case` - Case home page
-- `ringtailVersion` <[String]> Version of Ringtail the UIX is running in, such as `9.5.000.fe6290c`.
+- `ringtailVersion` <[String]> Version of the application the UIX is running in, such as `9.5.000.fe6290c`.
 - `configuration` <[Array]<[Configuration](#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array will be empty if no configs are provided. See [Configuration](#configuration) for more information.
 - `externalAuthToken` <[String]> (Optional) JWT wrapping this context information as claims and signed with the UIX's authentication secret. This value will only be provided if an authentication secret was provided during UIX installation. It is intended for use in verifying authenticity of the hosting application for scenarios such as automatic login. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
 - `annotationSource` <[Number]> ID to use when annotating documents to indicate they should be printed by the extension for production. See [External File Printing](ExternalFilePrinting.md) for more information.
@@ -127,11 +140,11 @@ If there is no active document (due to no active [search result] for example) fi
 
 #### .set(mainId) ⇒ <[Promise]>
 - `mainId` <[Main ID]> Main ID of the document to activate.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
 
 ### .DocumentSelection
-Document selection in Ringtail is tied to a [search result]. This means that documents cannot be selected if there is no active [search result], and they cannot be selected UNLESS they are present in the active [search result]. Subscribe to the [DocumentSelection](#documentselection-1) event to be notified on change.
+Document selection in the application is tied to a [search result]. This means that documents cannot be selected if there is no active [search result], and they cannot be selected UNLESS they are present in the active [search result]. Subscribe to the [DocumentSelection](#documentselection-1) event to be notified on change.
 
 #### .get() ⇒ <[Promise]>
 - returns: A promise resolving to an object with these properties:
@@ -141,27 +154,27 @@ This request may take a long time to complete depending on the size of the activ
 
 #### .set(mainIds) ⇒ <[Promise]>
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
 Clears any prior selection and selects the given documents. Pass an empty array to clear the selection.
 
 #### .select(add, mainIds) ⇒ <[Promise]>
 - `add` <[Boolean]> `true` to select the given documents, `false` to deselect.
 - `mainIds` <[Array]<[Main ID]>> Main IDs of the documents to select or deselect.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
 Incrementally modifies the current document selection.
 
 #### .selectAll() ⇒ <[Promise]>
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
 Selects all documents in the active [search result].
 
 
 ### .BrowseSelection
-[Browse selection] is the set of selected field values in the Browse pane. Browse sections are tied to Ringtail fields and are uniquely identified by field IDs. Subscribe to the [BrowseSelection](#browseselection-1) event to be notified on change.
+[BrowseSelection] is the set of selected field values in the Browse pane. Browse sections are tied to the application fields and are uniquely identified by field IDs. Subscribe to the [BrowseSelection](#browseselection-1) event to be notified on change.
 
-> NOTE: Only pick list fields are supported for Browse selection.
+> NOTE: Only pick list fields are supported for BrowseSelection.
 
 #### .get(fieldId) ⇒ <[Promise]>
 - `fieldId` <[String]> ID of the field for which to retrieve its selection.
@@ -171,7 +184,7 @@ Selects all documents in the active [search result].
 #### .set(fieldId, values) ⇒ <[Promise]>
 - `fieldId` <[String]> ID of the field for which to replace the selection.
 - `values` <[Array]<[Number]>> Array of IDs of the values to select.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
 Clears any prior selection and selects the provided values for the given Browse section. Pass an empty array to clear the selection for a Browse section.
 
@@ -179,13 +192,33 @@ Clears any prior selection and selects the provided values for the given Browse 
 - `fieldId` <[String]> ID of the field for which to alter the selection.
 - `add` <[Boolean]> `true` to select the given field values, `false` to deselect.
 - `values` <[Array]<[Number]>> Array of IDs of the values to select or deselect.
-- returns: A promise that resolves upon Ringtail's acknowledgement of the request.
+- returns: A promise that resolves upon the application's acknowledgement of the request.
 
-Incrementally modifies the current Browse selection.
+Incrementally modifies the current BrowseSelection.
+
+### .ToolWindow
+The Tool window is available for the [Workspace] tools UI Extensions (UIX).  It can be used to interact with the hosting window or to change the [search result].
+
+#### .setOkButtonEnabled(enabled) => <[Promise]>
+- `enabled` <[Boolean]> `true` to enable the OK button, `false` to disable
+- returns: A promise that resolves when the OK button has been enabled or disabled
+
+Enables or disables the OK button in the [Workspace] tools UIX window
+
+#### .close() => <[Promise]>
+- returns: A promise that resolves when the Workspace tools UIX window has been closed.
+
+Closes the [Workspace] tools UIX window
+
+#### .loadSearchResult(searchResultId) => <[Promise]>
+- `searchResultId` ID of the [search result] to load in the [Workspace]
+- returns: A promise that resolves after the [search result] has been loaded
+
+Loads the [Workspace] with the [search result] for the given searchResultId
 
 
 # Events
-Events sent from Ringtail's UI have this structure:
+Events sent from the application's UI have this structure:
 ```js
 {
     "name": "ActiveDocument", // Required, always present
@@ -197,7 +230,7 @@ Events sent from Ringtail's UI have this structure:
     }
 }
 ```
-Event properties are nested in a `data` object, so access them like so:
+Event properties are nested in a `data` object.  Use the following fields and object syntax to access them.
 
 ```js
 var mainid = event.data.mainId;
@@ -212,18 +245,18 @@ var mainid = event.data.mainId;
 - `searchResultId` <[Number]> ID of the active [search result].
 - `entityId` <[Number]> ID of the active document's entity type.
 
-This event is sent from Ringtail whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [search result] for example) these fields will be `null`.
+This event is sent from the application whenever the [active document](Glossary.md#active-document) changes. If there is no active document (due to an empty [search result] for example) these fields will be `null`.
 
 #### DocumentSelection
 - `selectedCount` <[Number]> Total number of selected documents.
 
-This event is sent from Ringtail whenever the selected documents change.
+This event is sent from the application whenever the selected documents change.
 
 #### BrowseSelection
-- `fieldId` <[String]> ID of the field who's Browse selection has changed.
+- `fieldId` <[String]> ID of the field who's BrowseSelection has changed.
 - `values` <[Array]<[Number]>> All values of the field that are currently selected.
 
-Ringtail sends this event when a [Browse selection] changes.
+The application sends this event when a [BrowseSelection] changes.
 
 #### PaneHidden
 Sent when the UIX is hidden via changing the active workspace, pane collapse, navigating away, etc. No events will be sent to the UIX while it is hidden.
@@ -237,9 +270,12 @@ Sent when the UIX becomes visible via changing the active workspace, pane expand
 
 ToolAction events are fired when the user interacts with tools constructed by [setTools](#settoolstools-promise).
 
+#### WorkspaceTools_OkClick
+This event is sent from the application when a [Workspace] tools UI Extension window's OK button is clicked.
+
 
 # Configuration
-UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
+UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. The application stores and provides these upon initialization and mandates no format or schema.
 
 __NOTE:__ If you store sensitive information in configurations, [Authentication with JWTs](AuthWithJWTs.md) is recommended to transmit the configurations securely and trust their authenticity.
 
@@ -248,7 +284,7 @@ Configurations can be specified at the UI extension, organization, and case leve
 
 For example, given these configurations as JSON strings:
 ```js
-var configsFromRingtail = ['{"a":false}', '{"b":12}', '{"a":true}']; // From Ringtail.Context.configuration
+var configsFromRingtail = ['{"a":false}', '{"b":12}', '{"a":true}']; // From the application.Context.configuration
 //                            ^ UIX ^      ^ Org ^      ^ Case ^
 ```
 
@@ -272,7 +308,7 @@ This strategy facilitates flexible reuse and sharing of configuration across org
 
 
 # ToolConfig
-Ringtail provides the capability for UIXs to construct native UI widgets called `Tools` which are built from plain JSON-object specifications called `ToolConfigs`.
+The application provides the capability for UIXs to construct native UI widgets called `Tools` which are built from plain JSON-object specifications called `ToolConfigs`.
 
 Here are some examples:
 ```js
@@ -336,7 +372,7 @@ Filterable combo box with preset choices.
 
 [Active document]: Glossary.md#active-document "Active docum,ent"
 [Document ID]: Glossary.md#document-id "Document ID"
-[Browse selection]: Glossary.md#browse-selection "Browse selection"
+[BrowseSelection]: Glossary.md#browse-selection "BrowseSelection"
 [Main ID]: Glossary.md#main-id "Main ID"
 [Search result]: Glossary.md#result-set "Search result"
 [Workspace]: Glossary.md#workspace "Workspace"

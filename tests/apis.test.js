@@ -24,6 +24,20 @@ describe('setLoading', async () => {
     });
 });
 
+describe('showNotification', async () => {
+    test('should send the ShowNotification message', async () => {
+        let promise = Ringtail.showNotification('error', 'an error occurred');
+        verifyMessageSent('ShowNotification', { status: 'error', message: 'an error occurred' });
+        await promise;
+        promise = Ringtail.showNotification('warning', 'a warning occurred');
+        verifyMessageSent('ShowNotification', { status: 'warning', message: 'a warning occurred' });
+        await promise;
+        promise = Ringtail.showNotification('success', 'saul goodman');
+        verifyMessageSent('ShowNotification', { status: 'success', message: 'saul goodman' });
+        await promise;
+    });
+});
+
 describe('ActiveDocument', () => {
     describe('set', () => {
         test('should send the ActiveDocument_Set message', async () => {
@@ -112,6 +126,28 @@ describe('DocumentSelection', () => {
     });
 });
 
+describe('ToolWindow', () => {
+    test('should send the ToolWindow_SetOkButtonEnabled message', async () => {
+        let promise = Ringtail.ToolWindow.setOkButtonEnabled(true);
+        verifyMessageSent('ToolWindow_SetOkButtonEnabled', { enabled: true });
+        await promise;
+        promise = Ringtail.ToolWindow.setOkButtonEnabled(false);
+        verifyMessageSent('ToolWindow_SetOkButtonEnabled', { enabled: false });
+        await promise;
+    });
+
+    test('should send the ToolWindow_Close message', async () => {
+        let promise = Ringtail.ToolWindow.close();
+        verifyMessageSent('ToolWindow_Close');
+        await promise;
+    });
+
+    test('should send the ResultSet_Set message', async () => {
+        let promise = Ringtail.ToolWindow.loadSearchResult(1234);
+        verifyMessageSent('ResultSet_Set', { searchResultId: 1234 });
+        await promise;
+    });
+});
 
 async function verifyMessageSent(name, sendData, receiveData) {
     expect(Test.postMessageMock).toHaveBeenCalledTimes(1);

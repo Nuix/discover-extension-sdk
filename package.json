@@ -1,7 +1,7 @@
 {
   "name": "ringtail-extension-sdk",
-  "version": "0.9.9",
-  "description": "Provides APIs for UI Extensions to communicate with Ringtail",
+  "version": "1.0.0",
+  "description": "Provides APIs for UI Extensions to communicate with the application",
   "main": "Ringtail.js",
   "scripts": {
     "test": "jest"
@@ -22,7 +22,7 @@
   "devDependencies": {
     "eslint": "^4.18.2",
     "eslint-plugin-jest": "^21.13.0",
-    "jest": "^22.4.2"
+    "jest": "^22.4.4"
   },
   "jest": {
     "verbose": true,
