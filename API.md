@@ -91,18 +91,18 @@ Allows a UIX to display buttons and other simple UI widgets in the application's
 Executes the given [GraphQL]((http://graphql.org/learn/)) query against the application in the context of the current user. Use the application's Connect API Explorer (available from the Portal) to build and test queries and review documentation.
 
 
-### .Context
-Static object containing context information about the current Ringtail user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
+### .ContextF
+Static object containing context information about the current application user. It is available once the SDK is [initialized](#initialize--promise) and has these fields:
 - `uixId` <[Number]> ID of this UIX in the application.
-- `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
+- `portalUserId` <[Number]> ID of the current user in this application portal.
 - `portalUrl` <[String]> Public URL of this application's instance.
 - `userName` <[String]> Current user's username.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
-- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with a Ringtail case.
+- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with an application case.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
 - `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
-- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
+- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the application's Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in the application where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Documents area workspace pane
   - `Case` - Case home page
@@ -275,7 +275,7 @@ This event is sent from the application when a [Workspace] tools UI Extension wi
 
 
 # Configuration
-UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. Ringtail stores and provides these upon initialization and mandates no format or schema.
+UIX configurations are optional strings that can contain anything the UIX needs to setup or configure itself, such as license keys, INI variables, XML, or JSON. The application stores and provides these upon initialization and mandates no format or schema.
 
 __NOTE:__ If you store sensitive information in configurations, [Authentication with JWTs](AuthWithJWTs.md) is recommended to transmit the configurations securely and trust their authenticity.
 
