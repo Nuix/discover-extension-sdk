@@ -36,6 +36,7 @@ The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the 
   - [PaneHidden](#panehidden)
   - [PaneVisible](#panevisible)
   - [ToolAction](#toolaction)
+  - [WorkspaceTools_OkClick](#workspacetools_okclick)
 - [Configuration](#configuration)
   - [Recommended Use](#recommended-use)
 - [ToolConfig](#toolconfig)
