@@ -101,6 +101,8 @@ Static object containing context information about the current application user.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
 - `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with an application case.
+- `orgId` <[Number]> ID of the user's current organization, or `null` if in the portal.
+- `orgName` <[String]> Display name of the current organization or `null` if in the portal.
 - `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
 - `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
 - `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the application's Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
