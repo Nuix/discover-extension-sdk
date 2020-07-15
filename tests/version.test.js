@@ -3,7 +3,7 @@ require('../Ringtail');
 
 const Test = require('./testLib');
 
-describe('version', async () => {
+describe('version', () => {
 
     test('should warn if Ringtail version is smaller', async () => {
         Ringtail.initialize();

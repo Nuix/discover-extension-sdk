@@ -3,7 +3,7 @@ require('../Ringtail');
 
 const Test = require('./testLib');
 
-describe('on/off', async () => {
+describe('on/off', () => {
     test('should not be able to capture messages with requestIds', async () => {
         const callback1 = jest.fn().mockName('callback1');
 
