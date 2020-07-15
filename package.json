@@ -20,9 +20,9 @@
   },
   "homepage": "https://github.com/ringtail-software/ringtail-extension-sdk#readme",
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-plugin-jest": "^21.13.0",
-    "jest": "^22.4.4"
+    "eslint": "^7.4.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "jest": "^26.1.0"
   },
   "jest": {
     "verbose": true,
