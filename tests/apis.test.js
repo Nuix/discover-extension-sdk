@@ -10,7 +10,7 @@ test('setup', async () => {
     Test.postMessageMock.mockClear();
 });
 
-describe('setLoading', async () => {
+describe('setLoading',  () => {
     test('should send the LoadingMask message', async () => {
         let promise = Ringtail.setLoading(false);
 
@@ -24,7 +24,7 @@ describe('setLoading', async () => {
     });
 });
 
-describe('showNotification', async () => {
+describe('showNotification',  () => {
     test('should send the ShowNotification message', async () => {
         let promise = Ringtail.showNotification('error', 'an error occurred');
         verifyMessageSent('ShowNotification', { status: 'error', message: 'an error occurred' });
