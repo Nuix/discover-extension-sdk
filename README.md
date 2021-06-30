@@ -81,3 +81,21 @@ After the extension is added, click on it in the UI extension list to assign it 
 
 ### 3. In each Discover case, grant access to the extension for one or more user groups
 UI extensions assigned to cases show up in the Features page of the Security area for case administrators. Allow access to the extension for your current user group and refresh your browser to see the UIX in Discover.
+
+# License
+
+```
+Copyright 2021 Nuix
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
