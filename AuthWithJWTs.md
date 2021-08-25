@@ -1,35 +1,35 @@
-# Authentication with JWTs - Ringtail 9.6.009
+# Authentication with JWTs
 
-During initialization, Ringtail provides each UI extension with authentication credentials, allowing the UI extension to make Ringtail Connect API calls on behalf of the current user. This provides secure access to Ringtail&mdash;but, it does not prove the legitimacy of either the user or the Ringtail instance that hosts the UI extension. Therefore, if your UI extension maintains its own data outside Ringtail, you must take further steps to establish trust with Ringtail.
+During initialization, Discover provides each UI extension with authentication credentials, allowing the UI extension to make Discover Connect API calls on behalf of the current user. This provides secure access to Discover&mdash;but, it does not prove the legitimacy of either the user or the Discover instance that hosts the UI extension. Therefore, if your UI extension maintains its own data outside Discover, you must take further steps to establish trust with Discover.
 
-## Establishing Trust with Ringtail
-Follow these steps to securely authenticate Ringtail and create user sessions in an external system.
+## Establishing Trust with Discover
+Follow these steps to securely authenticate Discover and create user sessions in an external system.
 
-1. __Provide a `privateKey` value when installing your UI extension.__ This provides Ringtail with a secret known only to your UI extension and Ringtail. Ringtail will then use this to sign a [JSON Web Token (JWT)](https://jwt.io/) provided to your UI extension during initialization. See the [extension manifest documentation](ExtensionManifest.md#top-level-settings) for details on this setting.
+1. __Provide a `privateKey` value when installing your UI extension.__ This provides Discover with a secret known only to your UI extension and Discover. Discover will then use this to sign a [JSON Web Token (JWT)](https://jwt.io/) provided to your UI extension during initialization. See the [extension manifest documentation](ExtensionManifest.md#top-level-settings) for details on this setting.
 
 1. __Send `Ringtail.Context.externalAuthToken` to your web server during initialization.__ Once initialized, the UI extension SDK provides the signed JWT to your UI extension through its global context. Send it to your web server to validate the JWT signature against the `privateKey` provided in step 1.
 
-1. __Create a user session from claims in the JWT.__ The JWT provided by Ringtail includes the following claims. Use them to construct a user session in your external system.
+1. __Create a user session from claims in the JWT.__ The JWT provided by Discover includes the following claims. Use them to construct a user session in your external system.
 
 ## JWT Claims
 These are the same values available in the client SDK via  `Ringtail.Context`, though they are structured slightly differently. All claims in the provided JWT will present as strings for compatibility with .NET [ClaimsIdentity](https://msdn.microsoft.com/en-us/library/system.security.claims.claimsidentity(v=vs.110).aspx), but their source types are documented below for reference.
 
-- `uixId` <[Number]> ID of this UIX in Ringtail.
-- `portalUserId` <[Number]> ID of the current user in this Ringtail portal.
-- `portalUrl` <[String]> Public URL of this Ringtail instance.
+- `uixId` <[Number]> ID of this UIX in Discover.
+- `portalUserId` <[Number]> ID of the current user in this Discover portal.
+- `portalUrl` <[String]> Public URL of this Discover instance.
 - `userName` <[String]> Current user's user name.
 - `caseId` <[Number]> ID of the user's current case, or `0` if in the portal.
 - `caseName` <[String]> Display name of the current case or `null` if in the portal.
-- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with a Ringtail case.
+- `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with a Discover case.
 - `orgId` <[Number]> ID of the user's current organization, or `` if in the portal.
 - `orgName` <[String]> Display name of the current organizaton or `` if in the portal.
-- `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
-- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
-- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Ringtail Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
-- `hostLocation` <[String]> Name of the location in Ringtail where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
+- `apiUrl` <[String]> URL to use to make API server calls, such as `http://nuix.com/Ringtail-Svc-Portal/api/query`.
+- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://nuix.com/Ringtail-Svc-Portal/api/download`.
+- `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Discover Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
+- `hostLocation` <[String]> Name of the location in Discover where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Workspace pane on the Documents page
   - `Case` - Case Home page
-- `ringtailVersion` <[String]> Version of Ringtail that the UIX is running in, such as `9.5.000.fe6290c`.
+- `ringtailVersion` <[String]> Version of Discover that the UIX is running in, such as `9.5.000.fe6290c`.
 - `context` <[String]> Additional structured data as a JSON-encoded string. Parse this with a JSON decoder to extract these properties.
     - `configuration` <[Array]<[Configuration](API.md#configuration)>> An array of optional configuration strings provided by the administrator when adding UIXs. The array is empty if no configs are provided. See [Configuration](API.md#configuration) for more information.
     - `annotationSource` <[Number]> ID to use when annotating documents to indicate they should be printed by the extension for production. See [External File Printing](ExternalFilePrinting.md) for more information.

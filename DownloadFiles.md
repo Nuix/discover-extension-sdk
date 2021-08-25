@@ -10,7 +10,7 @@ A UIX can identify the file to download in the following ways:
 ## Usage notes
 Note the following:
 - This endpoint allows users to download files only through a UIX. Users cannot download files by calling the endpoint directly.
-- A user can download a file though a UIX even if the security for the **Document - Download** option on the Case Home > Security > Features page in Ringtail is set to Deny for the user's group.
+- A user can download a file though a UIX even if the security for the **Document - Download** option on the Case Home > Security > Features page in Discover is set to Deny for the user's group.
 - A user cannot download a file associated with a document if the user does not have access to the document, or if the document contains branded redactions.
 - Images can be downloaded for documents that have been imaged into a format such as PDF or .tiff.
 - Images are returned at 100% scale. This may result in large images being returned, particularly for documents that were scanned at a high DPI (dots per inch).
@@ -20,7 +20,7 @@ Note the following:
 ### Endpoint
 `POST /Ringtail-Svc-Portal/api/download`
 
-Depending on how Ringtail is installed, the download URL may vary. The download URL is defined by `downloadUrl` in [Ringtail.Context](API.md#context).
+Depending on how Discover is installed, the download URL may vary. The download URL is defined by `downloadUrl` in [Ringtail.Context](API.md#context).
 
 ### HTTP header
 `Authorization: bearer {APIToken}`
@@ -36,9 +36,9 @@ Depending on how the UIX identifies the file to download, the required parameter
 | Parameter | Description | Type | Required? | Notes |
 | --- | --- | --- | --- | --- |
 | caseId | Case ID. Identifies the case in the portal. | int | Required |  |
-| fileId | File ID. Identifies the file in the case. | string | Required | Retrieve a file ID using the Ringtail Connect API. |
+| fileId | File ID. Identifies the file in the case. | string | Required | Retrieve a file ID using the Discover Connect API. |
 
-For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=6078&fileId=C.12345
+For example: http://nuix.com/Ringtail-Svc-Portal/api/download?caseId=6078&fileId=C.12345
 
 **To download a content file based on the content file type ranking:**
 
@@ -48,7 +48,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 | mainId | Document Main ID. Identifies the document in the case. | int | Required |  |
 | contentFileRank | Rank of the content file displayed in the View pane. | int | Required | The highest ranked content file has a `contentFileRank` of 1. |
 
-For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=3024&mainId=39456&contentFileRank=1
+For example: http://nuix.com/Ringtail-Svc-Portal/api/download?caseId=3024&mainId=39456&contentFileRank=1
 
 **To download a page file based on the page file number:**
 
@@ -58,7 +58,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 | mainId | Document Main ID. Identifies the document in the case. | int | Required |  |
 | pageFileNumber | Sequential order of the file among the document's page files. | int | Required | The first page has a `pageFileNumber` of 1.|
 
-For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=99810&pageFileNumber=2
+For example: http://nuix.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=99810&pageFileNumber=2
 
 **To download an image of a page as a .jpg or .png:**
 
@@ -70,7 +70,7 @@ For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId
 | pageNum | The number of the page that you want to return, for a page file that has multiple pages. | int | Required |  |
 | imageFormat | The file type that you want to return the image as. Specify one of `jpg` or `png`. | string | Optional | Default is jpg. |
 
-For example: http://ringtail.example.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=29384&pageId=23901&pageNum=4&imageFormat=png
+For example: http://nuix.com/Ringtail-Svc-Portal/api/download?caseId=201&mainId=29384&pageId=23901&pageNum=4&imageFormat=png
 
 ## Errors
 403:

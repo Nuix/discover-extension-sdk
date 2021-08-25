@@ -13,7 +13,7 @@
    height="396"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="UIExtensionArchitecture.svg"
    inkscape:export-filename="D:\TFS_Data\Ringtail\ringtail-extension-sdk\assets\UIExtensionArchitecture.png"
    inkscape:export-xdpi="96"
@@ -113,16 +113,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4142136"
-     inkscape:cx="339.32296"
-     inkscape:cy="211.02704"
+     inkscape:cx="201.79069"
+     inkscape:cy="214.56257"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1603"
-     inkscape:window-height="1180"
-     inkscape:window-x="259"
-     inkscape:window-y="258"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
      inkscape:snap-nodes="true"
      inkscape:snap-global="true"
      inkscape:snap-text-baseline="true">
@@ -240,7 +240,7 @@
          id="tspan4359"
          x="160"
          y="767.36218"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail Client Application</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.33333397px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Discover Client Application</tspan></text>
     <g
        transform="translate(280,370)"
        id="g293"
@@ -265,7 +265,7 @@
            y="392.36218"
            x="170"
            id="tspan289"
-           sodipodi:role="line">Ringtail Server App</tspan></text>
+           sodipodi:role="line">Discover Server App</tspan></text>
     </g>
     <g
        id="g301"
@@ -305,7 +305,7 @@
          y="727.36218"
          x="450"
          id="tspan307"
-         sodipodi:role="line">Ringtail Webserver</tspan></text>
+         sodipodi:role="line">Discover Webserver</tspan></text>
     <g
        id="g4871"
        transform="translate(480,490)"
@@ -395,7 +395,7 @@
          id="tspan4969"
          x="340"
          y="682.36218"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Ringtail UI Extension Framework Architecture</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:center;text-anchor:middle">Discover UI Extension Framework Architecture</tspan></text>
     <rect
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -723,22 +723,24 @@
        y="962.36218"
        x="30"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
          y="962.36218"
          x="30"
          sodipodi:role="line"
-         id="tspan942-8">1. Browser loads the Ringtail client app and API auth tokens (JWTs)</tspan><tspan
+         id="tspan942-8">1. Browser loads the Discover client app and API auth tokens (JWTs)</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
          y="979.02887"
          x="30"
          sodipodi:role="line"
-         id="tspan1232">2. Extension client app uses the SDK to signal Ringtail and retrieve its API auth token</tspan><tspan
+         id="tspan1232">2. Extension client app uses the SDK to signal Discover and retrieve its API auth token</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
          y="995.6955"
          x="30"
          sodipodi:role="line"
-         id="tspan1236">    - If the extension provided a private key, Ringtail wraps the API auth token in a signed JWT</tspan><tspan
+         id="tspan1236">    - If the extension provided a private key, Discover wraps the API auth token in a signed JWT</tspan><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333302px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';text-align:start;text-anchor:start"
          y="1012.3622"
          x="30"
