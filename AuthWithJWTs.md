@@ -23,8 +23,8 @@ These are the same values available in the client SDK via  `Ringtail.Context`, t
 - `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with a Discover case.
 - `orgId` <[Number]> ID of the user's current organization, or `` if in the portal.
 - `orgName` <[String]> Display name of the current organizaton or `` if in the portal.
-- `apiUrl` <[String]> URL to use to make API server calls, such as `http://nuix.com/Ringtail-Svc-Portal/api/query`.
-- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://nuix.com/Ringtail-Svc-Portal/api/download`.
+- `apiUrl` <[String]> URL to use to make API server calls, such as `http://discover.example.com/Ringtail-Svc-Portal/api/query`.
+- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://discover.example.com/Ringtail-Svc-Portal/api/download`.
 - `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the Discover Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in Discover where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Workspace pane on the Documents page
