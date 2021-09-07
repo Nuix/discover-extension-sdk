@@ -29,6 +29,6 @@
     "testURL": "http://fake.domain/"
   },
   "dependencies": {
-    "node-notifier": "8.0.1"
+    "node-notifier": "^8.0.1"
   }
 }
