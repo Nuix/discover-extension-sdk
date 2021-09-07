@@ -1,9 +1,9 @@
-# Ringtail UIX API - Ringtail 9.6.009
-The Ringtail UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
+# Discover UIX API
+The Discover UI Extension SDK is available from the `Ringtail` namespace on the global `window` object.
 
 **Conventions:** Nested namespaces are PascalCase and API methods are camelCase.
 
-- [Ringtail](#ringtail-uix-api)
+- [Discover](#ringtail-uix-api)
   - [.initialize(domainWhitelist)](#initializedomainwhitelist--promise)
   - [.on(eventName, callback)](#oneventname-callback)
   - [.off(eventName, callback)](#offeventname-callback)
@@ -103,8 +103,8 @@ Static object containing context information about the current application user.
 - `caseUuid` <[String]> **9.7.003** Globally unique identifier for this case, such as `B5805A45-8537-47E2-A9EE-A946B70D5EE9`. Use this to associate data in external systems with an application case.
 - `orgId` <[Number]> ID of the user's current organization, or `null` if in the portal.
 - `orgName` <[String]> Display name of the current organization or `null` if in the portal.
-- `apiUrl` <[String]> URL to use to make API server calls, such as `http://ringtail.com/Ringtail-Svc-Portal/api/query`.
-- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://ringtail.com/Ringtail-Svc-Portal/api/download`.
+- `apiUrl` <[String]> URL to use to make API server calls, such as `http://discover.example.com/Ringtail-Svc-Portal/api/query`.
+- `downloadUrl` <[String]> **9.7.003** URL to use to download document files and images, such as `http://discover.example.com/Ringtail-Svc-Portal/api/download`.
 - `apiAuthToken` <[String]> Authentication token to make API calls on behalf of the current user to the application's Connect API. Looks like `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik...`.
 - `hostLocation` <[String]> Name of the location in the application where this extension is hosted, allowing UIX web apps to alter their behavior when run from different locations. Will be one of:
   - `Workspace` - Documents area workspace pane
@@ -359,7 +359,7 @@ Simple stateless, clickable button.
 Filterable combo box with preset choices.
 
 ## Tool Icons
-![Ringtail Tool Icons](assets/RingtailToolIcons.png)
+![Discover Tool Icons](assets/DiscoverToolIcons.png)
 
 
 [null]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null "null"
