@@ -18,7 +18,7 @@ The following diagram shows how an external web application (orange) can communi
 ## Install the SDK
 The SDK is available as a package on NPM:
 
-`npm install ringtail-extension-sdk`
+`npm install discover-extension-sdk`
 
 To support IE11, you also need to provide promise and fetch polyfills, such as:
 
@@ -34,7 +34,7 @@ To communicate with Discover, initialize the SDK and then hook up listeners for 
 <html>
 <head>
     <title>Discover UI Extension Test App</title>
-    <script src="node_modules/ringtail-extension-sdk/Ringtail.js" type="text/javascript"></script>
+    <script src="node_modules/discover-extension-sdk/Ringtail.js" type="text/javascript"></script>
 </head>
 <body>
     <h2>Active Document</h2>
@@ -55,7 +55,7 @@ To communicate with Discover, initialize the SDK and then hook up listeners for 
             document.querySelector('.active-result-set-id').innerHTML = message.data.searchResultId || '';
         }
 
-        // Establish communication with Ringtail
+        // Establish communication with Discover
         Ringtail.initialize().then(function () {
             // Listen for ActiveDocument changes
             Ringtail.on('ActiveDocument', handleActiveDocumentChanged);
