@@ -55,7 +55,7 @@ To communicate with Discover, initialize the SDK and then hook up listeners for 
             document.querySelector('.active-result-set-id').innerHTML = message.data.searchResultId || '';
         }
 
-        // Establish communication with Ringtail
+        // Establish communication with Discover
         Ringtail.initialize().then(function () {
             // Listen for ActiveDocument changes
             Ringtail.on('ActiveDocument', handleActiveDocumentChanged);
