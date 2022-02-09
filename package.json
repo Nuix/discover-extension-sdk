@@ -1,7 +1,7 @@
 {
-  "name": "ringtail-extension-sdk",
+  "name": "discover-extension-sdk",
   "version": "1.0.1",
-  "description": "Provides APIs for UI Extensions to communicate with the application",
+  "description": "Provides APIs for UI Extensions to communicate with the Nuix Discover application",
   "main": "Ringtail.js",
   "scripts": {
     "test": "jest"
@@ -9,16 +9,16 @@
   "files": [
     "Ringtail.js"
   ],
-  "repository": "git+https://github.com/ringtail-software/ringtail-extension-sdk.git",
+  "repository": "git+https://github.com/Nuix/discover-extension-sdk.git",
   "keywords": [
     "ringtail"
   ],
-  "author": "Collin Arnold <collin.arnold@nuix.com>",
+  "author": "Nuix",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ringtail-software/ringtail-extension-sdk/issues"
+    "url": "https://github.com/Nuix/discover-extension-sdk/issues"
   },
-  "homepage": "https://github.com/ringtail-software/ringtail-extension-sdk#readme",
+  "homepage": "https://github.com/Nuix/discover-extension-sdk#readme",
   "devDependencies": {
     "eslint": "^7.4.0",
     "eslint-plugin-jest": "^23.18.0",

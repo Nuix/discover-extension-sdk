@@ -1,5 +1,5 @@
-# Extension Manifests - Ringtail 9.6.009
-Extension manifests are files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Ringtail with each new UI extension release.
+# Extension Manifests - Discover 9.6.009
+Extension manifests are files that specify all the settings needed to setup and configure UI extensions. They are intended to be versioned assets that are updated in Discover with each new UI extension release.
 
 ## Structure
 Extension manifests are authored in JSON format. Here's an example:
@@ -30,25 +30,25 @@ Extension manifests are authored in JSON format. Here's an example:
 These settings define basic features required for every UIX.
 
 - `name` <[String]> Name of the UIX displayed on the Case Home page or as a workspace pane on the Documents page.
-- `type` <[String]> Location where the UIX will appear in Ringtail. Must be one of:
+- `type` <[String]> Location where the UIX will appear in Discover. Must be one of:
   - `Workspace` - Workspace pane on the Documents page
   - `Case` - Case Home page
 - `url` <[String]> URL of the web app to load.
-- `configuration` <[String]> (Optional) Payload stored by Ringtail and delivered to the UIX upon initialization.
+- `configuration` <[String]> (Optional) Payload stored by Discover and delivered to the UIX upon initialization.
 - `description` <[String]> (Optional) Description to differentiate similar UIX displayed in the UIX admin area.
-- `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Ringtail with backend UIX systems. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
+- `privateKey` <[String]> (Optional) Key used to sign a JWT for authenticating Discover with backend UIX systems. See [Authentication with JWTs](AuthWithJWTs.md) for more information.
 - `retrieveProductionFileUrl` <[String]> (Optional) URL to retrieve extension-authored files during production print. See [External File Printing](ExternalFilePrinting.md) for more information.
 - `linkedExtensionName` <[String]> (Optional) The name of another existing UIX (primary).  This will associate annotations created by this UIX with the primary UIX, giving the user permission to modify or delete annotations created by this ancillary UIX.
-- `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Ringtail. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
+- `namePrefix` <[String]> (Optional) Prefix used to group and differentiate UIX fields and statistics from other fields and statistics in Discover. This value is required if UIX fields or statistics are specified. **NOTE: This value cannot be changed after it is set.**
 - `fields` <[Array]<[Field](#fields)>> (Optional) Fields to create in each case that the UIX is assigned to.
 - `statistics` <[Array]<[Statistic](#statistics)>> (Optional) Statistics counters to create in each case that the UIX is assigned to.
 - `annotations` <[Array]<[Annotation](#annotations)>> (Optional) Annotation types to create in each case that the UIX is assigned to.
 
 ## Fields
-When you provide field settings in an extension manifest, Ringtail can automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Ringtail, allowing users to search, list, and view these fields.
+When you provide field settings in an extension manifest, Discover can automatically create fields in the cases where the UIX is installed. This is a great way to expose UIX states to Discover, allowing users to search, list, and view these fields.
 
 - `id` <[Number]> Identifier for this field in the manifest, used to look up its concrete identifier for coding.
-- `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Ringtail.
+- `name` <[String]> Name of the field. This will be prefixed with the `namePrefix` value in Discover.
 - `type` <[String]> Type of data the field will store. Must be one of:
   - `YesNo` - Simple Boolean value
   - `Number` - Numeric value in the range [-99999999999.9999, 99999999999.9999] with at most four decimal digits
@@ -57,7 +57,7 @@ When you provide field settings in an extension manifest, Ringtail can automatic
   - `Memo` - Larger string values supporting simple HTML markup with at most 4095 characters
   - `PickList` - Value picked from a provided list of choices
 - `isOneToOne` <[Boolean]> (Default `true`) If `true`, allows only a single value to be coded per document. If `false`, multiple unique values may be coded. `YesNo` fields require `isOneToOne=true`.
-- `excludeFromSearch` <[Boolean]> (Default `false`) If `true`, suppresses this field from Ringtail's advanced search builder.
+- `excludeFromSearch` <[Boolean]> (Default `false`) If `true`, suppresses this field from Discover's advanced search builder.
 - `excludeFromListColumns` <[Boolean]> (Default `false`) If `true`, suppresses this field from appearing as a column in the List pane.
 - `excludeFromImport` <[Boolean]> (Default `false`) If `true`, prevents this field from appearing on the field mapping page in the Imports feature. This prevents users from importing data into the field from a load file.
 - `excludeFromSecurity` <[Boolean]> (Default `false`) If `true`, suppresses this field from the fields security UI on the Security > Objects > Fields page.
@@ -75,7 +75,7 @@ Field items are pre-defined choices for `PickList` fields.
 - `name` <[String]> Name of the pick list choice.
 
 ## Statistics
-Statistics are counters that Ringtail will automatically aggregate across cases and roll up into queryable summaries at the portal. These are great for tracking things like feature usage and billing metrics, such as "count of docs processed" or "number of words translated."
+Statistics are counters that Discover will automatically aggregate across cases and roll up into queryable summaries at the portal. These are great for tracking things like feature usage and billing metrics, such as "count of docs processed" or "number of words translated."
 
 - `id` <[Number]> Identifier for this statistic in the manifest, used to look up its concrete identifier for coding.
 - `name` <[String]> Name of the statistic.
